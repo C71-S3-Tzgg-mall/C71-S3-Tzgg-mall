@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<!-- 在html标签中加入thymeleaf的命名空间 xmlns==> xml name spase -->
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<!-- 定义代码块 -->
+
+<body>
+	<header th:fragment="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="headet-top">
+						<div class="htop-one">
+							<ul class="curency">
+								<li><a href="#">售后服务热线<i class="fa fa-caret-down"></i></a>
+									<ul>
+										<li><a href="#">4546-67900<span>(中国)</span></a></li>
+										<li><a href="#">3889-34468<span>(其他)</span></a></li>
+									</ul></li>
+							</ul>
+						</div>
+						<div class="htop-one">
+							<ul class="lenguage">
+								<li><a href="#">在线客服</a></li>
+							</ul>
+						</div>
+						<div class="htop-one">
+							<ul class="lenguage">
+								<li><a href="#">登录</a></li>
+							</ul>
+						</div>
+						<div class="htop-one last">
+							<ul class="account">
+								<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
+									<ul>
+										<li><a href="#">我的收藏</a></li>
+										<li><a href="#">我的购物车</a></li>
+										<li><a href="#">退出</a></li>
+									</ul></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="header-midile">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<div class="lago">
+							<a href="index.html"><img src="img/logo.png" alt="lago" /></a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="search">
+							<form action="#">
+								<input type="text" placeholder="search"> <input
+									type="submit" value="search">
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						<ul class="curt">
+							<li><a class="total-cart-b" href="#"> <span>2</span>
+									<p>购物车</p>
+									<h6>￥ 125.19</h6>
+							</a>
+								<div class="curt-list">
+									<ul>
+										<li class="curt-list-li"><a href="#"><img
+												src="img/product/printed-chiffon-dress.jpg.png" alt="img"></a>
+											<a href="#"><span class="curt-list-item-color">1 X</span>
+											<p>Printed</p></a> <span>S, Yellow</span>
+											<h6>£ 61.19</h6></li>
+										<li class="curt-list-li border-li"><a href="#"><img
+												src="img/product/printed-dress.chear.jpg.png" alt="img"></a>
+											<a href="#"><span class="curt-list-item-color">1 X</span>
+											<p>Blouse</p></a> <span>L, Orang</span>
+											<h6>£ 25.19</h6></li>
+										<li><p class="totel">totel</p>
+											<h6>£ 61.19</h6></li>
+									</ul>
+									<button>查看</button>
+								</div></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="main-menu">
+						<ul class="nav floatleft">
+							<li class="active"><a href="index.html">首页</a></li>
+							<li class="mega-menu-one"><a href="shop.html">新品</a>
+								<ul class="sub-menu">
+									<li><a href="shop.html">dresses</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">Sports</a></li>
+										</ul></li>
+									<li><a href="shop.html">clothing</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">day</a></li>
+										</ul></li>
+									<li><a href="shop.html">handbags</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">Evening</a></li>
+										</ul></li>
+									<li><a href="shop.html">shoes</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+										</ul></li>
+									<li><a href="shop.html"><img src="img/block_menu.png"
+											alt="" /></a></li>
+								</ul></li>
+							<li class="mega-menu-two"><a href="shop.html">幼儿（1-5岁）</a>
+								<ul class="sub-menu">
+									<li><a href="shop.html">dresses</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Bootees</a></li>
+											<li><a href="shop.html">Blazers</a></li>
+										</ul></li>
+									<li><a href="#">clothing</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">coats</a></li>
+											<li><a href="shop.html">T-shirts</a></li>
+										</ul></li>
+									<li><a href="#">handbags</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Bands</a></li>
+											<li><a href="shop.html">Furniture</a></li>
+										</ul></li>
+									<li><a href="#">shoes</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Bands</a></li>
+											<li><a href="shop.html">Lifestyle</a></li>
+										</ul></li>
+								</ul></li>
+							<li class="mega-menu-three"><a href="shop.html">婴儿（0-24个月）</a>
+								<ul class="sub-menu">
+									<li><a href="shop.html">dresses</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">Sports</a></li>
+										</ul></li>
+									<li><a href="#">clothing</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">day</a></li>
+										</ul></li>
+									<li><a href="#">handbags</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">Evening</a></li>
+										</ul></li>
+									<li><a href="#">shoes</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+										</ul></li>
+								</ul></li>
+							<li class="mega-menu-for"><a href="shop.html">特卖</a>
+								<ul class="sub-menu">
+									<li><a href="shop.html">dresses</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">Sports</a></li>
+										</ul></li>
+									<li><a href="#">clothing</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">day</a></li>
+										</ul></li>
+									<li><a href="#">handbags</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+											<li><a href="shop.html">Evening</a></li>
+										</ul></li>
+									<li><a href="#">shoes</a>
+										<ul class="sub-menu">
+											<li><a href="shop.html">Sports</a></li>
+											<li><a href="shop.html">Evening</a></li>
+											<li><a href="shop.html">day</a></li>
+											<li><a href="shop.html">Cocktail</a></li>
+										</ul></li>
+								</ul></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<footer th:fragment="footer">
+		<div class="footer-bg">
+			<div class="container">
+				<div class="bolg-newslatter">
+					<div class="row">
+						<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+							<div class="blog">
+								<h3 class="blog-title">
+									<a href="#">form our blog</a>
+								</h3>
+								<div class="all-blog">
+									<div class="blog-content">
+										<div class="single-blog">
+											<div class="blog-img">
+												<a href="#"><img src="img/blog/5.jpg" alt="" /></a>
+											</div>
+											<div class="blog-text">
+												<a href="#"><h4>Christmas Sale is here 5</h4></a> <span
+													class="date">2015-10-03 14:44:01</span> <a href="#"><span
+													class="more">Read More</span></a>
+												<p>Lorem Ipsum is simply dummy text of the printing and
+													typesetting industry. Lorem Ipsum has been...</p>
+											</div>
+										</div>
+										<div class="single-blog">
+											<div class="blog-img">
+												<a href="#"><img src="img/blog/2.jpg" alt="" /></a>
+											</div>
+											<div class="blog-text">
+												<a href="#"><h4>Christmas Sale is here 5</h4></a> <span
+													class="date">2015-10-03 14:44:01</span> <a href="#"><span
+													class="more">Read More</span></a>
+												<p>Lorem Ipsum is simply dummy text of the printing and
+													typesetting industry. Lorem Ipsum has been...</p>
+											</div>
+										</div>
+									</div>
+									<div class="blog-content">
+										<div class="single-blog">
+											<div class="blog-img">
+												<a href="#"><img src="img/blog/3.jpg" alt="" /></a>
+											</div>
+											<div class="blog-text">
+												<a href="#"><h4>Christmas Sale is here 5</h4></a> <span
+													class="date">2015-10-03 14:44:01</span> <a href="#"><span
+													class="more">Read More</span></a>
+												<p>Lorem Ipsum is simply dummy text of the printing and
+													typesetting industry. Lorem Ipsum has been...</p>
+											</div>
+										</div>
+										<div class="single-blog">
+											<div class="blog-img">
+												<a href="#"><img src="img/blog/4.jpg" alt="" /></a>
+											</div>
+											<div class="blog-text">
+												<a href="#"><h4>Christmas Sale is here 5</h4></a> <span
+													class="date">2015-10-03 14:44:01</span> <a href="#"><span
+													class="more">Read More</span></a>
+												<p>Lorem Ipsum is simply dummy text of the printing and
+													typesetting industry. Lorem Ipsum has been...</p>
+											</div>
+										</div>
+									</div>
+									<div class="blog-content">
+										<div class="single-blog">
+											<div class="blog-img">
+												<a href="#"><img src="img/blog/3.jpg" alt="" /></a>
+											</div>
+											<div class="blog-text">
+												<a href="#"><h4>Christmas Sale is here 5</h4></a> <span
+													class="date">2015-10-03 14:44:01</span> <a href="#"><span
+													class="more">Read More</span></a>
+												<p>Lorem Ipsum is simply dummy text of the printing and
+													typesetting industry. Lorem Ipsum has been...</p>
+											</div>
+										</div>
+										<div class="single-blog">
+											<div class="blog-img">
+												<a href="#"><img src="img/blog/5.jpg" alt="" /></a>
+											</div>
+											<div class="blog-text">
+												<a href="#"><h4>Christmas Sale is here 5</h4></a> <span
+													class="date">2015-10-03 14:44:01</span> <a href="#"><span
+													class="more">Read More</span></a>
+												<p>Lorem Ipsum is simply dummy text of the printing and
+													typesetting industry. Lorem Ipsum has been...</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+							<div class="newslatter">
+								<h4>Newsletter promotions and gifts</h4>
+								<p>Your information is completely confidential, and may
+									unsubscribe at any time.Sign up to get much better deals.</p>
+								<div class="subscribe">
+									<form action="#">
+										<input type="text" placeholder="Enter your e-mail">
+										<button type="submit">subscribe</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="bg-bd">
+					<div class="row">
+						<div class="cl-logo">
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-1.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-2.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-3.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-4.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-5.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-1.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-2.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-3.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-4.jpg" alt="" /></a>
+							</div>
+							<div class="col-lg-12">
+								<a href="#"><img src="img/client-lago/lago-5.jpg" alt="" /></a>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="row top-speac">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="widget">
+								<div class="footer-lago">
+									<a href="#"><img src="img/logo.png" alt="logo.jpg" /></a>
+								</div>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+									sed do eiusmod tempor incididunt ut labore et dolore magna
+									aliqua. Ut enim ad minim veure dol dolore eu fugiat nulla
+									pariatur.</p>
+								<ul class="social-link">
+									<li><a href="#" data-toggle="tooltip" title="facebook"><i
+											class="fa fa-facebook"></i> </a></li>
+									<li><a href="#" data-toggle="tooltip" title="twitter"><i
+											class="fa fa-twitter"></i> </a></li>
+									<li><a href="#" data-toggle="tooltip" title="rss"><i
+											class="fa fa-rss"></i> </a></li>
+									<li><a href="#" data-toggle="tooltip" title="youtube"><i
+											class="fa fa-youtube"></i> </a></li>
+									<li><a href="#" data-toggle="tooltip" title="google-plus"><i
+											class="fa fa-google-plus"></i> </a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+							<div class="widget">
+								<h5>Information</h5>
+								<ul class="im">
+									<li><a href="#">Special</a></li>
+									<li><a href="#">New products</a></li>
+									<li><a href="#">Best sellers </a></li>
+									<li><a href="#">Our stores </a></li>
+									<li><a href="#">Contact us </a></li>
+									<li><a href="#">Sitemap</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+							<div class="widget">
+								<h5>
+									<a href="#">My account</a>
+								</h5>
+								<ul class="im">
+									<li><a href="#">My orders</a></li>
+									<li><a href="#">My credit slips</a></li>
+									<li><a href="#">My addresses</a></li>
+									<li><a href="#">My personal info</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="widget">
+								<h5>Contact us</h5>
+								<address>
+									Address:<span class="color">My Company, 42 Avenue Des
+										Champs Elysées 75000 Paris France</span><br> Call Us Now Toll
+									Free: <span class="color"><a href="tel:0123-456-789">0123-456-789</a></span><br>
+									Email: <span class="color"><a
+										href="mailto:www@website.com">www@website.com</a> </span>
+								</address>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="copyright">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<div class="copyright-text">
+								<p>
+									Copyright &copy; 2017.Company name All rights reserved.More
+									Templates <a href="http://www.cssmoban.com/" target="_blank"
+										title="模板之家">模板之家</a> - Collect from <a
+										href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+							<div class="payment">
+								<ul>
+									<li><a href="#"><img src="img/payment.png" alt="" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

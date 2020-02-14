@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.C71S3Tzggmall.dao.ClothMapper">
+  <resultMap id="BaseResultMap" type="com.yc.C71S3Tzggmall.bean.Cloth">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="shopPrice" jdbcType="DOUBLE" property="shopprice" />
+    <result column="realPrice" jdbcType="DOUBLE" property="realprice" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="restCount" jdbcType="INTEGER" property="restcount" />
+    <result column="soleCount" jdbcType="INTEGER" property="solecount" />
+    <result column="arriveTime" jdbcType="TIMESTAMP" property="arrivetime" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cid, name, shopPrice, realPrice, image, tid, restCount, soleCount, arriveTime, detail
+  </sql>
+  <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.ClothExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cloth
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cloth
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cloth
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yc.C71S3Tzggmall.bean.ClothExample">
+    delete from cloth
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Cloth">
+    insert into cloth (cid, name, shopPrice, 
+      realPrice, image, tid, 
+      restCount, soleCount, arriveTime, 
+      detail)
+    values (#{cid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shopprice,jdbcType=DOUBLE}, 
+      #{realprice,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, 
+      #{restcount,jdbcType=INTEGER}, #{solecount,jdbcType=INTEGER}, #{arrivetime,jdbcType=TIMESTAMP}, 
+      #{detail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Cloth">
+    insert into cloth
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="shopprice != null">
+        shopPrice,
+      </if>
+      <if test="realprice != null">
+        realPrice,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="restcount != null">
+        restCount,
+      </if>
+      <if test="solecount != null">
+        soleCount,
+      </if>
+      <if test="arrivetime != null">
+        arriveTime,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shopprice != null">
+        #{shopprice,jdbcType=DOUBLE},
+      </if>
+      <if test="realprice != null">
+        #{realprice,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="restcount != null">
+        #{restcount,jdbcType=INTEGER},
+      </if>
+      <if test="solecount != null">
+        #{solecount,jdbcType=INTEGER},
+      </if>
+      <if test="arrivetime != null">
+        #{arrivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yc.C71S3Tzggmall.bean.ClothExample" resultType="java.lang.Long">
+    select count(*) from cloth
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cloth
+    <set>
+      <if test="record.cid != null">
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopprice != null">
+        shopPrice = #{record.shopprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.realprice != null">
+        realPrice = #{record.realprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tid != null">
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.restcount != null">
+        restCount = #{record.restcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.solecount != null">
+        soleCount = #{record.solecount,jdbcType=INTEGER},
+      </if>
+      <if test="record.arrivetime != null">
+        arriveTime = #{record.arrivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.detail != null">
+        detail = #{record.detail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cloth
+    set cid = #{record.cid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      shopPrice = #{record.shopprice,jdbcType=DOUBLE},
+      realPrice = #{record.realprice,jdbcType=DOUBLE},
+      image = #{record.image,jdbcType=VARCHAR},
+      tid = #{record.tid,jdbcType=INTEGER},
+      restCount = #{record.restcount,jdbcType=INTEGER},
+      soleCount = #{record.solecount,jdbcType=INTEGER},
+      arriveTime = #{record.arrivetime,jdbcType=TIMESTAMP},
+      detail = #{record.detail,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.C71S3Tzggmall.bean.Cloth">
+    update cloth
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shopprice != null">
+        shopPrice = #{shopprice,jdbcType=DOUBLE},
+      </if>
+      <if test="realprice != null">
+        realPrice = #{realprice,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="restcount != null">
+        restCount = #{restcount,jdbcType=INTEGER},
+      </if>
+      <if test="solecount != null">
+        soleCount = #{solecount,jdbcType=INTEGER},
+      </if>
+      <if test="arrivetime != null">
+        arriveTime = #{arrivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.C71S3Tzggmall.bean.Cloth">
+    update cloth
+    set name = #{name,jdbcType=VARCHAR},
+      shopPrice = #{shopprice,jdbcType=DOUBLE},
+      realPrice = #{realprice,jdbcType=DOUBLE},
+      image = #{image,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=INTEGER},
+      restCount = #{restcount,jdbcType=INTEGER},
+      soleCount = #{solecount,jdbcType=INTEGER},
+      arriveTime = #{arrivetime,jdbcType=TIMESTAMP},
+      detail = #{detail,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>
