@@ -13,6 +13,12 @@ public class Admin {
 
     private String tel;
 
+    private String address;
+
+    private String sex;
+
+    private String image;
+
     public Integer getAid() {
         return aid;
     }
@@ -59,5 +65,29 @@ public class Admin {
 
     public void setTel(String tel) {
         this.tel = tel == null ? null : tel.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 }

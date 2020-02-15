@@ -8,6 +8,9 @@
     <result column="cardId" jdbcType="VARCHAR" property="cardid" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    aid, name, pwd, cardId, email, tel
+    aid, name, pwd, cardId, email, tel, address, sex, image
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.AdminExample" resultMap="BaseResultMap">
     select
@@ -102,9 +105,13 @@
   </delete>
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Admin">
     insert into admin (aid, name, pwd, 
-      cardId, email, tel)
+      cardId, email, tel, 
+      address, sex, image
+      )
     values (#{aid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
-      #{cardid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR})
+      #{cardid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Admin">
     insert into admin
@@ -127,6 +134,15 @@
       <if test="tel != null">
         tel,
       </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="aid != null">
@@ -146,6 +162,15 @@
       </if>
       <if test="tel != null">
         #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,6 +201,15 @@
       <if test="record.tel != null">
         tel = #{record.tel,jdbcType=VARCHAR},
       </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -188,7 +222,10 @@
       pwd = #{record.pwd,jdbcType=VARCHAR},
       cardId = #{record.cardid,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      tel = #{record.tel,jdbcType=VARCHAR}
+      tel = #{record.tel,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,6 +248,15 @@
       <if test="tel != null">
         tel = #{tel,jdbcType=VARCHAR},
       </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
     </set>
     where aid = #{aid,jdbcType=INTEGER}
   </update>
@@ -220,7 +266,10 @@
       pwd = #{pwd,jdbcType=VARCHAR},
       cardId = #{cardid,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      tel = #{tel,jdbcType=VARCHAR}
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR}
     where aid = #{aid,jdbcType=INTEGER}
   </update>
 </mapper>
