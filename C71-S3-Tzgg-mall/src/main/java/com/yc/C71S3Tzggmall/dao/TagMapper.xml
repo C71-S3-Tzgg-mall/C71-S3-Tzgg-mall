@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.C71S3Tzggmall.dao.TypeMapper">
-  <resultMap id="BaseResultMap" type="com.yc.C71S3Tzggmall.bean.Type">
+<mapper namespace="com.yc.C71S3Tzggmall.dao.TagMapper">
+  <resultMap id="BaseResultMap" type="com.yc.C71S3Tzggmall.bean.Tag">
     <id column="tid" jdbcType="INTEGER" property="tid" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="typeid" jdbcType="INTEGER" property="typeid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    tid, type
+    tid, tag, typeid
   </sql>
-  <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.TypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.TagExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from type
+    from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +84,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from type
+    from tag
     where tid = #{tid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from type
+    delete from tag
     where tid = #{tid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yc.C71S3Tzggmall.bean.TypeExample">
-    delete from type
+  <delete id="deleteByExample" parameterType="com.yc.C71S3Tzggmall.bean.TagExample">
+    delete from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Type">
-    insert into type (tid, type)
-    values (#{tid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Tag">
+    insert into tag (tid, tag, typeid
+      )
+    values (#{tid,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Type">
-    insert into type
+  <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Tag">
+    insert into tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tid != null">
         tid,
       </if>
-      <if test="type != null">
-        type,
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="typeid != null">
+        typeid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tid != null">
         #{tid,jdbcType=INTEGER},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yc.C71S3Tzggmall.bean.TypeExample" resultType="java.lang.Long">
-    select count(*) from type
+  <select id="countByExample" parameterType="com.yc.C71S3Tzggmall.bean.TagExample" resultType="java.lang.Long">
+    select count(*) from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update type
+    update tag
     <set>
       <if test="record.tid != null">
         tid = #{record.tid,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=VARCHAR},
+      <if test="record.tag != null">
+        tag = #{record.tag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeid != null">
+        typeid = #{record.typeid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -140,25 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update type
+    update tag
     set tid = #{record.tid,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=VARCHAR}
+      tag = #{record.tag,jdbcType=VARCHAR},
+      typeid = #{record.typeid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yc.C71S3Tzggmall.bean.Type">
-    update type
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.C71S3Tzggmall.bean.Tag">
+    update tag
     <set>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        typeid = #{typeid,jdbcType=INTEGER},
       </if>
     </set>
     where tid = #{tid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yc.C71S3Tzggmall.bean.Type">
-    update type
-    set type = #{type,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yc.C71S3Tzggmall.bean.Tag">
+    update tag
+    set tag = #{tag,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=INTEGER}
     where tid = #{tid,jdbcType=INTEGER}
   </update>
 </mapper>

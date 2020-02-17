@@ -3,14 +3,14 @@ package com.yc.C71S3Tzggmall.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypeExample {
+public class TagExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TypeExample() {
+    public TagExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,73 +164,133 @@ public class TypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNull() {
-            addCriterion("type is null");
+        public Criteria andTagIsNull() {
+            addCriterion("tag is null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNotNull() {
-            addCriterion("type is not null");
+        public Criteria andTagIsNotNull() {
+            addCriterion("tag is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(String value) {
-            addCriterion("type =", value, "type");
+        public Criteria andTagEqualTo(String value) {
+            addCriterion("tag =", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(String value) {
-            addCriterion("type <>", value, "type");
+        public Criteria andTagNotEqualTo(String value) {
+            addCriterion("tag <>", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(String value) {
-            addCriterion("type >", value, "type");
+        public Criteria andTagGreaterThan(String value) {
+            addCriterion("tag >", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("type >=", value, "type");
+        public Criteria andTagGreaterThanOrEqualTo(String value) {
+            addCriterion("tag >=", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(String value) {
-            addCriterion("type <", value, "type");
+        public Criteria andTagLessThan(String value) {
+            addCriterion("tag <", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(String value) {
-            addCriterion("type <=", value, "type");
+        public Criteria andTagLessThanOrEqualTo(String value) {
+            addCriterion("tag <=", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLike(String value) {
-            addCriterion("type like", value, "type");
+        public Criteria andTagLike(String value) {
+            addCriterion("tag like", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotLike(String value) {
-            addCriterion("type not like", value, "type");
+        public Criteria andTagNotLike(String value) {
+            addCriterion("tag not like", value, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<String> values) {
-            addCriterion("type in", values, "type");
+        public Criteria andTagIn(List<String> values) {
+            addCriterion("tag in", values, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<String> values) {
-            addCriterion("type not in", values, "type");
+        public Criteria andTagNotIn(List<String> values) {
+            addCriterion("tag not in", values, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(String value1, String value2) {
-            addCriterion("type between", value1, value2, "type");
+        public Criteria andTagBetween(String value1, String value2) {
+            addCriterion("tag between", value1, value2, "tag");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(String value1, String value2) {
-            addCriterion("type not between", value1, value2, "type");
+        public Criteria andTagNotBetween(String value1, String value2) {
+            addCriterion("tag not between", value1, value2, "tag");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidIsNull() {
+            addCriterion("typeid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidIsNotNull() {
+            addCriterion("typeid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidEqualTo(Integer value) {
+            addCriterion("typeid =", value, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidNotEqualTo(Integer value) {
+            addCriterion("typeid <>", value, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidGreaterThan(Integer value) {
+            addCriterion("typeid >", value, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("typeid >=", value, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidLessThan(Integer value) {
+            addCriterion("typeid <", value, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidLessThanOrEqualTo(Integer value) {
+            addCriterion("typeid <=", value, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidIn(List<Integer> values) {
+            addCriterion("typeid in", values, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidNotIn(List<Integer> values) {
+            addCriterion("typeid not in", values, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidBetween(Integer value1, Integer value2) {
+            addCriterion("typeid between", value1, value2, "typeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeidNotBetween(Integer value1, Integer value2) {
+            addCriterion("typeid not between", value1, value2, "typeid");
             return (Criteria) this;
         }
     }

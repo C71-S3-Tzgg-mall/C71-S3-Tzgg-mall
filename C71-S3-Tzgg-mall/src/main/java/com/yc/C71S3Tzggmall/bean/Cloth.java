@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Cloth {
     private Integer cid;
-
+    
     private String name;
 
     private Double shopprice;
@@ -15,6 +15,8 @@ public class Cloth {
 
     private Integer tid;
 
+    private Integer typeid;
+
     private Integer restcount;
 
     private Integer solecount;
@@ -22,7 +24,9 @@ public class Cloth {
     private Timestamp arrivetime;
 
     private String detail;
-
+    
+    private Integer count;
+    
     public Integer getCid() {
         return cid;
     }
@@ -71,6 +75,14 @@ public class Cloth {
         this.tid = tid;
     }
 
+    public Integer getTypeid() {
+        return typeid;
+    }
+
+    public void setTypeid(Integer typeid) {
+        this.typeid = typeid;
+    }
+
     public Integer getRestcount() {
         return restcount;
     }
@@ -102,4 +114,15 @@ public class Cloth {
     public void setDetail(String detail) {
         this.detail = detail == null ? null : detail.trim();
     }
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+    
+    
+    
 }

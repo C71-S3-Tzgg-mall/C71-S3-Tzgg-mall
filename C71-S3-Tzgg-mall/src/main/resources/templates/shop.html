@@ -5,17 +5,20 @@
 <!--[if IE 8 ]>    <html lang="en" class="ie8">    <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="ie9">    <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js" lang="">
-        <head>
+<html class="no-js" lang="" xmlns:th="www.thymeleaf.org">
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home</title>
+        <title>Bee-新品</title>
+        <link rel="icon" href="img/logo-icon.png" type="image/x-icon"/>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
         <!-- Google Fonts
-		============================================ -->				
+		============================================ -->		
+		
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,latin-ext" type="text/css" media="all" />
+		
 		<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 					
         <!-- Favicon
@@ -52,10 +55,14 @@
 		============================================ -->         
         <link rel="stylesheet" href="css/animate.css">
 		
+ 		<!-- jquery-ui CSS
+		============================================ -->         
+        <link rel="stylesheet" href="css/jquery-ui.css">
+		
 		<!-- nivo slider CSS
 		============================================ -->
 		<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" />
-		<link rel="stylesheet" href="css/preview.css" type="text/css" media="screen" />			
+		<link rel="stylesheet" href="css/preview.css" type="text/css" media="screen" />				
         
  		<!-- normalize CSS
 		============================================ -->        
@@ -75,11 +82,12 @@
         
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body class="home">
+    <body class="page-one">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
+
 		<!-- Header Area-->	
         <header class="header-area">
         	<div class="container">
@@ -89,10 +97,10 @@
 							<div class="htop-one">
 								<ul class="curency">
 									<li>
-										<a href="#">货币 : <span>gbp</span><i class="fa fa-caret-down"></i></a>
+										<a href="#">售后服务热线<i class="fa fa-caret-down"></i></a>
 										<ul>
-											<li><a href="#">Dollar<span>(usd)</span></a></li> 
-											<li><a href="#">Pound<span>(GBP)</span></a></li> 
+											<li><a href="#">4546-67900<span>(中国)</span></a></li> 
+											<li><a href="#">3889-34468<span>(其他)</span></a></li> 
 										</ul>
 									</li> 
 								</ul>
@@ -100,12 +108,14 @@
 							<div class="htop-one">
 								<ul class="lenguage">
 									<li>
-										<a href="#">语言<i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="#">中文</a></li>
-											<li><a href="#">韩语</a></li> 
-											<li><a href="#">英语</a></li> 
-										</ul>									
+										<a href="#">在线客服</a>									
+									</li> 
+								</ul>
+							</div>
+							<div class="htop-one">
+								<ul class="lenguage">
+									<li>
+										<a href="#">登录</a>									
 									</li> 
 								</ul>
 							</div>
@@ -113,11 +123,10 @@
 								<ul class="account">
 									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
 										<ul>
-											<li><a href="#">我的账户</a></li> 
-											<li><a href="#">我的收藏</a></li> 
-											<li><a href="#">查看</a></li> 
-											<li><a href="#">登录</a></li> 
-										</ul>											
+											<li><a href="wishlist.html">我的收藏</a></li> 
+											<li><a href="cart.html">购物车</a></li> 
+											<li><a href="#">退出</a></li> 
+										</ul>										
 									</li> 
 								</ul>
 							</div>
@@ -143,26 +152,26 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 							<ul class="curt">
-								<li><a class="total-cart-b" href="#">
+								<li><a class="total-cart-b" href="cart.html">
 									<span>2</span>
 									<p>购物车</p>
-									<h6>￥125.19</h6>									
+									<h6>￥ 125.19</h6>									
 								</a>
 								<div class="curt-list">
 									<ul>
 										<li class="curt-list-li"> 
 											<a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="img"></a>
 											<a href="#"><span class="curt-list-item-color">1 X</span><p>Printed</p></a>
-											<span>S, 绿色</span>
-											<h6>￥ 61.19</h6>
+											<span>S, Yellow</span>
+											<h6>£ 61.19</h6>
 										</li>
 										<li class="curt-list-li border-li">
 											<a href="#"><img src="img/product/printed-dress.chear.jpg.png" alt="img"></a>
 											<a href="#"><span class="curt-list-item-color">1 X</span><p>Blouse</p></a>
-											<span>L, 橙色</span>
-											<h6>￥ 25.19</h6>
+											<span>L, Orang</span>
+											<h6>£ 25.19</h6>
 										</li>
-										<li><p class="totel">总共</p><h6>￥ 86.38</h6></li>
+										<li><p class="totel">totel</p><h6>£ 61.19</h6></li>
 									</ul>
 									<button>查看</button>
 								</div>									
@@ -177,27 +186,27 @@
 					<div class="col-lg-12"> 
 						<div class="main-menu">
 							<ul class="nav floatleft">
-								<li class="active"><a href="index.html">主页</a>
+								<li class="active"><a href="index.html">首页</a>
 								</li>
-								<li class="mega-menu-one"><a href="shop.html">童装</a>
+								<li class="mega-menu-one"><a href="shop.html">新品</a>
 									<ul class="sub-menu">
-										<li><a href="shop.html">儿童外套</a>
+										<li><a href="shop.html">dresses</a>
+											<ul class="sub-menu">
+												<li><a href="shop.html">Cocktail</a></li>
+												<li><a href="shop.html">day</a></li>
+												<li><a href="shop.html">Evening</a></li>
+												<li><a href="shop.html">Sports</a></li> 
+											</ul>
+										</li>
+										<li><a href="shop.html">clothing</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">Evening</a></li>
 												<li><a href="shop.html">Cocktail</a></li>
 												<li><a href="shop.html">day</a></li> 
-											</ul> 
+											</ul>
 										</li>
-										<li><a href="shop.html">童鞋</a>
-											 <ul class="sub-menu">
-												<li><a href="shop.html">Sports</a></li>
-												<li><a href="shop.html">Evening</a></li>
-												<li><a href="shop.html">Cocktail</a></li>
-												<li><a href="shop.html">day</a></li> 
-											</ul> 
-										</li>
-										<li><a href="shop.html">婴儿装</a>
+										<li><a href="shop.html">handbags</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">day</a></li>
@@ -205,7 +214,7 @@
 												<li><a href="shop.html">Evening</a></li> 
 											</ul>
 										</li>
-										<li><a href="shop.html">儿童T恤</a>
+										<li><a href="shop.html">shoes</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">Evening</a></li>
@@ -218,27 +227,27 @@
 										</li>
 									</ul>								
 								</li>
-								<li class="mega-menu-two"><a href="shop.html">洗护用品</a> 	
+								<li class="mega-menu-two"><a href="shop.html">幼儿（1-5岁）</a> 	
 									<ul class="sub-menu">
-										<li><a href="shop.html">纸尿裤</a>
+										<li><a href="shop.html">dresses</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Bootees</a></li>
 												<li><a href="shop.html">Blazers</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">儿童润肤乳</a>
+										<li><a href="#">clothing</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">coats</a></li>
 												<li><a href="shop.html">T-shirts</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">洗澡用具</a>
+										<li><a href="#">handbags</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Bands</a></li>
 												<li><a href="shop.html">Furniture</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">婴儿湿巾</a>
+										<li><a href="#">shoes</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Bands</a></li>
 												<li><a href="shop.html">Lifestyle</a></li>  
@@ -246,9 +255,9 @@
 										</li> 
 									</ul>								
 								</li>
-								<li class="mega-menu-three"><a href="shop.html">哺乳喂养</a>
+								<li class="mega-menu-three"><a href="shop.html">婴儿（0-24个月）</a>
 									<ul class="sub-menu">
-										<li><a href="shop.html">奶瓶</a>
+										<li><a href="shop.html">dresses</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Cocktail</a></li>
 												<li><a href="shop.html">day</a></li>
@@ -256,7 +265,7 @@
 												<li><a href="shop.html">Sports</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">儿童水杯</a>
+										<li><a href="#">clothing</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">Evening</a></li>
@@ -264,7 +273,7 @@
 												<li><a href="shop.html">day</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">儿童餐具</a>
+										<li><a href="#">handbags</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">day</a></li>
@@ -272,7 +281,7 @@
 												<li><a href="shop.html">Evening</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">儿童餐椅</a>
+										<li><a href="#">shoes</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">Evening</a></li>
@@ -282,9 +291,9 @@
 										</li> 
 									</ul>								
 								</li>
-								<li class="mega-menu-for"><a href="shop.html">儿童家具</a> 
+								<li class="mega-menu-for"><a href="shop.html">特卖</a> 
 									<ul class="sub-menu">
-										<li><a href="shop.html">婴儿床</a>
+										<li><a href="shop.html">dresses</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Cocktail</a></li>
 												<li><a href="shop.html">day</a></li>
@@ -292,7 +301,7 @@
 												<li><a href="shop.html">Sports</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">婴儿睡袋</a>
+										<li><a href="#">clothing</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">Evening</a></li>
@@ -300,7 +309,7 @@
 												<li><a href="shop.html">day</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">枕头被子</a>
+										<li><a href="#">handbags</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">day</a></li>
@@ -308,7 +317,7 @@
 												<li><a href="shop.html">Evening</a></li> 
 											</ul>
 										</li>
-										<li><a href="#">爬行垫</a>
+										<li><a href="#">shoes</a>
 											<ul class="sub-menu">
 												<li><a href="shop.html">Sports</a></li>
 												<li><a href="shop.html">Evening</a></li>
@@ -318,192 +327,12 @@
 										</li> 
 									</ul>								
 								</li>
-								<li><a href="shop.html">愿望清单</a></li>
-								<!-- <li><a href="shop.html"></a>
-									<ul class="dworpdown">
-										<li><a href="shop.html">shope-page</a></li>
-										<li><a href="single-product.html">single-product</a></li>
-										<li><a href="checkout-page.html">checkout-page</a></li>
-										<li><a href="wishlist.html">wishlist</a></li>
-										<li><a href="contact-page.html">contact-page</a></li>
-									</ul>
-								</li> -->
+								
 							</ul> 
 						</div>	
 					</div>
 				</div>				
 			</div>
-			<!-- mobile-menu-area start -->
-			<div class="mobile-menu-area"> 
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="mobile-menu">
-								<nav id="dropdown">
-									<ul>
-										<li><a href="index.html">主页</a>
-											<ul> 
-												<li><a href="index-2.html">主页 2</a></li>
-												<li><a href="index-3.html">主页 3</a></li>
-											</ul>
-										</li>
-										<li><a href="blog.html">童装</a>
-											<ul>
-												<li><a href="shop.html">洋装</a>
-													<ul>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">Sports</a></li> 
-													</ul>
-												</li>
-												<li><a href="shop.html">服装</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">day</a></li> 
-													</ul>
-												</li>
-												<li><a href="shop.html">手袋</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">Evening</a></li> 
-													</ul>
-												</li>
-												<li><a href="shop.html">鞋子</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Cocktail</a></li> 
-													</ul>
-												</li>
-												<li> 
-													 <a href="shop.html"><img src="img/block_menu.png" alt="" /></a>  											 
-												</li>
-											</ul>
-										</li>
-										<li><a href="shop.html">梳妆台</a>
-											<ul>
-												<li><a href="shop.html">dresses</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Bootees  Bags</a></li>
-														<li><a href="shop.html">Blazers</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">clothing</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">coats</a></li>
-														<li><a href="shop.html">T-shirts</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">handbags</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Bands</a></li>
-														<li><a href="shop.html">Furniture</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">shoes</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Bands</a></li>
-														<li><a href="shop.html">Lifestyle</a></li>  
-													</ul>
-												</li> 
-											</ul>	
-										</li>
-										<li><a href="shop.html">desks</a>
-											<ul class="sub-menu">
-												<li><a href="shop.html">dresses</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">Sports</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">clothing</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">day</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">handbags</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">Evening</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">shoes</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Cocktail</a></li> 
-													</ul>
-												</li> 
-											</ul>	
-										</li>
-										<li><a href="shop.html">bookshelves</a>
-											<ul class="sub-menu">
-												<li><a href="shop.html">dresses</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">Sports</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">clothing</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">day</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">handbags</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Cocktail</a></li>
-														<li><a href="shop.html">Evening</a></li> 
-													</ul>
-												</li>
-												<li><a href="#">shoes</a>
-													<ul class="sub-menu">
-														<li><a href="shop.html">Sports</a></li>
-														<li><a href="shop.html">Evening</a></li>
-														<li><a href="shop.html">day</a></li>
-														<li><a href="shop.html">Cocktail</a></li> 
-													</ul>
-												</li> 
-											</ul>									
-										</li>
-										<li><a href="shop.html">armoires</a></li>
-										<li><a href="shop.html">pages</a>
-											<ul>
-												<li><a href="shop.html">shope-page</a></li>
-												<li><a href="single-product.html">single-product</a></li>
-												<li><a href="checkout-page.html">checkout-page</a></li>
-												<li><a href="wishlist.html">wishlist</a></li>
-												<li><a href="contact-page.html">contact-page</a></li>
-											</ul>										
-										</li>
-									</ul>
-								</nav>
-							</div>					
-						</div>
-					</div>
-				</div>	
-			</div>
-			<!-- mobile-menu-area end -->			
         </header>
 		<!-- Brade Come Start -->
 		<div class="braed-come">
@@ -511,9 +340,9 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-12">
 						<div class="braed">
-							<a href="#"><i class="fa fa-home"></i></a>
+							<a href="index.html"><i class="fa fa-home"></i></a>
 							<span class="navegation-page">></span>
-							儿童床
+							新品 
 						</div>
 					</div>
 				</div>
@@ -540,108 +369,49 @@
 					<div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="product-left">
 							<div class="beds-section bg-bd">
-								<h4 class="pp-left-heading">儿童床</h4>
+								<h4 class="pp-left-heading">类型</h4>
 								<div class="category-menu" id="cate-toggle">
-									<ul>
-										<li class="has-sub"><a href="#">Dresses</a>
-											<ul>
-												<li><a href="#">Cocktail</a></li>
-												<li><a href="#">Day</a></li>
-												<li><a href="#">Evening</a></li>
-												<li><a href="#">Sports</a></li>
+									<ul th:each="type , typeStat : ${typeList}">
+										<li class="has-sub"><a th:text="${type.type}"></a>
+											<ul th:each="tag , tagStat : ${tagList}" th:if=" ${type.tid} eq ${tag.typeid}">
+												<li><a  th:onclick="|findCloth('${tag.tid}')|" th:text="${tag.tag}"></a></li>
 											</ul>
 										</li>
-										<li class="has-sub"><a href="#">服装</a>
-											<ul>
-												<li><a href="#">T-shirts</a></li>
-												<li><a href="#">coats</a></li>
-												<li><a href="#">Jackets</a></li>
-												<li><a href="#">jeans</a></li>
-											</ul>										
-										</li>
-										<li class="has-sub"><a href="#">手袋</a>
-											 <ul>
-												<li><a href="#">Blazers</a></li>
-												<li><a href="#">table</a></li>
-												<li><a href="#">coats</a></li>
-												<li><a href="#">kids</a></li>
-											 </ul>										
-										</li>
-										<li class="has-sub"><a href="#">鞋子</a>
-											 <ul>
-												<li><a href="#">shoes</a></li>
-												<li><a href="#">Sports</a></li>
-												<li><a href="#">run</a></li>
-												<li><a href="#">sandals</a></li>
-												<li><a href="#">Books</a></li>
-											 </ul>										
-										</li> 
+										
 									</ul>
 								</div> 	 
 							</div>
 							<div class="catalog-section  bg-bd">
-								<h4 class="pp-left-heading">分类</h4>
+								<h4 class="pp-left-heading">目录</h4>
 								<div class="form-section">
 									<form action="#">
 										<div class="categori">
 											<div class="fs-head">
 												<h5>分类目录</h5>
 											</div>
-											<ul class="check">
+											<ul id="type" class="check" th:each="type , typeStat : ${typeList}" >
 												<li>
-													<span><input type="checkbox" /></span>
-													<label><a href="#">连衣裙 <span>(13)</span></a></label>
-												</li>
-												<li>
-													<span><input type="checkbox" /></span>
-													<label><a href="#">服装<span>(13)</span></a></label>
-												</li>
-												<li>
-													<span><input type="checkbox" /></span>
-													<label><a href="#">手袋<span>(13)</span></a></label>
-												</li>
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">鞋子<span>(13)</span></a></label>
+													<label><a th:onclick="|findClothByType('${type.tid}')|" th:text="${type.type}"></a><span th:text="'('+${type.count}+')'"></span></label>
 												</li>
 											</ul>
 										</div>
-										<div class="availability">
-											<div class="fs-head">
-												<h5>可用性</h5>
-											</div>
-											<ul class="check">
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">有货<span>(13)</span></a></label>
-												</li> 
-											</ul>											
-										</div>
 										<div class="condition">
-											<div class="fs-head">
-												<h5>条件</h5>
+											<div class="price-head">
+												<h4 class="pp-left-heading">条件</h4>
 											</div>	
 											<ul class="check">
 												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">新<span>(13)</span></a></label>
+													<label for="#"><a th:onclick="|findClothByTime()|">新品<span th:text="'('+${count}+')'"></span></a></label>
 												</li> 
+												<li>
+													<label for="#"><a th:onclick="|findClothByResCount()|">现货<span th:text="'('+${restCount}+')'"></span></a></label>
+												</li>
 											</ul>												
 										</div>
-										<div class="manufacturer">
-											<div class="fs-head">
-												<h5>制造商</h5>
-											</div>
-											<ul class="check">
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">新<span>(13)</span></a></label>
-												</li> 
-											</ul>	 
-										</div>
+										
 										<div class="price">
 											<div class="price-head">
-												<h5>价格</h5>
+												<h4 class="pp-left-heading">价格</h4>
 											</div>
 											<div class="info_widget">
 												<div class="price_filter">
@@ -653,66 +423,43 @@
 												</div>
 											</div>
 										</div>
-										<div class="size">
-											<div class="fs-head">
-												<h5>尺寸</h5>
-											</div>	
-											<ul class="check">
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">S<span>(13)</span></a></label>
-												</li>
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">M<span>(13)</span></a></label>
-												</li>
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">L<span>(13)</span></a></label>
-												</li>
-												<li>
-													<span><input type="checkbox" /></span>
-													<label for="#"><a href="#">XL<span>(13)</span></a></label>
-												</li>
-											</ul>											
-										</div>
 										<div class="color">
 											<div class="fs-head">
-												<h5>颜色</h5>
+												<h4 class="pp-left-heading">颜色</h4s>
 											</div>	 
 											<ul class="check">
 												<li>  
 													<span class="box"></span>
-													<p><a href="#">米色<span>(13)</span> </a></p>
+													<p><a href="#">Beige<span>(13)</span> </a></p>
 													
 												</li>
 												<li>  
 													<span class="box white"></span>
-													<p><a href="#">白<span>(13)</span></a></p>   
+													<p><a href="#">White<span>(13)</span></a></p>   
 												</li>
 												<li>  
 													<span class="box black"></span>
-													<p><a href="#"> 黑色<span>(13)</span></a> </p>
+													<p><a href="#"> Black<span>(13)</span></a> </p>
 												</li>
 												<li>  
 													<span class="box orange"></span>
-													<p><a href="#">橙色<span>(13)</span></a> </p>
+													<p><a href="#">Orange<span>(13)</span></a> </p>
 												</li>
 												<li>  
 													<span class="box blue"></span> 
-													<p><a href="#"> 蓝色<span>(13)</span></a></p> 
+													<p><a href="#"> Blue<span>(13)</span></a></p> 
 												</li>
 												<li>  
 													<span class="box green"></span> 
-													<p><a href="#">绿色<span>(13)</span></a></p> 
+													<p><a href="#">Green<span>(13)</span></a></p> 
 												</li>
 												<li>  
 													<span class="box yellow"></span> 
-													<p><a href="#">黄色<span>(13)</span></a></p>  
+													<p><a href="#">Yellow<span>(13)</span></a></p>  
 												</li>
 												<li>  
 													<span class="box pink"></span>
-													<p><a href="#"> 粉红色<span>(13)</span></a></p>  
+													<p><a href="#"> Pink<span>(13)</span></a></p>  
 												</li>
 											</ul> 
 										</div>
@@ -737,12 +484,9 @@
 									<li class="tab-menu-li"><span>排序</span>
 										<select name="#" id="#">
 											<option value="#">---</option>
-											<option value="Lowest first">价格: Lowest first</option>
-											<option value="Highest first">价格: Highest first</option>
-											<option value=" A to Z">产品名字: A to Z</option>
+											<option value="Lowest first">价格</option>
 											<option value="现货">库存</option>
-											<option value="Lowest first">销售量: Lowest first</option>
-											<option value="Highest first">销售量: Highest first</option>
+											<option value="Lowest first">评价</option>
 										</select>
 									</li>
 									<li><span>显示</span>
@@ -750,16 +494,18 @@
 											<option value="12">12</option>
 											<option value="24">24</option> 
 										</select>
+										<span>每页</span>
 									</li>
+									
 								</ul>						
-								<div class="tab-content"> 
+								<div id="byTid" class="tab-content" th:fragment="fbd" > 
 									<div role="tabpanel" class="tab-pane  active" id="arrival">    
 										<div class="row">
-											<div class="right-all-product">  
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+											<div  class="right-all-product">  
+												<div  class="col-lg-4 col-md-4 col-sm-6 col-xs-12" th:each="cloth , clothStat : ${fCList}">
 													<div class="single-product"> 
 														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" />  
+															 <a href="#"><img th:src="@{${cloth.image}}" alt="" />  
 															 </a>
 															 <div class="efface"></div>
 															<div class="cart-box"> 
@@ -781,383 +527,44 @@
 																<a href="#"><i class="fa fa-heart"></i></a>
 																<a href="#"><i class="fa fa-heart-o"></i></a>
 															</div> 
-															<a href="#"><p>印花雪纺连衣裙</p></a>
+															<a href="single-product.html"><p th:text=${cloth.name}></p></a>
 															<div class="price">
-																<a href=""><h5>￥40.37</h5></a>
+																<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
 															</div> 
 														</div>
 														<a href="#"><span class="leval">new</span></a>
 													</div>  
-												</div>  
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-dress.jpg.png" alt="" />  
-															 </a>
-															 <div class="efface"></div>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>印花雪纺连衣裙</p></a>
-															<div class="price">
-																<a href=""><h5>￥34.37<span>￥40.60</span></h5></a>
-															</div>  
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>  											
-												</div>	 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-dress.chear.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>儿童座椅</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37</h5></a>
-															</div>  
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>    
-												</div> 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-chiffon-bad.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>衬衫</p></a>
-															<div class="price">
-																<a href=""><h5>￥40.37<span>￥44.60</span></h5></a>
-															</div>
-															 <span class="descount">seal</span> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>  												
-												</div>	 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>雪纺衫</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-															</div>
-															 <span class="descount">seal</span> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>    
-												</div>   
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-summer-dress.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>印花裙</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-															</div> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>  												
-												</div>	 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/blouse.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>Printed Chiffon Dress</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-															</div>
-															 <span class="descount">5%</span> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>    
-												</div> 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/faded-short-tshirt.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>Printed Chiffon Dress</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-															</div>
-															 <span class="descount">5%</span> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>  												
-												</div>	  
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/faded-short-sleeves-tshirt.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>Printed Chiffon Dress</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-															</div>
-															 <span class="descount">5%</span> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>   
-												</div> 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/dress.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>Printed Chiffon Dress</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-															</div>
-															 <span class="descount">5%</span> 
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>  												
-												</div>	
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-dress.chear.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>Blouse</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37</h5></a>
-															</div>  
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>    
-												</div> 
-												<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-dress.chear.jpg.png" alt="" /> </a>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p>Blouse</p></a>
-															<div class="price">
-																<a href=""><h5>￥23.37</h5></a>
-															</div>  
-														</div>
-														<a href="#"><span class="leval">new</span></a>
-													</div>    
-												</div> 													
+												</div>
+											</div>
+											<div class="previous-next">
+												<ul class="pagination">
+													<li class="previous"><a href="#">上一页</a></li>
+													<li><a href="#">1</a></li>
+													<li class="active"><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#">4</a></li>
+													<li class="next"><a href="#">下一页</a></li>
+												</ul>
 											</div>
 										</div>
 									</div> 
 									<div role="tabpanel" class="tab-pane" id="bestseller">    
 										<div class="row">
 											<div class="right-all-product" id="right-ap">  							
-												<ul>
+												<ul th:each="cloth , clothStat : ${fCList}">
 													<li> 
 														<div class="row">
 															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
 																<div class="product-image">
-																	 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" /> </a> 
+																	 <a href="#"><img th:src="@{${cloth.image}}" alt="" /> </a> 
 																</div> 
 																<a href="#"><span class="leval">new</span></a>  
 															</div>
 															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 																<div class="price-box"> 
-																	<a href="#"><p class="price-box-heading">Printed Chiffon Dress</p></a>
+																	<a href="#"><p class="price-box-heading" th:text="${cloth.name}"></p></a>
 																	<div class="price">
-																		<a href=""><h5>￥35.37<span>￥30.60</span></h5></a>
+																		<a href=""><h5 th:text="'￥'+${cloth.realprice}"><span>£ 30.60</span></h5></a>
 																		<div class="rank">
 																			<a href="#"><i class="fa fa-heart"></i></a>
 																			<a href="#"><i class="fa fa-heart"></i></a>
@@ -1166,7 +573,7 @@
 																			<a href="#"><i class="fa fa-heart-o"></i></a>
 																		</div> 										
 																	</div> 
-																	<p class="desc">褪色短袖T恤，高领口。柔软而有弹性的材料，穿着舒适。戴着草帽装饰，您就可以准备夏天了！</p>
+																	<p class="desc" th:text="${cloth.detail}"></p>
 																	<div class="action">
 																		<div class="cart-box"> 
 																			<div class="product-text">
@@ -1188,181 +595,7 @@
 															</div>
 														</div> 
 													</li>
-													<li> 
-														<div class="row">
-															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
-																<div class="product-image">
-																	 <a href="#"><img src="img/product/printed-dress.chear.jpg.png" alt="" /> </a> 
-																</div> 
-																<a href="#"><span class="leval">new</span></a>  
-															</div>
-															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-																<div class="price-box"> 
-																	<a href="#"><p class="price-box-heading">Faded Short Sleeves T-shirt</p></a>
-																	<div class="price">
-																		<a href=""><h5>￥29.37<span>￥24.60</span></h5></a>
-																		<div class="rank">
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart-o"></i></a>
-																		</div> 										
-																	</div> 
-																	<p class="desc">褪色短袖T恤，高领口。柔软而有弹性的材料，穿着舒适。戴着草帽装饰，您就可以准备夏天了！</p>
-																	<div class="action">
-																		<div class="cart-box"> 
-																			<div class="product-text">
-																				<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																				<a href="#"><p>加入购物车</p></a>
-																				<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																				<a href="#"><i class="fa fa-search-plus"></i></a>
-																			</div> 
-																		</div> 		
-																	</div>
-																	<div class="color-list">
-																		<ul>
-																			<li><a class="orange" href="#"></a></li>
-																			<li><a class="pink" href="#"></a></li>
-																			<li><a class="Orange" href="#"></a></li>
-																		</ul>
-																	</div>
-																	<span>现货</span>
-																</div> 	
-															</div>
-														</div> 
-													</li>
-													<li> 
-														<div class="row">
-															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
-																<div class="product-image">
-																	 <a href="#"><img src="img/product/printed-dress.jpg.png" alt="" /> </a> 
-																</div> 
-																<a href="#"><span class="leval">new</span></a>  
-															</div>
-															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-																<div class="price-box"> 
-																	<a href="#"><p class="price-box-heading">Blouse</p></a>
-																	<div class="price">
-																		<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-																		<div class="rank">
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart-o"></i></a>
-																		</div> 										
-																	</div> 
-																	<p class="desc">褪色短袖T恤，高领口。柔软而有弹性的材料，穿着舒适。戴着草帽装饰，您就可以准备夏天了！</p>
-																	<div class="action">
-																		<div class="cart-box"> 
-																			<div class="product-text">
-																				<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																				<a href="#"><p>加入购物车</p></a>
-																				<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																				<a href="#"><i class="fa fa-search-plus"></i></a>
-																			</div> 
-																		</div> 		
-																	</div>
-																	<div class="color-list">
-																		<ul>
-																			<li><a class="white" href="#"></a></li>
-																			<li><a class="orange" href="#"></a></li>
-																			<li><a class="pink" href="#"></a></li>
-																		</ul>
-																	</div>
-																	<span>现货</span>
-																</div> 	
-															</div>
-														</div> 
-													</li>
-													<li> 
-														<div class="row">
-															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
-																<div class="product-image">
-																	 <a href="#"><img src="img/product/blouse.jpg.png" alt="" /> </a> 
-																</div> 
-																<a href="#"><span class="leval">new</span></a>  
-															</div>
-															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-																<div class="price-box"> 
-																	<a href="#"><p class="price-box-heading">Chiffon Dress</p></a>
-																	<div class="price">
-																		<a href=""><h5>￥20.37<span>￥18.60</span></h5></a>
-																		<div class="rank">
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart-o"></i></a>
-																		</div> 										
-																	</div> 
-																	<p class="desc">褪色短袖T恤，高领口。柔软而有弹性的材料，穿着舒适。戴着草帽装饰，您就可以准备夏天了！</p>
-																	<div class="action">
-																		<div class="cart-box"> 
-																			<div class="product-text">
-																				<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																				<a href="#"><p>加入购物车</p></a>
-																				<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																				<a href="#"><i class="fa fa-search-plus"></i></a>
-																			</div> 
-																		</div> 		
-																	</div>
-																	<div class="color-list">
-																		<ul>
-																			<li><a class="orange" href="#"></a></li>
-																			<li><a class="white" href="#"></a></li>
-																			<li><a class="pink" href="#"></a></li>
-																		</ul>
-																	</div>
-																	<span>现货</span>
-																</div> 	
-															</div>
-														</div> 
-													</li>
-													<li> 
-														<div class="row">
-															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
-																<div class="product-image">
-																	 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" /> </a> 
-																</div> 
-																<a href="#"><span class="leval">new</span></a>  
-															</div>
-															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-																<div class="price-box"> 
-																	<a href="#"><p class="price-box-heading">Printed Chiffon Dress</p></a>
-																	<div class="price">
-																		<a href=""><h5>￥23.37<span>￥24.60</span></h5></a>
-																		<div class="rank">
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart"></i></a>
-																			<a href="#"><i class="fa fa-heart-o"></i></a>
-																		</div> 										
-																	</div> 
-																	<p class="desc">褪色短袖T恤，高领口。柔软而有弹性的材料，穿着舒适。戴着草帽装饰，您就可以准备夏天了！</p>
-																	<div class="action">
-																		<div class="cart-box"> 
-																			<div class="product-text">
-																				<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																				<a href="#"><p>加入购物车</p></a>
-																				<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																				<a href="#"><i class="fa fa-search-plus"></i></a>
-																			</div> 
-																		</div> 		
-																	</div>
-																	<div class="color-list">
-																		<ul>
-																			<li><a class="orange" href="#"></a></li>
-																			<li><a class="pink" href="#"></a></li>
-																		</ul>
-																	</div>
-																	<span>现货</span>
-																</div> 	
-															</div>
-														</div> 
-													</li>
+													
 												</ul>
 												<div class="previous-next">
 													<ul class="pagination">
@@ -1393,7 +626,7 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-8"> 
 								<div class="blog">
-									<h3 class="blog-title"><a href="#">活动</a></h3>
+									<h3 class="blog-title"><a href="#">form our blog</a></h3>
 									<div class="all-blog">
 										<div class="blog-content">
 											<div class="single-blog">
@@ -1403,8 +636,8 @@
 												<div class="blog-text">
 													<a href="#"><h4>Christmas Sale is here 5</h4></a>
 													<span class="date">2015-10-03 14:44:01</span>
-													<a href="#"><span class="more">更多</span></a>
-													<p>活动开始了</p>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 												</div>
 											</div> 
 											<div class="single-blog">
@@ -1414,8 +647,8 @@
 												<div class="blog-text">
 													<a href="#"><h4>Christmas Sale is here 5</h4></a>
 													<span class="date">2015-10-03 14:44:01</span>
-													<a href="#"><span class="more">更多</span></a>
-													<p>活动开始了</p>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 												</div>
 											</div> 
 										</div>
@@ -1427,8 +660,8 @@
 												<div class="blog-text">
 													<a href="#"><h4>Christmas Sale is here 5</h4></a>
 													<span class="date">2015-10-03 14:44:01</span>
-													<a href="#"><span class="more">更多</span></a>
-													<p>活动开始了</p>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 												</div>
 											</div>
 											<div class="single-blog">
@@ -1438,8 +671,8 @@
 												<div class="blog-text">
 													<a href="#"><h4>Christmas Sale is here 5</h4></a>
 													<span class="date">2015-10-03 14:44:01</span>
-													<a href="#"><span class="more">更多</span></a>
-													<p>活动开始了</p>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 												</div>
 											</div> 
 										</div>
@@ -1451,8 +684,8 @@
 												<div class="blog-text">
 													<a href="#"><h4>Christmas Sale is here 5</h4></a>
 													<span class="date">2015-10-03 14:44:01</span>
-													<a href="#"><span class="more">更多</span></a>
-													<p>活动开始了</p>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 												</div>
 											</div> 
 											<div class="single-blog">
@@ -1462,8 +695,8 @@
 												<div class="blog-text">
 													<a href="#"><h4>Christmas Sale is here 5</h4></a>
 													<span class="date">2015-10-03 14:44:01</span>
-													<a href="#"><span class="more">更多</span></a>
-													<p>活动开始了</p>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
 												</div>
 											</div> 											
 										</div>
@@ -1472,12 +705,12 @@
 							</div> 
 							<div class="col-lg-4 col-md-4">
 								<div class="newslatter">
-									<h4>时事通讯促销和礼品</h4>
-									<p>您的信息是完全保密的，可能随时取消订阅。注册以获得更好的交易。</p>
+									<h4>Newsletter promotions and gifts</h4>
+									<p>Your information is completely confidential, and may unsubscribe at any time.Sign up to get much better deals.</p>
 									<div class="subscribe">
 										<form action="#">
 											<input type="text" placeholder="Enter your e-mail"> 
-											<button type="submit">订阅</button>
+											<button type="submit">subscribe</button>
 										</form>
 									</div>
 								</div>
@@ -1657,5 +890,32 @@
 		============================================ -->           
         <script src="js/main.js"></script>
     </body>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+function findCloth(tid){
+	//alert(tid);
+	$.post('findClothByCon.do',{tid:tid},function(data){
+		 $("#byTid").html(data);
+	});
+}
+
+function findClothByType(typeId){
+	//alert(typeId);
+	$.post('findClothByCon.do',{typeid:typeId},function(data){
+		 $("#byTid").html(data);
+	});
+}
+
+function findClothByTime(){
+	$.post('findClothByTime.do',function(data){
+		 $("#byTid").html(data);
+	});
+}
+function findClothByResCount(){
+	$.post('findClothByCon.do',function(data){
+		 $("#byTid").html(data);
+	});
+}
+</script>
 </html>
 

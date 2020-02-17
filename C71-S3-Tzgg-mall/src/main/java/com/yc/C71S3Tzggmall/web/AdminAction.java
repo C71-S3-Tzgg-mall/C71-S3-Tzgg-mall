@@ -13,12 +13,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.C71S3Tzggmall.bean.Admin;
 import com.yc.C71S3Tzggmall.biz.AdminBiz;
@@ -37,12 +39,10 @@ public class AdminAction {
 	@Resource
 	private AdminBiz aBiz;
 	
-	/**上传地址*/
-    @Value("${file.upload.path}")
-    private String filePath;
-    
-    
-	
+	//读取配置
+	@Value("${spring.servlet.multipart.location}")
+	private String uploadDir;
+		
 	@RequestMapping("login")
 	public String signIn(){
 		return "/back/login";
@@ -84,6 +84,7 @@ public class AdminAction {
 			}
 			admin=aBiz.login(admin);
 			sess.setAttribute("admin",admin);
+			System.out.println(admin.getImage());
 			return new Result(1,"index",admin);
 		} catch (BizException e) {
 			e.printStackTrace();
@@ -127,20 +128,16 @@ public class AdminAction {
 	 * @throws IOException
 	 */
 	@PostMapping("adminImg.do")
-	public String adminImg(Admin admin ,@RequestParam("adminFile") MultipartFile file ,Model m) throws IllegalStateException, IOException{
-		String fn=file.getOriginalFilename();//获取文件名1.png
-		if(fn.isEmpty()==false){
-			String fileDirPath = new String("src/main/resources/" + "");
-			file.getName();
-			//file.getInputStream();//获取输入流
-			String diskpath=filePath+"/"+fn;
-			System.out.println(diskpath);
-			File adminImg=new File(diskpath);
-			file.transferTo(adminImg);
-			System.out.println(admin);
-		}
-		return "/back/user_profile";
-		
+	public String adminImg(@RequestParam("adminFile") MultipartFile file ,HttpServletRequest req, Model m) throws IllegalStateException, IOException{
+		 String fileName = System.currentTimeMillis()+file.getOriginalFilename();
+         String destFileName=uploadDir+"/"+fileName;
+         File destFile = new File(destFileName);
+         file.transferTo(destFile);//写入图片
+         //获取session
+         Admin admin=(Admin)req.getSession().getAttribute("admin");
+         admin.setImage("/images/"+fileName);
+         aBiz.updateInfo(admin);
+         return "redirect:user_profile";
 	}
 	
 	@ResponseBody

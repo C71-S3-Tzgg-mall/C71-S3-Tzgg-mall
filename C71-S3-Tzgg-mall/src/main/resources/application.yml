@@ -8,14 +8,21 @@ spring:
     username: root
     password: a
     driver-class-name: com.mysql.jdbc.Driver
+  servlet: 
+    multipart: 
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+      file-size-threshold: 0
+      location: D:/images
+  
+  
+    
 
-file: 
-  upload: 
-    path: d://mallImg/
-    relative: resources/back/adminImg/**
+
     
-    
-      
+
+
 # log 日志等级：debug error warn info
 # log.debug("调式信息") ===》system.out
 

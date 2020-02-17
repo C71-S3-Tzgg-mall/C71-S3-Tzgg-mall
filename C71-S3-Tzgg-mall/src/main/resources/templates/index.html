@@ -363,7 +363,7 @@
 					</div>
 				</div>			
 			</div>
-		</section>
+		</section><div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >建站模板</a></div>
 		<!-- Home Slider End --> 	
 		<!-- Promotion Area	Start -->	
 		<section class="promotion-area">
@@ -456,13 +456,11 @@
 								<div role="tabpanel" class="tab-pane active" id="arrival">    
 									<div class="row">
 										<div class="all-product"> 
-											<div class="product-slide">
-												<div class="col-lg-3 col-sm-4">
-													<div class="single-product" th:each="cloth,clothStat:${list}"> 
+											 <div class="product-slide" th:each="cloth , clothStat : ${list}">
+												<div class="col-lg-4 col-md-3 col-sm-2" >
+													<div class="single-product"> 
 														<div class="product-image">
-															 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" />  
-															 </a>
-															 <div class="efface"></div>
+															 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" /> </a>
 															<div class="cart-box"> 
 																<div class="product-text">
 																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
@@ -472,338 +470,132 @@
 																<div class="link">
 																	<a href="#"><i class="fa fa-search-plus"></i></a>
 																</div> 
-															</div> 													
+															</div> 															 
 														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="#"><p th:text=${cloth.name}></p></a>
+														<div class="price-box">
+															<a href="#">
+																<div class="rank">
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart-o"></i>
+																</div>
+															</a>
+															<a href="#"><p th:text="${cloth.name}"></p></a>
 															<div class="price">
-																<a href=""><h5>£40.37</h5></a>
+																<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
 															</div> 
 														</div>
 														<a href="#"><span class="leval">new</span></a>
-													</div> 									
-												</div>	 
+													</div>  
+													<div class="single-product">
+														<div class="product-image">
+															 <a href="#"><img src="img/product/blouse.jpg.png" alt="" /> </a>
+															<div class="cart-box"> 
+																<div class="product-text">
+																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a href="#"><p>加入购物车</p></a>
+																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
+																</div>
+																<div class="link">
+																	<a href="#"><i class="fa fa-search-plus"></i></a>
+																</div> 
+															</div> 															 
+														</div> 
+														<div class="price-box">
+															<a href="#"><div class="rank">
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart-o"></i>
+															</div></a>
+															<a href="#"><p th:text="${cloth.name}"></p></a>
+															<div class="price">
+																<a href=""><h5 th:text="'￥'+${cloth.realprice}"><span>£ 24.60</span></h5></a>
+															</div>  
+														</div>
+														<a href="#"><span class="leval">new</span></a>
+													</div>												
+												</div>	
 											</div> 
-											 
-												 
-												  
-											 
 										</div>
 									</div>
 								</div> 
+								
+								
+								
+								
+								
 								<div role="tabpanel" class="tab-pane" id="bestseller">    
 									<div class="row">
 										<div class="all-product">  									
-											<div class="col-lg-3 col-md-4 col-sm-4">
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
+											<div class="product-slide" th:each="cloth , clothStat : ${list}">
+												<div class="col-lg-4 col-md-3 col-sm-2" >
+													<div class="single-product"> 
+														<div class="product-image">
+															 <a href="#"><img th:src="@{${cloth.image}}" alt="" /> </a>
+															<div class="cart-box"> 
+																<div class="product-text">
+																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a href="#"><p>加入购物车</p></a>
+																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
+																</div>
+																<div class="link">
+																	<a href="#"><i class="fa fa-search-plus"></i></a>
+																</div> 
+															</div> 															 
+														</div> 
+														<div class="price-box">
+															<a href="#">
+																<div class="rank">
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart"></i>
+																	<i class="fa fa-heart-o"></i>
+																</div>
+															</a>
+															<a href="#"><p th:text="${cloth.name}"></p></a>
+															<div class="price">
+																<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
 															</div> 
-														</div> 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-														</div> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>    
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/printed-dress.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 													
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
 														</div>
-														 <span class="descount">seal</span> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  											
+														<a href="#"><span class="leval">new</span></a>
+													</div>  
+													<div class="single-product">
+														<div class="product-image">
+															 <a href="#"><img src="img/product/blouse.jpg.png" alt="" /> </a>
+															<div class="cart-box"> 
+																<div class="product-text">
+																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a href="#"><p>加入购物车</p></a>
+																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
+																</div>
+																<div class="link">
+																	<a href="#"><i class="fa fa-search-plus"></i></a>
+																</div> 
+															</div> 															 
+														</div> 
+														<div class="price-box">
+															<a href="#"><div class="rank">
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart"></i>
+																<i class="fa fa-heart-o"></i>
+															</div></a>
+															<a href="#"><p th:text="${cloth.name}"></p></a>
+															<div class="price">
+																<a href=""><h5 th:text="'￥'+${cloth.realprice}"><span>£ 24.60</span></h5></a>
+															</div>  
+														</div>
+														<a href="#"><span class="leval">new</span></a>
+													</div>												
+												</div>	
 											</div>   								
-											<div class="col-lg-3 col-md-4 col-sm-4">
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/blouse.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 													 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-														</div>  
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/dress.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 													
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-														</div>  
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  											
-											</div>    									
-											<div class="col-lg-3 col-md-4 col-sm-4">
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/faded-short-sleeves-tshirt.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 													 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-														</div> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>   
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/faded-short-tshirt.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 															 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Faded Short T-shirt</p></a>
-														<div class="price">
-															<a href=""><h5>£ 36.60<span>£ 40.60</span></h5></a>
-														</div>
-														 <span class="descount">seal</span> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  											
-											</div>   										
-											<div class="col-lg-3 col-md-4 col-sm-4">
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/printed-chiffon-bad.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 															 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37 </h5></a>
-														</div> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/printed-dress.riksa.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 															 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-														</div> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  											
-											</div>   										
-											<div class="col-lg-3 col-md-4 col-sm-4">
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/printed-summer-dress.jpg.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 															 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 23.37</h5></a>
-														</div>
-														 <span class="descount">seal</span> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>    
-												<div class="single-product"> 
-													<div class="product-image">
-														 <a href="#"><img src="img/product/blouse.png" alt="" /> </a>
-														<div class="cart-box"> 
-															<div class="product-text">
-																<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																<a href="#"><p>加入购物车</p></a>
-																<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-															</div>
-															<div class="link">
-																<a href="#"><i class="fa fa-search-plus"></i></a>
-															</div> 
-														</div> 													 
-													</div> 
-													<div class="price-box"> 
-														<div class="rank">
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart"></i></a>
-															<a href="#"><i class="fa fa-heart-o"></i></a>
-														</div> 
-														<a href="#"><p>Printed Chiffon Dress</p></a>
-														<div class="price">
-															<a href=""><h5>£ 20.37<span>£ 22.60</span></h5></a>
-														</div> 
-													</div>
-													<a href="#"><span class="leval">new</span></a>
-												</div>  											
-											</div>  
+											  	
 										</div>
 									</div>
 								</div>
@@ -844,7 +636,7 @@
 											<i class="fa fa-heart"></i>
 											<i class="fa fa-heart-o"></i>
 										</div></a>
-										<a href="#"><p>Printed Chiffon Dress</p></a>
+										<a href="#"><p></p></a>
 										<div class="price">
 											<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
 										</div>
@@ -985,8 +777,8 @@
 							</div>
 							<div class="row">
 								<div class="new-product">
-									<div class="product-slide">
-										<div class="col-lg-4 col-md-3 col-sm-2">
+									<div class="product-slide" th:each="cloth , clothStat : ${list}">
+										<div class="col-lg-4 col-md-3 col-sm-2" >
 											<div class="single-product"> 
 												<div class="product-image">
 													 <a href="#"><img src="img/product/printed-chiffon-dress.jpg.png" alt="" /> </a>
@@ -1011,9 +803,9 @@
 															<i class="fa fa-heart-o"></i>
 														</div>
 													</a>
-													<a href="#"><p>Blouse</p></a>
+													<a href="#"><p th:text="${cloth.name}"></p></a>
 													<div class="price">
-														<a href=""><h5>£ 23.37</h5></a>
+														<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
 													</div> 
 												</div>
 												<a href="#"><span class="leval">new</span></a>
@@ -1040,274 +832,15 @@
 														<i class="fa fa-heart"></i>
 														<i class="fa fa-heart-o"></i>
 													</div></a>
-													<a href="#"><p>Printed Chiffon Dress</p></a>
+													<a href="#"><p th:text="${cloth.name}"></p></a>
 													<div class="price">
-														<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
+														<a href=""><h5 th:text="'￥'+${cloth.realprice}"><span>£ 24.60</span></h5></a>
 													</div>  
 												</div>
 												<a href="#"><span class="leval">new</span></a>
 											</div>												
 										</div>	
-									</div>
-									<div class="product-slide">
-										<div class="col-lg-4 col-md-3 col-sm-2">
-											<div class="single-product"> 
-												<div class="product-image">
-													 <a href="#"><img src="img/product/blouse.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#">
-														<div class="rank">
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart-o"></i>
-														</div>
-													</a>
-													<a href="#"><p>Blouse</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37 </h5></a>
-													</div>
-													 <span class="descount">seal</span> 
-												</div>
-												<a href="#"><span class="leval">new</span></a>
-											</div>  
-											<div class="single-product">
-												<div class="product-image">
-													 <a href="#"><img src="img/product/dress.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#"><div class="rank">
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart-o"></i>
-													</div></a>
-													<a href="#"><p>Printed Summer Dress</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-													</div> 
-												</div>
-												<a href="#"><span class="leval">new</span></a>
-											</div>												
-										</div>	
-									</div>
-									<div class="product-slide">
-										<div class="col-lg-4 col-md-3 col-sm-2">
-											<div class="single-product"> 
-												<div class="product-image">
-													 <a href="#"><img src="img/product/faded-short-sleeves-tshirt.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#">
-														<div class="rank">
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart-o"></i>
-														</div>
-													</a>
-													<a href="#"><p>Faded Short T-shirt</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-													</div>  
-												</div>
-												<a href="#"><span class="leval">new</span></a>
-											</div>  
-											<div class="single-product">
-												<div class="product-image">
-													 <a href="#"><img src="img/product/faded-short-tshirt.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#"><div class="rank">
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart-o"></i>
-													</div></a>
-													<a href="#"><p>Faded Short T-shirt</p></a>
-													<div class="price">
-														<a href=""><h5>£ 36.60</h5></a>
-													</div>
-													<span class="descount">5%</span> 
-												</div> 
-											</div>												
-										</div>	
-									</div>
-									<div class="product-slide">
-										<div class="col-lg-4 col-md-3 col-sm-2">
-											<div class="single-product"> 
-												<div class="product-image">
-													 <a href="#"><img src="img/product/printed.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#">
-														<div class="rank">
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart-o"></i>
-														</div>
-													</a>
-													<a href="#"><p>Printed Summer Dress</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-													</div>
-													 <span class="descount">seal</span> 
-												</div>
-												<a href="#"><span class="leval">new</span></a>
-											</div>  
-											<div class="single-product">
-												<div class="product-image">
-													 <a href="#"><img src="img/product/printed-chiffon-bad.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#"><div class="rank">
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart-o"></i>
-													</div></a>
-													<a href="#"><p>Printed Summer Dress</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-													</div>
-													<span class="descount">5%</span> 
-												</div> 
-											</div>												
-										</div>	
-									</div>
-									<div class="product-slide">
-										<div class="col-lg-4 col-md-3 col-sm-2">
-											<div class="single-product"> 
-												<div class="product-image">
-													 <a href="#"><img src="img/product/printed-dress.chear.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#">
-														<div class="rank">
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart"></i>
-															<i class="fa fa-heart-o"></i>
-														</div>
-													</a>
-													<a href="#"><p>Printed Dresss</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37<span>£ 24.60</span></h5></a>
-													</div>
-													 <span class="descount">seal</span> 
-												</div>
-												<a href="#"><span class="leval">new</span></a>
-											</div>  
-											<div class="single-product">
-												<div class="product-image">
-													 <a href="#"><img src="img/product/printed-dress.jpg.png" alt="" /> </a>
-													<div class="cart-box"> 
-														<div class="product-text">
-															<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-															<a href="#"><p>加入购物车</p></a>
-															<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-														</div>
-														<div class="link">
-															<a href="#"><i class="fa fa-search-plus"></i></a>
-														</div> 
-													</div> 															 
-												</div> 
-												<div class="price-box">
-													<a href="#"><div class="rank">
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart"></i>
-														<i class="fa fa-heart-o"></i>
-													</div></a>
-													<a href="#"><p>Printed Dresss</p></a>
-													<div class="price">
-														<a href=""><h5>£ 23.37 </h5></a>
-													</div>
-													<span class="descount">5%</span> 
-												</div> 
-											</div>												
-										</div>	
-									</div>      
+									</div>     
 								</div> 
 							</div>
 						</div>
@@ -1517,7 +1050,11 @@
 				<div class="container">
 					<div class="copyright">
 						<div class="row">
-							
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="copyright-text">
+									<p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+								</div>
+							</div>
 							<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
 								<div class="payment">
 									<ul>

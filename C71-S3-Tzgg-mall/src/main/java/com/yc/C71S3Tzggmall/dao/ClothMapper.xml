@@ -8,6 +8,7 @@
     <result column="realPrice" jdbcType="DOUBLE" property="realprice" />
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
     <result column="restCount" jdbcType="INTEGER" property="restcount" />
     <result column="soleCount" jdbcType="INTEGER" property="solecount" />
     <result column="arriveTime" jdbcType="TIMESTAMP" property="arrivetime" />
@@ -72,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    cid, name, shopPrice, realPrice, image, tid, restCount, soleCount, arriveTime, detail
+    cid, name, shopPrice, realPrice, image, tid, typeId, restCount, soleCount, arriveTime, 
+    detail
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.ClothExample" resultMap="BaseResultMap">
     select
@@ -107,12 +109,12 @@
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Cloth">
     insert into cloth (cid, name, shopPrice, 
       realPrice, image, tid, 
-      restCount, soleCount, arriveTime, 
-      detail)
+      typeId, restCount, soleCount, 
+      arriveTime, detail)
     values (#{cid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shopprice,jdbcType=DOUBLE}, 
       #{realprice,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, 
-      #{restcount,jdbcType=INTEGER}, #{solecount,jdbcType=INTEGER}, #{arrivetime,jdbcType=TIMESTAMP}, 
-      #{detail,jdbcType=VARCHAR})
+      #{typeid,jdbcType=INTEGER}, #{restcount,jdbcType=INTEGER}, #{solecount,jdbcType=INTEGER}, 
+      #{arrivetime,jdbcType=TIMESTAMP}, #{detail,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Cloth">
     insert into cloth
@@ -134,6 +136,9 @@
       </if>
       <if test="tid != null">
         tid,
+      </if>
+      <if test="typeid != null">
+        typeId,
       </if>
       <if test="restcount != null">
         restCount,
@@ -166,6 +171,9 @@
       </if>
       <if test="tid != null">
         #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
       </if>
       <if test="restcount != null">
         #{restcount,jdbcType=INTEGER},
@@ -208,6 +216,9 @@
       <if test="record.tid != null">
         tid = #{record.tid,jdbcType=INTEGER},
       </if>
+      <if test="record.typeid != null">
+        typeId = #{record.typeid,jdbcType=INTEGER},
+      </if>
       <if test="record.restcount != null">
         restCount = #{record.restcount,jdbcType=INTEGER},
       </if>
@@ -233,6 +244,7 @@
       realPrice = #{record.realprice,jdbcType=DOUBLE},
       image = #{record.image,jdbcType=VARCHAR},
       tid = #{record.tid,jdbcType=INTEGER},
+      typeId = #{record.typeid,jdbcType=INTEGER},
       restCount = #{record.restcount,jdbcType=INTEGER},
       soleCount = #{record.solecount,jdbcType=INTEGER},
       arriveTime = #{record.arrivetime,jdbcType=TIMESTAMP},
@@ -259,6 +271,9 @@
       <if test="tid != null">
         tid = #{tid,jdbcType=INTEGER},
       </if>
+      <if test="typeid != null">
+        typeId = #{typeid,jdbcType=INTEGER},
+      </if>
       <if test="restcount != null">
         restCount = #{restcount,jdbcType=INTEGER},
       </if>
@@ -281,6 +296,7 @@
       realPrice = #{realprice,jdbcType=DOUBLE},
       image = #{image,jdbcType=VARCHAR},
       tid = #{tid,jdbcType=INTEGER},
+      typeId = #{typeid,jdbcType=INTEGER},
       restCount = #{restcount,jdbcType=INTEGER},
       soleCount = #{solecount,jdbcType=INTEGER},
       arriveTime = #{arrivetime,jdbcType=TIMESTAMP},
