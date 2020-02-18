@@ -9,8 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.yc.C71S3Tzggmall.bean.Admin;
-import com.yc.C71S3Tzggmall.bean.AdminExample;
+
 import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.bean.ClothExample;
 import com.yc.C71S3Tzggmall.dao.ClothMapper;
@@ -38,6 +37,8 @@ public class ClothBiz {
 			example.createCriteria().andTypeidEqualTo(cloth.getTypeid());
 		}else if(cloth.getTid()!=null){
 			example.createCriteria().andTidEqualTo(cloth.getTid());
+		}else if(cloth.getCid()!=null){
+			example.createCriteria().andCidEqualTo(cloth.getCid());
 		}else {
 			example.createCriteria().andRestcountGreaterThan(0);
 		}

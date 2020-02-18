@@ -505,12 +505,12 @@
 												<div  class="col-lg-4 col-md-4 col-sm-6 col-xs-12" th:each="cloth , clothStat : ${fCList}">
 													<div class="single-product"> 
 														<div class="product-image">
-															 <a href="#"><img th:src="@{${cloth.image}}" alt="" />  
+															 <a th:onclick="|singleProduct('${cloth.cid}')|"><img th:src="@{${cloth.image}}" alt="" />  
 															 </a>
 															 <div class="efface"></div>
 															<div class="cart-box"> 
 																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a th:onclick="|addWishlist('${cloth.cid}')|"><span class="heart"><i class="fa fa-heart"></i></span></a>
 																	<a href="#"><p>加入购物车</p></a>
 																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
 																</div>
@@ -530,9 +530,9 @@
 															<a href="single-product.html"><p th:text=${cloth.name}></p></a>
 															<div class="price">
 																<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
-															</div> 
+															</div>
 														</div>
-														<a href="#"><span class="leval">new</span></a>
+														<a href="#" th:if="${cloth.restcount} lt '100'"><span class="leval" th:text="${'剩余'+cloth.restcount}"></span></a>
 													</div>  
 												</div>
 											</div>
@@ -558,7 +558,7 @@
 																<div class="product-image">
 																	 <a href="#"><img th:src="@{${cloth.image}}" alt="" /> </a> 
 																</div> 
-																<a href="#"><span class="leval">new</span></a>  
+																<a href="#" th:if="${cloth.restcount} lt '100'"><span class="leval" th:text="${'剩余'+cloth.restcount}"></span></a>  
 															</div>
 															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 																<div class="price-box"> 
@@ -595,7 +595,6 @@
 															</div>
 														</div> 
 													</li>
-													
 												</ul>
 												<div class="previous-next">
 													<ul class="pagination">
@@ -899,6 +898,7 @@ function findCloth(tid){
 	});
 }
 
+
 function findClothByType(typeId){
 	//alert(typeId);
 	$.post('findClothByCon.do',{typeid:typeId},function(data){
@@ -906,14 +906,29 @@ function findClothByType(typeId){
 	});
 }
 
+//根据时间查询商品
 function findClothByTime(){
 	$.post('findClothByTime.do',function(data){
 		 $("#byTid").html(data);
 	});
 }
+
+//条件查询商品
 function findClothByResCount(){
 	$.post('findClothByCon.do',function(data){
 		 $("#byTid").html(data);
+	});
+}
+
+//跳转到详情页
+function singleProduct(cid){
+	window.location.href="single-product?cid="+cid+"";
+}
+
+//加入收藏夹
+function addWishlist(cid){
+	$.post('addWishlist.do',{cid:cid},function(result){
+		alert(result.msg);
 	});
 }
 </script>

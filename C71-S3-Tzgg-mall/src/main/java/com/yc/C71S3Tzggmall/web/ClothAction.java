@@ -1,21 +1,12 @@
 package com.yc.C71S3Tzggmall.web;
 
 
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.C71S3Tzggmall.bean.Cloth;
@@ -37,6 +28,19 @@ public class ClothAction {
 	
 	@Resource
 	private TagBiz tagBiz;
+	
+	@RequestMapping("single-product")
+	public String single(Model m){
+		return "single-Product";
+	}
+	
+	
+	@RequestMapping("singleProduct")
+	public String singleProduct(Model m,Cloth cloth){
+		List<Cloth> list=cBiz.findClothByCon(cloth);
+		m.addAttribute("singleProduct",list);
+		return "redirect:single-product?cid="+cloth.getCid();
+	}
 	
 	@RequestMapping("index")
 	public String index(Model m){
@@ -67,7 +71,6 @@ public class ClothAction {
 		m.addAttribute("count",clothCount);
 		m.addAttribute("typeList",typeList);
 		m.addAttribute("tagList",tagList);
-		
 		return "shop";
 	}
 	
@@ -80,7 +83,6 @@ public class ClothAction {
 	 */
 	public String findClothByTime(Model m){
 		List<Cloth> list=cBiz.findClothByTime();
-		System.out.println(list);
 		m.addAttribute("fCList",list);
 		return "shop::fbd";
 	}
@@ -98,7 +100,13 @@ public class ClothAction {
 		return "shop::fbd";
 	}	
 	
-	
+	@RequestMapping("single.do")
+	public String single(Model m,Cloth cloth){
+		List<Cloth> c=cBiz.findClothByCon(cloth);
+		System.out.println(c);
+		m.addAttribute("singleP",c );
+		return "single-Product::single";
+	}
 	
 	
 }
