@@ -7,6 +7,8 @@
     <result column="pwd" jdbcType="VARCHAR" property="pwd" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="points" jdbcType="INTEGER" property="points" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    uid, name, pwd, type, points
+    uid, name, pwd, type, points, tel, address
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.UserExample" resultMap="BaseResultMap">
     select
@@ -101,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.User">
     insert into user (uid, name, pwd, 
-      type, points)
+      type, points, tel, 
+      address)
     values (#{uid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
-      #{type,jdbcType=VARCHAR}, #{points,jdbcType=INTEGER})
+      #{type,jdbcType=VARCHAR}, #{points,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.User">
     insert into user
@@ -123,6 +127,12 @@
       <if test="points != null">
         points,
       </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -139,6 +149,12 @@
       </if>
       <if test="points != null">
         #{points,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +182,12 @@
       <if test="record.points != null">
         points = #{record.points,jdbcType=INTEGER},
       </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +199,9 @@
       name = #{record.name,jdbcType=VARCHAR},
       pwd = #{record.pwd,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
-      points = #{record.points,jdbcType=INTEGER}
+      points = #{record.points,jdbcType=INTEGER},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +221,12 @@
       <if test="points != null">
         points = #{points,jdbcType=INTEGER},
       </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
@@ -205,7 +235,9 @@
     set name = #{name,jdbcType=VARCHAR},
       pwd = #{pwd,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
-      points = #{points,jdbcType=INTEGER}
+      points = #{points,jdbcType=INTEGER},
+      tel = #{tel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
 </mapper>

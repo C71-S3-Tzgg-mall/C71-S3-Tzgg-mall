@@ -5,11 +5,11 @@
 <!--[if IE 8 ]>    <html lang="en" class="ie8">    <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="ie9">    <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js" lang="">
+<html class="no-js" lang="" xmlns:th="www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Bee-结算</title>
+        <title>Bee-新品</title>
         <link rel="icon" href="img/logo-icon.png" type="image/x-icon"/>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
 		============================================ -->		
 		
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,latin-ext" type="text/css" media="all" />
-
+		
 		<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 					
         <!-- Favicon
@@ -41,23 +41,23 @@
            	
 		<!-- owl.transitions CSS
 		============================================ -->      
-        <link rel="stylesheet" href="css/owl.transitions.css">  
+        <link rel="stylesheet" href="css/owl.transitions.css"> 
+        
+		<!-- font-awesome.min CSS
+		============================================ -->      
+        <link rel="stylesheet" href="css/font-awesome.min.css">
 		
 		<!-- meanmenu CSS
 		============================================ -->		
         <link rel="stylesheet" href="css/meanmenu.min.css" media="all" />
         
-		<!-- font-awesome.min CSS
-		============================================ -->      
-        <link rel="stylesheet" href="css/fancybox/jquery.fancybox.css">
-        
-		<!-- font-awesome.min CSS
-		============================================ -->      
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        
  		<!-- animate CSS
 		============================================ -->         
         <link rel="stylesheet" href="css/animate.css">
+		
+ 		<!-- jquery-ui CSS
+		============================================ -->         
+        <link rel="stylesheet" href="css/jquery-ui.css">
 		
 		<!-- nivo slider CSS
 		============================================ -->
@@ -82,11 +82,12 @@
         
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
-    <body class="check-out-page">
+    <body class="page-one">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
+
 		<!-- Header Area-->	
         <header class="header-area">
         	<div class="container">
@@ -122,8 +123,8 @@
 								<ul class="account">
 									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
 										<ul>
-											<li><a href="#">我的收藏</a></li> 
-											<li><a href="#">我的购物车</a></li> 
+											<li><a href="wishlist.html">我的收藏</a></li> 
+											<li><a href="cart.html">购物车</a></li> 
 											<li><a href="#">退出</a></li> 
 										</ul>										
 									</li> 
@@ -151,7 +152,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 							<ul class="curt">
-								<li><a class="total-cart-b" href="#">
+								<li><a class="total-cart-b" href="cart.html">
 									<span>2</span>
 									<p>购物车</p>
 									<h6>￥ 125.19</h6>									
@@ -337,255 +338,389 @@
 		<div class="braed-come">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-12 col-md-12">
 						<div class="braed">
-							<a href="#"><i class="fa fa-home"></i></a>
-							<span class="navegation-page">></span> 
-							结算
+							<a href="index.html"><i class="fa fa-home"></i></a>
+							<span class="navegation-page">></span>
+							新品 
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Brade Come End -->
-		<!--Cut Page Medile Section Start-->
-		<div class="cut-page-medile-section">
-			 <div class="container">
-			 	<div class="row">
-			 		<div class="col-lg-12  col-md-12">
-			 			<div class="cut-page-tab bg-bd"> 
-			 				<p class="tab-heading">结算</p>
-			 				<ul class="nav-tabs" role="tablist">
-			 					<li style="width:25%" role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab"><span><em>01.</em>商品</span></a></li>
-			 					<li style="width:25%" role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab"><span><em>02.</em>地址</span></a></li>
-			 					<li style="width:25%" role="presentation"><a href="#payment" aria-controls="payment" role="tab" data-toggle="tab"><span><em>03.</em>付款</span></a></li>
-			 								 					<li style="width:25%" role="presentation"><a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab"><span><em>04.</em>运送</span></a></li>
-			 				</ul> 
-			 				<div class="tab-content">
-			 					<div role="tabpanel" class="tab-pane active  table-responsive" id="summary">
-			 						<table class="table table-bordered">
-			 							<thead class="fast-tabel">
-			 								<tr>
-			 									<th class="tr-pro">商品名</th>
-			 									<th class="tr-des">描述</th>
-			 									<th class="tr-avail">状态</th>
-			 									<th class="tr-price">单价</th>
-			 									<th class="tr-qty">数量</th>
-			 									<th class="tr-tras"> 删除</th>
-			 									<th class="tr-ammount">总价</th>
-			 								</tr>
-			 							</thead>
-			 							<tfoot class="thard-tabel"> 
-			 								<tr>
-			 									<td colspan="2"></td>  
-			 								  	<td colspan="3" rowspan="1" class="totel big-totol">总价</td>
-			 					   				<td colspan="2" class="totel"><span>£ 23.37</span></td> 	 	 
-			 								</tr>
-			 								<tr>
-			 									<td colspan="2"></td>
-			 									<td colspan="3" class="text totel big-totol">实际价格(优惠)</td>
-			 									<td colspan="2" class="totel big-totol">£ 23.37</td>
-			 								</tr>
-			 							</tfoot> 
-			 							<tbody class="sceand-tabel">
-			 								<tr>
-			 									<td class="td-img-tr">
-			 										<span class="td-img">
-			 											<img src="img/product/printed-dress.jpg.png" alt="img">
-			 										</span>		
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td> 
-			 									<td class="td-stok"><span>In stock</span></td>  
-			 									<td class="td-unite">
-				 					   				<ul>
-				 					   					<li>£ 23.37</li>
-				 					   					<li>-5%</li>
-				 					   					<li>£ 24.60</li>
-				 					   				</ul>			 										
-			 									</td> 
-			 									<td class="td-quentety">
-													<input type="number" value="1">
-				 					   				<div class="dec qtybutton">-</div> 
-				 					   				<div class="inc qtybutton">+</div> 	 
-			 									</td> 
-			 									<td class="td-trash">
-			 										<a href="#"><i class="fa fa-trash"></i></a>
-			 									</td> 
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>£ 23.37</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 						</table>
-			 						<div class="bootom-section">
-			 							<ul>
-			 								<li class="con-shopp"><a href="cart" class="button">继续购物</a></li>
-			 							</ul>
-			 						</div>								
-			 					</div>
-			 					<div role="tabpanel" class="tab-pane" id="address">
-									<div class="address">
-										<div class="main-form  border">
-											<p class="account-title">地址</p>
-											<form action="#">
-												<label class="input-label">姓名</label>
-												<input class="input" type="text">
-
-												<label class="input-label">电话</label>
-												<input class="input" type="text">
-
-												<label class="input-label">省</label>
-												<select>
-												 	<option class="input"  value="uk">united kingdom</option>
-												 </select>
-
-												<label class="input-label">市</label>
-												<select>
-												 	<option class="input"  value="uk">united kingdom</option>
-												 </select>
-
-												<label class="input-label">区/县</label>
-												<select>
-												 	<option class="input"  value="uk">united kingdom</option>
-												 </select>
-
-												<label class="input-label">具体地址</label>
-												<input class="input" type="text">
-
-												
-											</form>
-											<button class="button"  type="submit">保存</button>
+		<!-- Home Slider Start-->
+		<div class="slider-wrap">
+			<div class="container"> 
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<div class="slider-img">
+							<img src="img/kids-beds.jpg.png" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Home Slider End -->
+		<!-- Page Medile Section Strat-->
+		<section class="page-medile-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-3">
+						<div class="product-left">
+							<div class="beds-section bg-bd">
+								<h4 class="pp-left-heading">类型</h4>
+								<div class="category-menu" id="cate-toggle">
+									<ul th:each="type , typeStat : ${typeList}">
+										<li class="has-sub"><a th:text="${type.type}"></a>
+											<ul th:each="tag , tagStat : ${tagList}" th:if=" ${type.tid} eq ${tag.typeid}">
+												<li><a  th:onclick="|findCloth('${tag.tid}')|" th:text="${tag.tag}"></a></li>
+											</ul>
+										</li>
+										
+									</ul>
+								</div> 	 
+							</div>
+							<div class="catalog-section  bg-bd">
+								<h4 class="pp-left-heading">目录</h4>
+								<div class="form-section">
+									<form action="#">
+										<div class="categori">
+											<div class="fs-head">
+												<h5>分类目录</h5>
+											</div>
+											<ul id="type" class="check" th:each="type , typeStat : ${typeList}" >
+												<li>
+													<label><a th:onclick="|findClothByType('${type.tid}')|" th:text="${type.type}"></a><span th:text="'('+${type.count}+')'"></span></label>
+												</li>
+											</ul>
+										</div>
+										<div class="condition">
+											<div class="price-head">
+												<h4 class="pp-left-heading">条件</h4>
+											</div>	
+											<ul class="check">
+												<li>
+													<label for="#"><a th:onclick="|findClothByTime()|">新品<span th:text="'('+${count}+')'"></span></a></label>
+												</li> 
+												<li>
+													<label for="#"><a th:onclick="|findClothByResCount()|">现货<span th:text="'('+${restCount}+')'"></span></a></label>
+												</li>
+											</ul>												
 										</div>
 										
+										<div class="price">
+											<div class="price-head">
+												<h4 class="pp-left-heading">价格</h4>
+											</div>
+											<div class="info_widget">
+												<div class="price_filter">
+													<div class="price_slider_amount">
+														<input type="text" id="amount" name="price pla">
+														<input type="submit"  value="Filter">  
+													</div>
+													<div id="slider-range"></div>
+												</div>
+											</div>
+										</div>
+										<div class="color">
+											<div class="fs-head">
+												<h4 class="pp-left-heading">颜色</h4s>
+											</div>	 
+											<ul class="check">
+												<li>  
+													<span class="box"></span>
+													<p><a href="#">Beige<span>(13)</span> </a></p>
+													
+												</li>
+												<li>  
+													<span class="box white"></span>
+													<p><a href="#">White<span>(13)</span></a></p>   
+												</li>
+												<li>  
+													<span class="box black"></span>
+													<p><a href="#"> Black<span>(13)</span></a> </p>
+												</li>
+												<li>  
+													<span class="box orange"></span>
+													<p><a href="#">Orange<span>(13)</span></a> </p>
+												</li>
+												<li>  
+													<span class="box blue"></span> 
+													<p><a href="#"> Blue<span>(13)</span></a></p> 
+												</li>
+												<li>  
+													<span class="box green"></span> 
+													<p><a href="#">Green<span>(13)</span></a></p> 
+												</li>
+												<li>  
+													<span class="box yellow"></span> 
+													<p><a href="#">Yellow<span>(13)</span></a></p>  
+												</li>
+												<li>  
+													<span class="box pink"></span>
+													<p><a href="#"> Pink<span>(13)</span></a></p>  
+												</li>
+											</ul> 
+										</div>
+									</form>
+								</div>
+							</div> 						
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-9">
+						<div class="product-right">
+							<div class="product-right-tab bg-bd">    
+								<ul class="tab-menu top-bg" role="tablist">
+									<li role="presentation" class="active tab-menu-li-one">
+										<a href="#arrival" role="tab" data-toggle="tab">
+										<i class="fa fa-th-large"></i>
+										</a>
+									</li>
+									<li role="presentation" class="tab-menu-li-one">
+										<a href="#bestseller" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i> 
+										</a>
+									</li>
+									<li class="tab-menu-li"><span>排序</span>
+										<select name="#" id="#">
+											<option value="#">---</option>
+											<option value="Lowest first">价格</option>
+											<option value="现货">库存</option>
+											<option value="Lowest first">评价</option>
+										</select>
+									</li>
+									<li><span>显示</span>
+										<select name="#" class="">
+											<option value="12">12</option>
+											<option value="24">24</option> 
+										</select>
+										<span>每页</span>
+									</li>
+									
+								</ul>						
+								<div id="byTid" class="tab-content"  > 
+									<div role="tabpanel" class="tab-pane  active" id="arrival">    
+										<div class="row">
+											<div  class="right-all-product">  
+												<div  class="col-lg-4 col-md-4 col-sm-6 col-xs-12" th:each="cloth , clothStat : ${page.list}">
+													<div class="single-product"> 
+														<div class="product-image">
+															 <a th:onclick="|singleProduct('${cloth.cid}')|"><img th:src="@{${cloth.image}}" alt="" />  
+															 </a>
+															 <div class="efface"></div>
+															<div class="cart-box"> 
+																<div class="product-text">
+																	<a th:onclick="|addWishlist('${cloth.cid}')|"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a href="#"><p>加入购物车</p></a>
+																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
+																</div>
+																<div class="link">
+																	<a href="#"><i class="fa fa-search-plus"></i></a>
+																</div> 
+															</div> 													
+														</div> 
+														<div class="price-box"> 
+															<div class="rank">
+																<a href="#"><i class="fa fa-heart"></i></a>
+																<a href="#"><i class="fa fa-heart"></i></a>
+																<a href="#"><i class="fa fa-heart"></i></a>
+																<a href="#"><i class="fa fa-heart"></i></a>
+																<a href="#"><i class="fa fa-heart-o"></i></a>
+															</div> 
+															<a href="single-product.html"><p th:text=${cloth.name}></p></a>
+															<div class="price">
+																<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
+															</div>
+														</div>
+														<a href="#" th:if="${cloth.restcount} lt '100'"><span class="leval" th:text="${'剩余'+cloth.restcount}"></span></a>
+													</div>  
+												</div>
+											</div>
+											<div class="previous-next">
+												<ul class="pagination">
+													<li class="previous"><a th:href="@{shop01(start=${page.pageNum-1})}" >上一页</a></li>
+													<li><a th:href="@{shop01(start=0)}">1</a></li>
+													<li class="active"><a th:href="@{shop01(start=1)}">2</a></li>
+													<li><a th:href="@{shop01(start=2)}">3</a></li>
+													<li><a th:href="@{shop01(start=3)}">4</a></li>
+													<li class="next"><a th:href="@{shop01(start=${page.pages})}">下一页</a></li>
+												</ul>
+											</div>
+										</div>
+									</div> 
+									<div role="tabpanel" class="tab-pane" id="bestseller">    
+										<div class="row">
+											<div class="right-all-product" id="right-ap">  							
+												<ul th:each="cloth , clothStat : ${fCList}">
+													<li> 
+														<div class="row">
+															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
+																<div class="product-image">
+																	 <a href="#"><img th:src="@{${cloth.image}}" alt="" /> </a> 
+																</div> 
+																<a href="#" th:if="${cloth.restcount} lt '100'"><span class="leval" th:text="${'剩余'+cloth.restcount}"></span></a>  
+															</div>
+															<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+																<div class="price-box"> 
+																	<a href="#"><p class="price-box-heading" th:text="${cloth.name}"></p></a>
+																	<div class="price">
+																		<a href=""><h5 th:text="'￥'+${cloth.realprice}"><span>£ 30.60</span></h5></a>
+																		<div class="rank">
+																			<a href="#"><i class="fa fa-heart"></i></a>
+																			<a href="#"><i class="fa fa-heart"></i></a>
+																			<a href="#"><i class="fa fa-heart"></i></a>
+																			<a href="#"><i class="fa fa-heart"></i></a>
+																			<a href="#"><i class="fa fa-heart-o"></i></a>
+																		</div> 										
+																	</div> 
+																	<p class="desc" th:text="${cloth.detail}"></p>
+																	<div class="action">
+																		<div class="cart-box"> 
+																			<div class="product-text">
+																				<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																				<a href="#"><p>加入购物车</p></a>
+																				<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
+																				<a href="#"><i class="fa fa-search-plus"></i></a>
+																			</div> 
+																		</div> 		
+																	</div>
+																	<div class="color-list">
+																		<ul>
+																			<li><a class="orange" href="#"></a></li>
+																			<li><a class="pink" href="#"></a></li>
+																		</ul>
+																	</div>
+																	<span>现货</span>
+																</div> 	
+															</div>
+														</div> 
+													</li>
+												</ul>
+												<div class="previous-next">
+													<ul class="pagination">
+														<li class="previous" th:if="${pageInfo.prePage }"><a  th:href="@{pageNo=${pageInfo.pageNum-1}}">上一页</a></li>
+														<li ><a href="?pageNo=1">1</a></li>
+														<li class="active"><a href="?pageNo=2">2</a></li>
+														<li><a href="?pageNo=3">3</a></li>
+														<li><a href="?pageNo=4">4</a></li>
+														<li class="next" th:if="${pageInfo.nextPage }"><a  th:href="@{pageNo=${pageInfo.pageNum+1}">下一页</a></li>
+													</ul>
+												</div>
+											</div>  
+										</div>
 									</div>
-			 					</div>
-			 					<div role="tabpanel" class="tab-pane  table-responsive" id="payment">
-			 						<table class="main-tabel table table-bordered">
-			 							<thead class="fast-tabel">
-			 								<tr>
-			 									<th class="tr-pro">商品名</th>
-			 									<th class="tr-des">描述</th>
-			 									<th class="tr-avail">状态</th>
-			 									<th class="tr-price">单价</th>
-			 									<th class="tr-qty">数量</th>
-			 									<th class="tr-tras"> 删除</th>
-			 									<th class="tr-ammount">总价</th>
-			 								</tr>
-			 							</thead>
-			 							<tfoot class="thard-tabel"> 
-			 								<tr>
-			 									<td colspan="2"></td>  
-			 								  	<td colspan="3" class="totel big-totol">Total products (tax incl.)</td>
-			 					   				<td colspan="2" class="totel"><span>£ 23.37</span></td> 	 	 
-			 								</tr>
-			 								<tr>
-			 									<td colspan="2"></td>  
-			 								  	<td colspan="3" class="totel mid-totol">Total products Shopping</td>
-			 					   				<td colspan="2" class="totel"><span>Free Shopping</span></td> 	 	 
-			 								</tr>
-			 								<tr>
-			 									<td colspan="2"></td>
-			 									<td colspan="3" class="text totel big-totol">totel</td>
-			 									<td colspan="2" class="totel big-totol">£ 23.37</td>
-			 								</tr>
-			 							</tfoot> 
-			 							<tbody class="sceand-tabel">
-			 								<tr>
-			 									<td class="td-img-tr">
-			 										<span class="td-img">
-			 											<img src="img/product/printed-dress.jpg.png" alt="img">
-			 										</span>		
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td> 
-			 									<td class="td-stok"><span>In stock</span></td>  
-			 									<td class="td-unite">
-				 					   				<ul>
-				 					   					<li>£ 23.37</li>
-				 					   					<li>-5%</li>
-				 					   					<li>£ 24.60</li>
-				 					   				</ul>			 										
-			 									</td> 
-			 									<td class="td-quentety">
-													<input type="number" value="1">
-				 					   				<div class="dec qtybutton">-</div> 
-				 					   				<div class="inc qtybutton">+</div> 	 
-			 									</td> 
-			 									<td class="td-trash">
-			 										<a href="#"><i class="fa fa-trash"></i></a>
-			 									</td> 
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>£ 23.37</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 						</table>			 						
-			 					</div>
-			 					<div role="tabpanel" class="tab-pane  table-responsive" id="shipping">
- 			 						<table class="main-tabel table table-bordered">  
-			 							<tbody class="sceand-tabel tabel-bootom">
-			 								<tr>
-			 									<td class="td-img-tr"> 	
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td>    
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>free</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 							<tbody class="sceand-tabel">
-			 								<tr>
-			 									<td class="td-img-tr">
-			 										<span class="td-img">
-			 											<img src="img/product/printed-dress.jpg.png" alt="img">
-			 										</span>		
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td>    
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>£ 23.37</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 						</table>
-			 					</div>
-			 				</div>  		 				
-			 			</div>
-			 		</div>
-			 	</div>
-			 </div>
-		</div>
-
-		<!-- Cut Page Medile Section Start End-->
+								</div>
+							</div>  
+						</div>								
+					</div>
+				</div>
+			</div> 
+		</section>
+		<!-- Page Medile Section End-->
 		<!-- Footer Area Start-->
 		<footer class="footer-area">
-			<div class="footer-bg">   
+			<div class="footer-bg">
+				<div class="container"> 
+					<div class="bolg-newslatter">			
+						<div class="row">
+							<div class="col-lg-8 col-md-8"> 
+								<div class="blog">
+									<h3 class="blog-title"><a href="#">form our blog</a></h3>
+									<div class="all-blog">
+										<div class="blog-content">
+											<div class="single-blog">
+												<div class="blog-img">
+													<a href="#"><img src="img/blog/5.jpg" alt="img" /></a>
+												</div>
+												<div class="blog-text">
+													<a href="#"><h4>Christmas Sale is here 5</h4></a>
+													<span class="date">2015-10-03 14:44:01</span>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+												</div>
+											</div> 
+											<div class="single-blog">
+												<div class="blog-img">
+													<a href="#"><img src="img/blog/2.jpg" alt="img" /></a>
+												</div>
+												<div class="blog-text">
+													<a href="#"><h4>Christmas Sale is here 5</h4></a>
+													<span class="date">2015-10-03 14:44:01</span>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+												</div>
+											</div> 
+										</div>
+										<div class="blog-content">
+											<div class="single-blog">
+												<div class="blog-img">
+													<a href="#"><img src="img/blog/3.jpg" alt="img" /></a>
+												</div>
+												<div class="blog-text">
+													<a href="#"><h4>Christmas Sale is here 5</h4></a>
+													<span class="date">2015-10-03 14:44:01</span>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+												</div>
+											</div>
+											<div class="single-blog">
+												<div class="blog-img">
+													<a href="#"><img src="img/blog/4.jpg" alt="img" /></a>
+												</div>
+												<div class="blog-text">
+													<a href="#"><h4>Christmas Sale is here 5</h4></a>
+													<span class="date">2015-10-03 14:44:01</span>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+												</div>
+											</div> 
+										</div>
+										<div class="blog-content">
+											<div class="single-blog">
+												<div class="blog-img">
+													<a href="#"><img src="img/blog/3.jpg" alt="img" /></a>
+												</div>
+												<div class="blog-text">
+													<a href="#"><h4>Christmas Sale is here 5</h4></a>
+													<span class="date">2015-10-03 14:44:01</span>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+												</div>
+											</div> 
+											<div class="single-blog">
+												<div class="blog-img">
+													<a href="#"><img src="img/blog/5.jpg" alt="img" /></a>
+												</div>
+												<div class="blog-text">
+													<a href="#"><h4>Christmas Sale is here 5</h4></a>
+													<span class="date">2015-10-03 14:44:01</span>
+													<a href="#"><span class="more">Read More</span></a>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been...</p>
+												</div>
+											</div> 											
+										</div>
+									</div>
+								</div> 
+							</div> 
+							<div class="col-lg-4 col-md-4">
+								<div class="newslatter">
+									<h4>Newsletter promotions and gifts</h4>
+									<p>Your information is completely confidential, and may unsubscribe at any time.Sign up to get much better deals.</p>
+									<div class="subscribe">
+										<form action="#">
+											<input type="text" placeholder="Enter your e-mail"> 
+											<button type="submit">subscribe</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>  
 				<div class="container">
 					<div class="bg-bd">
 						<div class="row">
-							<div class="col-lg-12 col-md-12">
+							<div class="col-lg-12">
 								<div class="cl-logo">
 									<div class="col-lg-12">
 										<a href="#"><img src="img/client-lago/lago-1.jpg" alt="" /></a>
@@ -711,21 +846,20 @@
 		============================================ -->         
         <script src="js/vendor/jquery-1.11.3.min.js"></script>
 		
-		
         <!-- price-slider js
 		============================================ -->         
-        <script src="js/price-slider.js"></script>		
+        <script src="js/price-slider.js"></script>	    	
         
  		<!-- bootstrap js
 		============================================ -->         
         <script src="js/bootstrap.min.js"></script>
+		
+		<!-- jquery-meanmenu js -->
+		<script src="js/jquery.meanmenu.js"></script> 
         
    		<!-- owl.carousel.min js
 		============================================ -->       
-        <script src="js/owl.carousel.min.js"></script>
-		
-		<!-- jquery-meanmenu js -->
-		<script src="js/jquery.meanmenu.js"></script>      
+        <script src="js/owl.carousel.min.js"></script> 
 		
 		<!-- Nivo slider js
 		============================================ --> 		
@@ -755,5 +889,9 @@
 		============================================ -->           
         <script src="js/main.js"></script>
     </body>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
 </html>
 

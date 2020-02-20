@@ -6,7 +6,7 @@ public class Type {
     private String type;
     
     private Integer count;
-
+    
     public Integer getTid() {
         return tid;
     }

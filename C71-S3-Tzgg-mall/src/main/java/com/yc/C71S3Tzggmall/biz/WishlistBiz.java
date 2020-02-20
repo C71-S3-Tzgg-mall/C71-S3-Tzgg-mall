@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.yc.C71S3Tzggmall.bean.ClothExample;
 import com.yc.C71S3Tzggmall.bean.Wishlist;
 import com.yc.C71S3Tzggmall.bean.WishlistExample;
 import com.yc.C71S3Tzggmall.dao.WishlistMapper;

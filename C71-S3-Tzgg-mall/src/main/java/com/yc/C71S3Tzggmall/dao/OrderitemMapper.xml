@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yc.C71S3Tzggmall.dao.OrderitemMapper">
   <resultMap id="BaseResultMap" type="com.yc.C71S3Tzggmall.bean.Orderitem">
-    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <id column="oiid" jdbcType="INTEGER" property="oiid" />
+    <result column="oid" jdbcType="VARCHAR" property="oid" />
     <result column="totalPrice" jdbcType="DOUBLE" property="totalprice" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    oid, totalPrice, status, uid, cid, count, cartid
+    oiid, oid, totalPrice, status, uid, cid, count, cartid
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.OrderitemExample" resultMap="BaseResultMap">
     select
@@ -89,11 +90,11 @@
     select 
     <include refid="Base_Column_List" />
     from orderitem
-    where oid = #{oid,jdbcType=INTEGER}
+    where oiid = #{oiid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from orderitem
-    where oid = #{oid,jdbcType=INTEGER}
+    where oiid = #{oiid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.yc.C71S3Tzggmall.bean.OrderitemExample">
     delete from orderitem
@@ -102,16 +103,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Orderitem">
-    insert into orderitem (oid, totalPrice, status, 
-      uid, cid, count, cartid
-      )
-    values (#{oid,jdbcType=INTEGER}, #{totalprice,jdbcType=DOUBLE}, #{status,jdbcType=VARCHAR}, 
-      #{uid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, #{cartid,jdbcType=VARCHAR}
-      )
+    insert into orderitem (oiid, oid, totalPrice, 
+      status, uid, cid, count, 
+      cartid)
+    values (#{oiid,jdbcType=INTEGER}, #{oid,jdbcType=VARCHAR}, #{totalprice,jdbcType=DOUBLE}, 
+      #{status,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, 
+      #{cartid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Orderitem">
     insert into orderitem
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oiid != null">
+        oiid,
+      </if>
       <if test="oid != null">
         oid,
       </if>
@@ -135,8 +139,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oiid != null">
+        #{oiid,jdbcType=INTEGER},
+      </if>
       <if test="oid != null">
-        #{oid,jdbcType=INTEGER},
+        #{oid,jdbcType=VARCHAR},
       </if>
       <if test="totalprice != null">
         #{totalprice,jdbcType=DOUBLE},
@@ -167,8 +174,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update orderitem
     <set>
+      <if test="record.oiid != null">
+        oiid = #{record.oiid,jdbcType=INTEGER},
+      </if>
       <if test="record.oid != null">
-        oid = #{record.oid,jdbcType=INTEGER},
+        oid = #{record.oid,jdbcType=VARCHAR},
       </if>
       <if test="record.totalprice != null">
         totalPrice = #{record.totalprice,jdbcType=DOUBLE},
@@ -195,7 +205,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update orderitem
-    set oid = #{record.oid,jdbcType=INTEGER},
+    set oiid = #{record.oiid,jdbcType=INTEGER},
+      oid = #{record.oid,jdbcType=VARCHAR},
       totalPrice = #{record.totalprice,jdbcType=DOUBLE},
       status = #{record.status,jdbcType=VARCHAR},
       uid = #{record.uid,jdbcType=INTEGER},
@@ -209,6 +220,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.yc.C71S3Tzggmall.bean.Orderitem">
     update orderitem
     <set>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=VARCHAR},
+      </if>
       <if test="totalprice != null">
         totalPrice = #{totalprice,jdbcType=DOUBLE},
       </if>
@@ -228,16 +242,17 @@
         cartid = #{cartid,jdbcType=VARCHAR},
       </if>
     </set>
-    where oid = #{oid,jdbcType=INTEGER}
+    where oiid = #{oiid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yc.C71S3Tzggmall.bean.Orderitem">
     update orderitem
-    set totalPrice = #{totalprice,jdbcType=DOUBLE},
+    set oid = #{oid,jdbcType=VARCHAR},
+      totalPrice = #{totalprice,jdbcType=DOUBLE},
       status = #{status,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
       count = #{count,jdbcType=INTEGER},
       cartid = #{cartid,jdbcType=VARCHAR}
-    where oid = #{oid,jdbcType=INTEGER}
+    where oiid = #{oiid,jdbcType=INTEGER}
   </update>
 </mapper>

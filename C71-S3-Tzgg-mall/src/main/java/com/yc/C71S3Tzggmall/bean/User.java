@@ -11,6 +11,10 @@ public class User {
 
     private Integer points;
 
+    private String tel;
+
+    private String address;
+
     public Integer getUid() {
         return uid;
     }
@@ -49,5 +53,21 @@ public class User {
 
     public void setPoints(Integer points) {
         this.points = points;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 }

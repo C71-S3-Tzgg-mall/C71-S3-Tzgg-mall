@@ -5,7 +5,7 @@
     <id column="cartid" jdbcType="INTEGER" property="cartid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
-    <result column="count" jdbcType="DOUBLE" property="count" />
+    <result column="count" jdbcType="INTEGER" property="count" />
     <result column="type" jdbcType="VARCHAR" property="type" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -103,7 +103,7 @@
     insert into cart (cartid, uid, cid, 
       count, type)
     values (#{cartid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
-      #{count,jdbcType=DOUBLE}, #{type,jdbcType=VARCHAR})
+      #{count,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Cart">
     insert into cart
@@ -135,7 +135,7 @@
         #{cid,jdbcType=INTEGER},
       </if>
       <if test="count != null">
-        #{count,jdbcType=DOUBLE},
+        #{count,jdbcType=INTEGER},
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
@@ -161,7 +161,7 @@
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
       <if test="record.count != null">
-        count = #{record.count,jdbcType=DOUBLE},
+        count = #{record.count,jdbcType=INTEGER},
       </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
@@ -176,7 +176,7 @@
     set cartid = #{record.cartid,jdbcType=INTEGER},
       uid = #{record.uid,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
-      count = #{record.count,jdbcType=DOUBLE},
+      count = #{record.count,jdbcType=INTEGER},
       type = #{record.type,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -192,7 +192,7 @@
         cid = #{cid,jdbcType=INTEGER},
       </if>
       <if test="count != null">
-        count = #{count,jdbcType=DOUBLE},
+        count = #{count,jdbcType=INTEGER},
       </if>
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
@@ -204,7 +204,7 @@
     update cart
     set uid = #{uid,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
-      count = #{count,jdbcType=DOUBLE},
+      count = #{count,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR}
     where cartid = #{cartid,jdbcType=INTEGER}
   </update>

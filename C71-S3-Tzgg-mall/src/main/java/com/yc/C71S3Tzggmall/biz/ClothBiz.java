@@ -2,6 +2,7 @@ package com.yc.C71S3Tzggmall.biz;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -94,6 +95,54 @@ public class ClothBiz {
 		example.createCriteria().andRestcountGreaterThan(0);
 		int count=(int) cm.countByExample(example);
 		return count;	
+	}
+	
+	public Cloth selectCloth(int cid){
+		ClothExample example=new ClothExample();
+		example.createCriteria().andCidEqualTo(cid);
+		Cloth cloth=cm.selectByPrimaryKey(cid);
+		return cloth;
+	}
+	
+	/**
+	 * 分类查询(婴儿)
+	 * @return
+	 */
+	public List<Cloth> findCloth(){
+		ClothExample example=new ClothExample();
+		example.createCriteria().andTypeidEqualTo(5);
+		List<Cloth>list=cm.selectByExample(example);
+		return list;
+		
+	}
+	
+	/**
+	 * 查询幼儿产品
+	 * @return
+	 */
+	public List<Cloth> selectChildCloth() {
+		ClothExample example=new ClothExample();
+		example.createCriteria().andTypeidNotEqualTo(5);
+		List<Cloth>list=cm.selectByExample(example);
+		return list;
+	}
+	
+	/**
+	 * 查询特卖产品
+	 * @return
+	 */
+	public List<Cloth> findSpecialByTime() {
+		Date d=new Date();      
+		Calendar calendar = Calendar.getInstance();  
+		calendar.setTime(new Date());  
+		calendar.add(Calendar.MONTH, -2);
+		d=calendar.getTime();
+		Timestamp t = new Timestamp(d.getTime());
+		ClothExample example=new ClothExample();
+		//System.out.println(t);
+		example.createCriteria().andArrivetimeLessThanOrEqualTo(t);
+		List<Cloth>list=cm.selectByExample(example);
+		return list;
 	}
 	
 }

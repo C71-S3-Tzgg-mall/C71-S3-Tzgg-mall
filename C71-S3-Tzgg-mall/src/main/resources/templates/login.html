@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>登录</title>
+	<link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+function login(){
+	var username=$("#loginModalUserName").val();
+	var password=$("#loginModalUserPwd").val();
+	$.post("login",
+		{name : username,
+		pwd : password},
+		function(result){
+			if(result.code == 0){
+			     alert(result.msg);
+			}else if(result.code == 2){
+				console.info(result.data);
+				for(var i=0;i<result.data.length;i++){
+					console.info(result.data[i].field);
+					if(result.data[i].field== 'name'){
+						//.text==> html 元素.innerText
+						$("#errorName").text(result.data[i].defaultMessage);
+					}else if(result.data[i].field== 'pwd'){
+						$("#errorPwd").text(result.data[i].defaultMessage);
+					}
+				}
+			} else if(result.code == 1){
+				window.location.href="index";
+			} 
+		}
+	)
+}
+function register(){
+	var username=$("#UserName").val();
+	var password=$("#Userpwd").val();
+	$.post("register",
+		{name : username,
+		pwd : password},
+		function(result){
+			if(result.code == 0){
+			     alert(result.msg);
+			}else if(result.code == 2){
+				console.info(result.data);
+				for(var i=0;i<result.data.length;i++){
+					console.info(result.data[i].field);
+					if(result.data[i].field== 'name'){
+						//.text==> html 元素.innerText
+						$("#errorN").text(result.data[i].defaultMessage);
+					}else if(result.data[i].field== 'pwd'){
+						$("#errorP").text(result.data[i].defaultMessage);
+					}
+				}
+			} else if(result.code == 1){
+				window.location.href="login";
+			} 
+		}
+	)
+}
+</script>
+	<div class="lowin">
+		<div class="lowin-brand">
+			<img src="img/kodinger.jpg" alt="logo">
+		</div>
+		<div class="lowin-wrapper">
+			<div class="lowin-box lowin-login">
+				<div class="lowin-box-inner">
+					<form>
+						<p>登录</p>
+						<div class="lowin-group">
+							<label for="loginModalUserName" id="unameLabel">用户名：<font id="errorName" color="red"></font> <a href="#" class="login-back-link">登录?</a></label>
+							<input type="text" id="loginModalUserName" class="lowin-input">
+						</div>
+						<div class="lowin-group password-group">
+							<label for="loginModalUserPwd" id="upwdLabel">密码：<font id="errorPwd" color="red"></font> <a href="#" class="forgot-link">忘记密码?</a></label>
+							<input type="password" id="loginModalUserPwd" autocomplete="current-password" class="lowin-input">
+						</div>
+						<button type="button" class="lowin-btn login-btn" onclick="login()">登录</button>
+						<div class="text-foot">
+							没有账户？ <a href="" class="register-link">注册</a>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="lowin-box lowin-register">
+				<div class="lowin-box-inner">
+					<form>
+						<p>开始进行注册</p>
+						<div class="lowin-group">
+							<label  for="UserName" id="nameLabel">用户名<font id="errorN" color="red"></font>：</label>
+							<input type="text" id="UserName"  name="name" autocomplete="name" class="lowin-input">
+							
+						</div>
+						<div class="lowin-group">
+							<label for="Userpwd" id="pwdLabel">密码：<font id="errorP" color="red"></font></label>
+							<input type="password" id="Userpwd" name="password" autocomplete="current-password" class="lowin-input">
+						</div>
+						<button type="button" class="lowin-btn" onclick="register()">注册</button>
+
+						<div class="text-foot">
+							已经有一个账号？ <a href="" class="login-link">登录</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	
+		<footer class="lowin-footer">
+			Design By @itskodinger. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+		</footer>
+	</div>
+
+	<script src="js/auth.js"></script>
+	<script>
+		Auth.init({
+			login_url: '#login',
+			forgot_url: '#forgot'
+		});
+	</script>
+</body>
+</html>

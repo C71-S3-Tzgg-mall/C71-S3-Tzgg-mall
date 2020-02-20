@@ -294,52 +294,52 @@ public class CartExample {
             return (Criteria) this;
         }
 
-        public Criteria andCountEqualTo(Double value) {
+        public Criteria andCountEqualTo(Integer value) {
             addCriterion("count =", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountNotEqualTo(Double value) {
+        public Criteria andCountNotEqualTo(Integer value) {
             addCriterion("count <>", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountGreaterThan(Double value) {
+        public Criteria andCountGreaterThan(Integer value) {
             addCriterion("count >", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountGreaterThanOrEqualTo(Double value) {
+        public Criteria andCountGreaterThanOrEqualTo(Integer value) {
             addCriterion("count >=", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountLessThan(Double value) {
+        public Criteria andCountLessThan(Integer value) {
             addCriterion("count <", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountLessThanOrEqualTo(Double value) {
+        public Criteria andCountLessThanOrEqualTo(Integer value) {
             addCriterion("count <=", value, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountIn(List<Double> values) {
+        public Criteria andCountIn(List<Integer> values) {
             addCriterion("count in", values, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountNotIn(List<Double> values) {
+        public Criteria andCountNotIn(List<Integer> values) {
             addCriterion("count not in", values, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountBetween(Double value1, Double value2) {
+        public Criteria andCountBetween(Integer value1, Integer value2) {
             addCriterion("count between", value1, value2, "count");
             return (Criteria) this;
         }
 
-        public Criteria andCountNotBetween(Double value1, Double value2) {
+        public Criteria andCountNotBetween(Integer value1, Integer value2) {
             addCriterion("count not between", value1, value2, "count");
             return (Criteria) this;
         }

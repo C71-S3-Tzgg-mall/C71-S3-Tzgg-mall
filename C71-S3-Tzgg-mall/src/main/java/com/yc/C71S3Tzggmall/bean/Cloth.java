@@ -1,10 +1,11 @@
 package com.yc.C71S3Tzggmall.bean;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Cloth {
     private Integer cid;
-    
+
     private String name;
 
     private Double shopprice;
@@ -26,6 +27,8 @@ public class Cloth {
     private String detail;
     
     private Integer count;
+    
+    private List<Cloth> list;
     
     public Integer getCid() {
         return cid;
@@ -122,7 +125,14 @@ public class Cloth {
 	public void setCount(Integer count) {
 		this.count = count;
 	}
-    
+
+	public List<Cloth> getList() {
+		return list;
+	}
+
+	public void setList(List<Cloth> list) {
+		this.list = list;
+	}
     
     
 }

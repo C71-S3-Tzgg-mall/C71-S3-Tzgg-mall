@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <!--[if lt IE 7 ]> <html lang="en" class="ie6">    <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="ie7">    <![endif]-->
@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Bee-结算</title>
+        <title>Bee-购物车</title>
         <link rel="icon" href="img/logo-icon.png" type="image/x-icon"/>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
 		============================================ -->		
 		
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=latin,latin-ext" type="text/css" media="all" />
-
+		
 		<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 					
         <!-- Favicon
@@ -41,19 +41,15 @@
            	
 		<!-- owl.transitions CSS
 		============================================ -->      
-        <link rel="stylesheet" href="css/owl.transitions.css">  
+        <link rel="stylesheet" href="css/owl.transitions.css">
+        
+		<!-- font-awesome.min CSS
+		============================================ -->      
+        <link rel="stylesheet" href="css/font-awesome.min.css"> 
 		
 		<!-- meanmenu CSS
 		============================================ -->		
         <link rel="stylesheet" href="css/meanmenu.min.css" media="all" />
-        
-		<!-- font-awesome.min CSS
-		============================================ -->      
-        <link rel="stylesheet" href="css/fancybox/jquery.fancybox.css">
-        
-		<!-- font-awesome.min CSS
-		============================================ -->      
-        <link rel="stylesheet" href="css/font-awesome.min.css">
         
  		<!-- animate CSS
 		============================================ -->         
@@ -122,8 +118,8 @@
 								<ul class="account">
 									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
 										<ul>
-											<li><a href="#">我的收藏</a></li> 
-											<li><a href="#">我的购物车</a></li> 
+											<li><a href="wishlist.html">我的收藏</a></li> 
+											<li><a href="cart.html">购物车</a></li> 
 											<li><a href="#">退出</a></li> 
 										</ul>										
 									</li> 
@@ -151,7 +147,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
 							<ul class="curt">
-								<li><a class="total-cart-b" href="#">
+								<li><a class="total-cart-b" href="cart.html">
 									<span>2</span>
 									<p>购物车</p>
 									<h6>￥ 125.19</h6>									
@@ -341,7 +337,7 @@
 						<div class="braed">
 							<a href="#"><i class="fa fa-home"></i></a>
 							<span class="navegation-page">></span> 
-							结算
+							购物车
 						</div>
 					</div>
 				</div>
@@ -352,232 +348,46 @@
 		<div class="cut-page-medile-section">
 			 <div class="container">
 			 	<div class="row">
-			 		<div class="col-lg-12  col-md-12">
-			 			<div class="cut-page-tab bg-bd"> 
-			 				<p class="tab-heading">结算</p>
-			 				<ul class="nav-tabs" role="tablist">
-			 					<li style="width:25%" role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab"><span><em>01.</em>商品</span></a></li>
-			 					<li style="width:25%" role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab"><span><em>02.</em>地址</span></a></li>
-			 					<li style="width:25%" role="presentation"><a href="#payment" aria-controls="payment" role="tab" data-toggle="tab"><span><em>03.</em>付款</span></a></li>
-			 								 					<li style="width:25%" role="presentation"><a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab"><span><em>04.</em>运送</span></a></li>
-			 				</ul> 
-			 				<div class="tab-content">
-			 					<div role="tabpanel" class="tab-pane active  table-responsive" id="summary">
-			 						<table class="table table-bordered">
-			 							<thead class="fast-tabel">
+			 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			 			<div class="cut-page-tab bg-bd">  
+			 				<div class="wish-content">
+								
+									<p class="tab-heading">购物车</p> 
+								
+								<div class="second-wist table-responsive"> 
+	  			 					<table id="cart" class="main-tabel table table-bordered " th:fragment="cart">
+			 							<thead>
 			 								<tr>
-			 									<th class="tr-pro">商品名</th>
-			 									<th class="tr-des">描述</th>
-			 									<th class="tr-avail">状态</th>
-			 									<th class="tr-price">单价</th>
-			 									<th class="tr-qty">数量</th>
-			 									<th class="tr-tras"> 删除</th>
-			 									<th class="tr-ammount">总价</th>
+			 									<th><input type="checkbox" value="全选"  onclick="allSelect(this.checked)" id="isAllSelect"/>&nbsp;全选</th>
+			 									<th class=" ">图片</th>
+			 									<th class=" ">名称</th>
+			 									<th class=" ">价格</th>
+			 									<th class=" ">数量</th>
+			 									<th class=" ">删除</th>
 			 								</tr>
-			 							</thead>
-			 							<tfoot class="thard-tabel"> 
-			 								<tr>
-			 									<td colspan="2"></td>  
-			 								  	<td colspan="3" rowspan="1" class="totel big-totol">总价</td>
-			 					   				<td colspan="2" class="totel"><span>£ 23.37</span></td> 	 	 
-			 								</tr>
-			 								<tr>
-			 									<td colspan="2"></td>
-			 									<td colspan="3" class="text totel big-totol">实际价格(优惠)</td>
-			 									<td colspan="2" class="totel big-totol">£ 23.37</td>
-			 								</tr>
-			 							</tfoot> 
-			 							<tbody class="sceand-tabel">
-			 								<tr>
-			 									<td class="td-img-tr">
-			 										<span class="td-img">
-			 											<img src="img/product/printed-dress.jpg.png" alt="img">
-			 										</span>		
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td> 
-			 									<td class="td-stok"><span>In stock</span></td>  
-			 									<td class="td-unite">
-				 					   				<ul>
-				 					   					<li>£ 23.37</li>
-				 					   					<li>-5%</li>
-				 					   					<li>£ 24.60</li>
-				 					   				</ul>			 										
-			 									</td> 
-			 									<td class="td-quentety">
-													<input type="number" value="1">
-				 					   				<div class="dec qtybutton">-</div> 
-				 					   				<div class="inc qtybutton">+</div> 	 
-			 									</td> 
-			 									<td class="td-trash">
-			 										<a href="#"><i class="fa fa-trash"></i></a>
-			 									</td> 
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>£ 23.37</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 						</table>
-			 						<div class="bootom-section">
-			 							<ul>
-			 								<li class="con-shopp"><a href="cart" class="button">继续购物</a></li>
-			 							</ul>
-			 						</div>								
-			 					</div>
-			 					<div role="tabpanel" class="tab-pane" id="address">
-									<div class="address">
-										<div class="main-form  border">
-											<p class="account-title">地址</p>
-											<form action="#">
-												<label class="input-label">姓名</label>
-												<input class="input" type="text">
-
-												<label class="input-label">电话</label>
-												<input class="input" type="text">
-
-												<label class="input-label">省</label>
-												<select>
-												 	<option class="input"  value="uk">united kingdom</option>
-												 </select>
-
-												<label class="input-label">市</label>
-												<select>
-												 	<option class="input"  value="uk">united kingdom</option>
-												 </select>
-
-												<label class="input-label">区/县</label>
-												<select>
-												 	<option class="input"  value="uk">united kingdom</option>
-												 </select>
-
-												<label class="input-label">具体地址</label>
-												<input class="input" type="text">
-
-												
-											</form>
-											<button class="button"  type="submit">保存</button>
-										</div>
-										
-									</div>
-			 					</div>
-			 					<div role="tabpanel" class="tab-pane  table-responsive" id="payment">
-			 						<table class="main-tabel table table-bordered">
-			 							<thead class="fast-tabel">
-			 								<tr>
-			 									<th class="tr-pro">商品名</th>
-			 									<th class="tr-des">描述</th>
-			 									<th class="tr-avail">状态</th>
-			 									<th class="tr-price">单价</th>
-			 									<th class="tr-qty">数量</th>
-			 									<th class="tr-tras"> 删除</th>
-			 									<th class="tr-ammount">总价</th>
-			 								</tr>
-			 							</thead>
-			 							<tfoot class="thard-tabel"> 
-			 								<tr>
-			 									<td colspan="2"></td>  
-			 								  	<td colspan="3" class="totel big-totol">Total products (tax incl.)</td>
-			 					   				<td colspan="2" class="totel"><span>£ 23.37</span></td> 	 	 
-			 								</tr>
-			 								<tr>
-			 									<td colspan="2"></td>  
-			 								  	<td colspan="3" class="totel mid-totol">Total products Shopping</td>
-			 					   				<td colspan="2" class="totel"><span>Free Shopping</span></td> 	 	 
-			 								</tr>
-			 								<tr>
-			 									<td colspan="2"></td>
-			 									<td colspan="3" class="text totel big-totol">totel</td>
-			 									<td colspan="2" class="totel big-totol">£ 23.37</td>
-			 								</tr>
-			 							</tfoot> 
-			 							<tbody class="sceand-tabel">
-			 								<tr>
-			 									<td class="td-img-tr">
-			 										<span class="td-img">
-			 											<img src="img/product/printed-dress.jpg.png" alt="img">
-			 										</span>		
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td> 
-			 									<td class="td-stok"><span>In stock</span></td>  
-			 									<td class="td-unite">
-				 					   				<ul>
-				 					   					<li>£ 23.37</li>
-				 					   					<li>-5%</li>
-				 					   					<li>£ 24.60</li>
-				 					   				</ul>			 										
-			 									</td> 
-			 									<td class="td-quentety">
-													<input type="number" value="1">
-				 					   				<div class="dec qtybutton">-</div> 
-				 					   				<div class="inc qtybutton">+</div> 	 
-			 									</td> 
-			 									<td class="td-trash">
-			 										<a href="#"><i class="fa fa-trash"></i></a>
-			 									</td> 
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>£ 23.37</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 						</table>			 						
-			 					</div>
-			 					<div role="tabpanel" class="tab-pane  table-responsive" id="shipping">
- 			 						<table class="main-tabel table table-bordered">  
-			 							<tbody class="sceand-tabel tabel-bootom">
-			 								<tr>
-			 									<td class="td-img-tr"> 	
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td>    
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>free</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 							<tbody class="sceand-tabel">
-			 								<tr>
-			 									<td class="td-img-tr">
-			 										<span class="td-img">
-			 											<img src="img/product/printed-dress.jpg.png" alt="img">
-			 										</span>		
-			 									</td> 
-			 					   				<td class="td-p-title">
-			 					   					<a href="#"><p>Printed Chiffon Dress</p></a>
-			 					   					<small>SKU :span</small>
-			 					   					<small>Size : S, Color : Yellow</small>
-			 					   				</td>    
-			 									<td class="td-t-amount">
-				 					   				<div class="total-amount">
-				 					   					<span>£ 23.37</span>
-				 					   				</div>			 							
-			 									</td> 
-			 								</tr>
-			 							</tbody>
-			 						</table>
-			 					</div>
+			 							</thead> 
+										<tbody th:each="cart:${cartList}">
+											<tr th:each="cartItem:${cart.list}">
+												<td><input type="checkbox" th:value="${cartItem.cid}"></td>
+												<td><img th:src="@{${cartItem.image}}" alt="" /></td>
+												<td><p th:text="${cartItem.name}">asad</p></td>
+												<td><p th:text="${cartItem.realprice}">0</p></td>
+												<td><p th:text="${cartItem.count}">0</p></td>
+												<td>
+													<a th:onclick="|del('${cartItem.cid}')|"><i class="fa fa-times"></i></a>
+												</td> 
+											</tr>
+										</tbody>
+				 					</table>
+				 					<button class="button"  style="width:100px;height:40px;left:800px">全部删除</button> 
+									<button class="button"  style="width:100px;height:40px;left:850px" onclick="settle()">结算</button><font id="totalPrice"></font> 
+								</div>
 			 				</div>  		 				
 			 			</div>
 			 		</div>
 			 	</div>
 			 </div>
 		</div>
-
 		<!-- Cut Page Medile Section Start End-->
 		<!-- Footer Area Start-->
 		<footer class="footer-area">
@@ -585,7 +395,7 @@
 				<div class="container">
 					<div class="bg-bd">
 						<div class="row">
-							<div class="col-lg-12 col-md-12">
+							<div class="col-lg-12">
 								<div class="cl-logo">
 									<div class="col-lg-12">
 										<a href="#"><img src="img/client-lago/lago-1.jpg" alt="" /></a>
@@ -683,24 +493,7 @@
 						</div> 
 					</div>
 				</div>  
-				<div class="container">
-					<div class="copyright">
-						<div class="row">
-							<div class="col-lg-4 col-md-4 col-sm-6">
-								<div class="copyright-text">
-									<p><b>Copyright</b> &copy; <span class="color"><a href="#"> BootExperts.</a></span>All Rights Reserved</p>
-								</div>
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-5">
-								<div class="payment">
-									<ul>
-										<li><a href="#"><img src="img/payment.png" alt="" /></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>  
+				  
 			</div>
 		</footer>
 		<!-- Footer Area End -->
@@ -711,21 +504,20 @@
 		============================================ -->         
         <script src="js/vendor/jquery-1.11.3.min.js"></script>
 		
-		
         <!-- price-slider js
 		============================================ -->         
-        <script src="js/price-slider.js"></script>		
+        <script src="js/price-slider.js"></script>	    	
         
  		<!-- bootstrap js
 		============================================ -->         
         <script src="js/bootstrap.min.js"></script>
+		
+		<!-- jquery-meanmenu js -->
+		<script src="js/jquery.meanmenu.js"></script> 
         
    		<!-- owl.carousel.min js
 		============================================ -->       
-        <script src="js/owl.carousel.min.js"></script>
-		
-		<!-- jquery-meanmenu js -->
-		<script src="js/jquery.meanmenu.js"></script>      
+        <script src="js/owl.carousel.min.js"></script> 
 		
 		<!-- Nivo slider js
 		============================================ --> 		
@@ -754,6 +546,42 @@
    		<!-- main js
 		============================================ -->           
         <script src="js/main.js"></script>
+        
     </body>
+<script type="text/javascript">
+  //全选功能函数
+    function allSelect(isSelect) {
+	  	
+    	for(var i = 1; i < cart.rows.length; i++) {
+    		if(isSelect) {
+    			cart.rows[i].cells[0].children[0].checked = true;
+    		} else {
+    			cart.rows[i].cells[0].children[0].checked = false;
+    		}
+    	}
+    }
+  
+  function del(cid){
+	  alert(cid);
+	  $.post("delCart.do",{cid:cid},function(data){
+		  $("#cart").html(data);
+	  })
+  }
+  
+  function settle(){
+	  var arr=$('#cart  tbody td:first-child input[type="checkbox"]:checked');
+	  if(arr.length==0){
+			alert('未选中购买商品');
+	  }
+	  var cids='';
+		for(var i=0;i<arr.length;i++){
+			cids+=arr[i].value+",";
+		}
+		console.log(cids);
+		$.post("settle",{cids:cids},function(data){
+			
+		}); 
+  }
+</script>
 </html>
 

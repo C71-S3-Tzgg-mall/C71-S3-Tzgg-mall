@@ -1,7 +1,7 @@
 package com.yc.C71S3Tzggmall.bean;
 
 public class Order {
-    private Integer coid;
+    private Integer id;
 
     private String oid;
 
@@ -9,16 +9,16 @@ public class Order {
 
     private String tel;
 
-    private Integer uid;
+    private String uid;
 
-    private String description;
+    private String detail;
 
-    public Integer getCoid() {
-        return coid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCoid(Integer coid) {
-        this.coid = coid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getOid() {
@@ -45,19 +45,19 @@ public class Order {
         this.tel = tel == null ? null : tel.trim();
     }
 
-    public Integer getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUid(String uid) {
+        this.uid = uid == null ? null : uid.trim();
     }
 
-    public String getDescription() {
-        return description;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 }

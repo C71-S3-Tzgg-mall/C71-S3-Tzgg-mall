@@ -7,9 +7,9 @@ public class Cart {
 
     private Integer cid;
 
-    private Double count;
+    private Integer count;
 
-    private String type;
+    private Double type;
 
     public Integer getCartid() {
         return cartid;
@@ -35,19 +35,19 @@ public class Cart {
         this.cid = cid;
     }
 
-    public Double getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(Double count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    public String getType() {
+    public Double getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setType(Double type) {
+        this.type = type;
     }
 }

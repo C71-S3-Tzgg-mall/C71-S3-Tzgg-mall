@@ -1,7 +1,11 @@
 package com.yc.C71S3Tzggmall.bean;
 
+import java.util.List;
+
 public class Orderitem {
-    private Integer oid;
+    private Integer oiid;
+
+    private String oid;
 
     private Double totalprice;
 
@@ -14,13 +18,23 @@ public class Orderitem {
     private Integer count;
 
     private String cartid;
+    
+    private List<Cloth> list;
+    
+    public Integer getOiid() {
+        return oiid;
+    }
 
-    public Integer getOid() {
+    public void setOiid(Integer oiid) {
+        this.oiid = oiid;
+    }
+
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(Integer oid) {
-        this.oid = oid;
+    public void setOid(String oid) {
+        this.oid = oid == null ? null : oid.trim();
     }
 
     public Double getTotalprice() {
@@ -70,4 +84,14 @@ public class Orderitem {
     public void setCartid(String cartid) {
         this.cartid = cartid == null ? null : cartid.trim();
     }
+
+	public List<Cloth> getList() {
+		return list;
+	}
+
+	public void setList(List<Cloth> list) {
+		this.list = list;
+	}
+    
+    
 }

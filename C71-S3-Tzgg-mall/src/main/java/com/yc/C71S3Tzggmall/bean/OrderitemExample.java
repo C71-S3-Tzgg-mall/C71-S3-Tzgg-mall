@@ -104,6 +104,66 @@ public class OrderitemExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andOiidIsNull() {
+            addCriterion("oiid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidIsNotNull() {
+            addCriterion("oiid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidEqualTo(Integer value) {
+            addCriterion("oiid =", value, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidNotEqualTo(Integer value) {
+            addCriterion("oiid <>", value, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidGreaterThan(Integer value) {
+            addCriterion("oiid >", value, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("oiid >=", value, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidLessThan(Integer value) {
+            addCriterion("oiid <", value, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidLessThanOrEqualTo(Integer value) {
+            addCriterion("oiid <=", value, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidIn(List<Integer> values) {
+            addCriterion("oiid in", values, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidNotIn(List<Integer> values) {
+            addCriterion("oiid not in", values, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidBetween(Integer value1, Integer value2) {
+            addCriterion("oiid between", value1, value2, "oiid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOiidNotBetween(Integer value1, Integer value2) {
+            addCriterion("oiid not between", value1, value2, "oiid");
+            return (Criteria) this;
+        }
+
         public Criteria andOidIsNull() {
             addCriterion("oid is null");
             return (Criteria) this;
@@ -114,52 +174,62 @@ public class OrderitemExample {
             return (Criteria) this;
         }
 
-        public Criteria andOidEqualTo(Integer value) {
+        public Criteria andOidEqualTo(String value) {
             addCriterion("oid =", value, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidNotEqualTo(Integer value) {
+        public Criteria andOidNotEqualTo(String value) {
             addCriterion("oid <>", value, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidGreaterThan(Integer value) {
+        public Criteria andOidGreaterThan(String value) {
             addCriterion("oid >", value, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOidGreaterThanOrEqualTo(String value) {
             addCriterion("oid >=", value, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidLessThan(Integer value) {
+        public Criteria andOidLessThan(String value) {
             addCriterion("oid <", value, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidLessThanOrEqualTo(Integer value) {
+        public Criteria andOidLessThanOrEqualTo(String value) {
             addCriterion("oid <=", value, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidIn(List<Integer> values) {
+        public Criteria andOidLike(String value) {
+            addCriterion("oid like", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidNotLike(String value) {
+            addCriterion("oid not like", value, "oid");
+            return (Criteria) this;
+        }
+
+        public Criteria andOidIn(List<String> values) {
             addCriterion("oid in", values, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidNotIn(List<Integer> values) {
+        public Criteria andOidNotIn(List<String> values) {
             addCriterion("oid not in", values, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidBetween(Integer value1, Integer value2) {
+        public Criteria andOidBetween(String value1, String value2) {
             addCriterion("oid between", value1, value2, "oid");
             return (Criteria) this;
         }
 
-        public Criteria andOidNotBetween(Integer value1, Integer value2) {
+        public Criteria andOidNotBetween(String value1, String value2) {
             addCriterion("oid not between", value1, value2, "oid");
             return (Criteria) this;
         }
