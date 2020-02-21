@@ -63,7 +63,6 @@ public class CartBiz {
 	 */
 	public Cloth showCart(HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
-		//System.out.println(user);
 		Cart cart=new Cart();
 		cart.setUid(user.getUid());
 		List<Cart> cartList=cBiz.findCartByUid(cart);
@@ -80,6 +79,38 @@ public class CartBiz {
 		}
 		cloth.setList(list);
 		return cloth;
+	}
+	
+	/**
+	 * 加入购物车
+	 * @param c
+	 * @return
+	 */
+	public int addCart(Cart c){
+		return cm.insertSelective(c);
+	}
+	
+	/**
+	 * 查看购物车
+	 * @param cart
+	 * @return
+	 */
+	public List<Cart> findByCid(Cart cart){
+		CartExample example=new CartExample();
+		example.createCriteria().andCidEqualTo(cart.getCid());
+		List<Cart> list= cm.selectByExample(example);
+		return list;
+	}
+	
+	/**
+	 * 修改购物车的数量
+	 * @param cart
+	 * @return
+	 */
+	public int update(Cart cart){
+		CartExample example=new CartExample();
+		example.createCriteria().andCidEqualTo(cart.getCid());
+		return cm.updateByExampleSelective(cart, example);
 	}
 	
 }

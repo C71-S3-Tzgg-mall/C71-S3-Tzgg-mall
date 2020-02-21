@@ -1,5 +1,6 @@
 package com.yc.C71S3Tzggmall.bean;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -544,73 +545,63 @@ public class OrderitemExample {
             return (Criteria) this;
         }
 
-        public Criteria andCartidIsNull() {
-            addCriterion("cartid is null");
+        public Criteria andTimeIsNull() {
+            addCriterion("time is null");
             return (Criteria) this;
         }
 
-        public Criteria andCartidIsNotNull() {
-            addCriterion("cartid is not null");
+        public Criteria andTimeIsNotNull() {
+            addCriterion("time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCartidEqualTo(String value) {
-            addCriterion("cartid =", value, "cartid");
+        public Criteria andTimeEqualTo(Timestamp value) {
+            addCriterion("time =", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidNotEqualTo(String value) {
-            addCriterion("cartid <>", value, "cartid");
+        public Criteria andTimeNotEqualTo(Timestamp value) {
+            addCriterion("time <>", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidGreaterThan(String value) {
-            addCriterion("cartid >", value, "cartid");
+        public Criteria andTimeGreaterThan(Timestamp value) {
+            addCriterion("time >", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidGreaterThanOrEqualTo(String value) {
-            addCriterion("cartid >=", value, "cartid");
+        public Criteria andTimeGreaterThanOrEqualTo(Timestamp value) {
+            addCriterion("time >=", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidLessThan(String value) {
-            addCriterion("cartid <", value, "cartid");
+        public Criteria andTimeLessThan(Timestamp value) {
+            addCriterion("time <", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidLessThanOrEqualTo(String value) {
-            addCriterion("cartid <=", value, "cartid");
+        public Criteria andTimeLessThanOrEqualTo(Timestamp value) {
+            addCriterion("time <=", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidLike(String value) {
-            addCriterion("cartid like", value, "cartid");
+        public Criteria andTimeIn(List<Timestamp> values) {
+            addCriterion("time in", values, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidNotLike(String value) {
-            addCriterion("cartid not like", value, "cartid");
+        public Criteria andTimeNotIn(List<Timestamp> values) {
+            addCriterion("time not in", values, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidIn(List<String> values) {
-            addCriterion("cartid in", values, "cartid");
+        public Criteria andTimeBetween(Timestamp value1, Timestamp value2) {
+            addCriterion("time between", value1, value2, "time");
             return (Criteria) this;
         }
 
-        public Criteria andCartidNotIn(List<String> values) {
-            addCriterion("cartid not in", values, "cartid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartidBetween(String value1, String value2) {
-            addCriterion("cartid between", value1, value2, "cartid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCartidNotBetween(String value1, String value2) {
-            addCriterion("cartid not between", value1, value2, "cartid");
+        public Criteria andTimeNotBetween(Timestamp value1, Timestamp value2) {
+            addCriterion("time not between", value1, value2, "time");
             return (Criteria) this;
         }
     }

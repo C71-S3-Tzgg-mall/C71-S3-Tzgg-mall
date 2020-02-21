@@ -6,6 +6,7 @@
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="type" jdbcType="VARCHAR" property="type" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    cartid, uid, cid, count, type
+    cartid, uid, cid, count, price, type
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.CartExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,9 @@
   </delete>
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Cart">
     insert into cart (cartid, uid, cid, 
-      count, type)
+      count, price, type)
     values (#{cartid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
-      #{count,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
+      #{count,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{type,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Cart">
     insert into cart
@@ -119,6 +120,9 @@
       </if>
       <if test="count != null">
         count,
+      </if>
+      <if test="price != null">
+        price,
       </if>
       <if test="type != null">
         type,
@@ -136,6 +140,9 @@
       </if>
       <if test="count != null">
         #{count,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
@@ -163,6 +170,9 @@
       <if test="record.count != null">
         count = #{record.count,jdbcType=INTEGER},
       </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
@@ -177,6 +187,7 @@
       uid = #{record.uid,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
       count = #{record.count,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=DOUBLE},
       type = #{record.type,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -194,6 +205,9 @@
       <if test="count != null">
         count = #{count,jdbcType=INTEGER},
       </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
@@ -205,6 +219,7 @@
     set uid = #{uid,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
       count = #{count,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
       type = #{type,jdbcType=VARCHAR}
     where cartid = #{cartid,jdbcType=INTEGER}
   </update>

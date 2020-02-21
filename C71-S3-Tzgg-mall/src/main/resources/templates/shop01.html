@@ -498,7 +498,7 @@
 									</li>
 									
 								</ul>						
-								<div id="byTid" class="tab-content"  > 
+								<div id="byTid" class="tab-content"  th:fragment="fbd"> 
 									<div role="tabpanel" class="tab-pane  active" id="arrival">    
 										<div class="row">
 											<div  class="right-all-product">  
@@ -538,12 +538,12 @@
 											</div>
 											<div class="previous-next">
 												<ul class="pagination">
-													<li class="previous"><a th:href="@{shop01(start=${page.pageNum-1})}" >上一页</a></li>
-													<li><a th:href="@{shop01(start=0)}">1</a></li>
+													<li><a th:href="@{shop01(start=2)}">首页</a></li>
+													<li class="previous"><a  th:onclick="|page('${page.pageNum-1}')|" >上一页</a></li>
 													<li class="active"><a th:href="@{shop01(start=1)}">2</a></li>
 													<li><a th:href="@{shop01(start=2)}">3</a></li>
 													<li><a th:href="@{shop01(start=3)}">4</a></li>
-													<li class="next"><a th:href="@{shop01(start=${page.pages})}">下一页</a></li>
+													<li class="next"><a th:onclick="|page('${page.pageNum+1}')|" >下一页</a></li>
 												</ul>
 											</div>
 										</div>
@@ -551,7 +551,7 @@
 									<div role="tabpanel" class="tab-pane" id="bestseller">    
 										<div class="row">
 											<div class="right-all-product" id="right-ap">  							
-												<ul th:each="cloth , clothStat : ${fCList}">
+												<ul th:each="cloth , clothStat : ${page.list}">
 													<li> 
 														<div class="row">
 															<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"> 
@@ -596,16 +596,16 @@
 														</div> 
 													</li>
 												</ul>
-												<div class="previous-next">
+												 <div class="previous-next">
 													<ul class="pagination">
-														<li class="previous" th:if="${pageInfo.prePage }"><a  th:href="@{pageNo=${pageInfo.pageNum-1}}">上一页</a></li>
-														<li ><a href="?pageNo=1">1</a></li>
-														<li class="active"><a href="?pageNo=2">2</a></li>
-														<li><a href="?pageNo=3">3</a></li>
-														<li><a href="?pageNo=4">4</a></li>
-														<li class="next" th:if="${pageInfo.nextPage }"><a  th:href="@{pageNo=${pageInfo.pageNum+1}">下一页</a></li>
+														<li class="previous"><a th:href="@{shop01(start=${page.pageNum-1})}" >上一页</a></li>
+														<li ><a th:href="@{shop01(start=0)}">1</a></li>
+														<li class="active"><a th:href="@{shop01(start=1)}">2</a></li>
+														<li><a th:href="@{shop01(start=2)}">3</a></li>
+														<li><a th:href="@{shop01(start=3)}">4</a></li>
+														<li class="next"><a th:href="@{shop01(start=${page.pages})}">下一页</a></li>
 													</ul>
-												</div>
+												</div> 
 											</div>  
 										</div>
 									</div>
@@ -891,7 +891,16 @@
     </body>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-
+function page(pageNum){
+	if(pageNum<=0){
+		pageNum=1;
+	}
+	var start=pageNum
+	$.post("nfCByTime.do",{start:start},function(data){
+		alert(pageNum);
+		$("#byTid").html(data);
+	});
+}
 </script>
 </html>
 

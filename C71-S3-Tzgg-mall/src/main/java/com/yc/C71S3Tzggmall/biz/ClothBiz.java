@@ -97,6 +97,11 @@ public class ClothBiz {
 		return count;	
 	}
 	
+	/**
+	 *	根据商品id查找
+	 * @param cid
+	 * @return
+	 */
 	public Cloth selectCloth(int cid){
 		ClothExample example=new ClothExample();
 		example.createCriteria().andCidEqualTo(cid);

@@ -9,7 +9,7 @@
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="count" jdbcType="INTEGER" property="count" />
-    <result column="cartid" jdbcType="VARCHAR" property="cartid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    oiid, oid, totalPrice, status, uid, cid, count, cartid
+    oiid, oid, totalPrice, status, uid, cid, count, time
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.OrderitemExample" resultMap="BaseResultMap">
     select
@@ -105,10 +105,10 @@
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Orderitem">
     insert into orderitem (oiid, oid, totalPrice, 
       status, uid, cid, count, 
-      cartid)
+      time)
     values (#{oiid,jdbcType=INTEGER}, #{oid,jdbcType=VARCHAR}, #{totalprice,jdbcType=DOUBLE}, 
       #{status,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, 
-      #{cartid,jdbcType=VARCHAR})
+      #{time,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Orderitem">
     insert into orderitem
@@ -134,8 +134,8 @@
       <if test="count != null">
         count,
       </if>
-      <if test="cartid != null">
-        cartid,
+      <if test="time != null">
+        time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -160,8 +160,8 @@
       <if test="count != null">
         #{count,jdbcType=INTEGER},
       </if>
-      <if test="cartid != null">
-        #{cartid,jdbcType=VARCHAR},
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -195,8 +195,8 @@
       <if test="record.count != null">
         count = #{record.count,jdbcType=INTEGER},
       </if>
-      <if test="record.cartid != null">
-        cartid = #{record.cartid,jdbcType=VARCHAR},
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -212,7 +212,7 @@
       uid = #{record.uid,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
       count = #{record.count,jdbcType=INTEGER},
-      cartid = #{record.cartid,jdbcType=VARCHAR}
+      time = #{record.time,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -238,8 +238,8 @@
       <if test="count != null">
         count = #{count,jdbcType=INTEGER},
       </if>
-      <if test="cartid != null">
-        cartid = #{cartid,jdbcType=VARCHAR},
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
       </if>
     </set>
     where oiid = #{oiid,jdbcType=INTEGER}
@@ -252,7 +252,7 @@
       uid = #{uid,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
       count = #{count,jdbcType=INTEGER},
-      cartid = #{cartid,jdbcType=VARCHAR}
+      time = #{time,jdbcType=TIMESTAMP}
     where oiid = #{oiid,jdbcType=INTEGER}
   </update>
 </mapper>

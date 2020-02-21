@@ -32,22 +32,6 @@ public class OrderAction {
 		return "order";
 	}
 	
-	@ResponseBody
-	@RequestMapping("settle")
-	public Result order(HttpServletRequest request,Model m){
-		User user=(User) request.getSession().getAttribute("user");
-		String cids = request.getParameter("cids");
-		// 分割字符串
-		String[] infos = cids.split(",");
-		List<Integer> cidsList = new ArrayList<Integer>();
-		for (String cid : infos) {
-			if (StringUtil.isNotEmpty(cids)) {
-				cidsList.add(Integer.parseInt(cid));
-			}
-		}
-		int uid=user.getUid();
-		oBiz.settle(cidsList, uid);
-		return new Result(1,"checkout-page");
-	}
+	
 	
 }

@@ -35,7 +35,7 @@ public class IndexAction {
 		List<Cart> cartList=cartBiz.findCartByUid(cart);
 		int total=0;
 		for (Cart c : cartList) {
-			total += c.getCount()*c.getType();
+			total += c.getCount()*c.getPrice();
 		}
 		m.addAttribute("total",total);
 		m.addAttribute("cartSize", cartList.size());

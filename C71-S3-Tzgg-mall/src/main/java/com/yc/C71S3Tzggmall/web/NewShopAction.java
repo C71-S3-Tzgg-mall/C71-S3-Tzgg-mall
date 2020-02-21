@@ -48,7 +48,9 @@ public class NewShopAction {
 	 * @param m
 	 * @return
 	 */
-	public String type(Model m,HttpServletRequest request){
+	public String type(Model m,HttpServletRequest request,
+			@RequestParam(value = "start",defaultValue = "0")int start,
+            @RequestParam(value = "size",defaultValue = "5")int size){
 		User user=(User) request.getSession().getAttribute("user");
 		if(user==null){
 			return "login";
@@ -58,7 +60,7 @@ public class NewShopAction {
 		List<Cart> cartList=cartBiz.findCartByUid(cart);
 		int total=0;
 		for (Cart c : cartList) {
-			total += c.getCount()*c.getType();
+			total += c.getCount()*c.getPrice();
 		}
 		m.addAttribute("total",total);
 		m.addAttribute("cartSize", cartList.size());
@@ -76,14 +78,18 @@ public class NewShopAction {
 		m.addAttribute("count",clothCount);
 		m.addAttribute("typeList",typeList);
 		m.addAttribute("tagList",tagList);
+		if(start<=0){
+			start=1;
+		}
+		PageHelper.startPage(start,PAGE_SIZE);
 		List<Cloth> list=cBiz.findClothByTime();
-		m.addAttribute("fCList", list);
+		m.addAttribute("fCList",list);
 		Cloth cloth=cartBiz.showCart(request);
 		m.addAttribute("cartList", cloth);
 		return "newShop";
 	}
 	
-	
+	 
 	@RequestMapping("nfCByTime.do")
 	/**
 	 * 根据时间查询新品
@@ -106,26 +112,43 @@ public class NewShopAction {
 	public String findClothByCon(Model m,Cloth cloth){
 		List<Cloth> list=cBiz.findClothByCon(cloth);
 		m.addAttribute("fCList",list);
-		return "newShop::fbd";
+		return "babyShop::fbd";
 	}	
 	
-	@RequestMapping("shop01")
-	/**
+	/*@RequestMapping("shop")
+	*//**
 	 * 分页查询
 	 * @param m
 	 * @param start
 	 * @param size
 	 * @return
-	 */
+	 *//*
 	public String findClothByCon(Model m,@RequestParam(value = "start",defaultValue = "0")int start,
             @RequestParam(value = "size",defaultValue = "5")int size){
+		if(start<=0){
+			start=1;
+		}
+		PageHelper.startPage(start,PAGE_SIZE);
+		List<Cloth> list=cBiz.selectCloth();
+		PageInfo<Cloth> pageInfo = new PageInfo<Cloth>(list);
+		System.out.println(pageInfo);
+		m.addAttribute("page",pageInfo);
+		return "shop01::fbd";
+	}
+	
+	@RequestMapping("shop01")
+	public String shop(Model m,@RequestParam(value = "start",defaultValue = "0")int start,
+            @RequestParam(value = "size",defaultValue = "5")int size){
+		if(start<=0){
+			start=1;
+		}
 		PageHelper.startPage(start,PAGE_SIZE);
 		List<Cloth> list=cBiz.selectCloth();
 		PageInfo<Cloth> pageInfo = new PageInfo<Cloth>(list);
 		System.out.println(pageInfo);
 		m.addAttribute("page",pageInfo);
 		return "shop01";
-	}
+	}*/
 	
 	
 }

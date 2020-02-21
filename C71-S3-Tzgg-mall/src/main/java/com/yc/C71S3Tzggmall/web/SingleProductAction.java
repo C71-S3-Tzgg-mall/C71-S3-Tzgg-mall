@@ -9,13 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.C71S3Tzggmall.bean.Cloth;
+import com.yc.C71S3Tzggmall.bean.Type;
 import com.yc.C71S3Tzggmall.biz.ClothBiz;
+import com.yc.C71S3Tzggmall.biz.TypeBiz;
 
 @Controller
 public class SingleProductAction {
 	
 	@Resource
 	private ClothBiz cBiz;
+	
+	@Resource
+	private TypeBiz tBiz;
 	
 	/**
 	 * 局部刷新
@@ -33,6 +38,8 @@ public class SingleProductAction {
 	
 	@RequestMapping("single-product")
 	public String single(Model m){
+		List<Type> typeList=tBiz.selectType();
+		m.addAttribute("type",typeList);
 		return "single-Product";
 	}
 	

@@ -1,5 +1,6 @@
 package com.yc.C71S3Tzggmall.bean;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class Orderitem {
@@ -17,7 +18,7 @@ public class Orderitem {
 
     private Integer count;
 
-    private String cartid;
+    private Timestamp time;
     
     private List<Cloth> list;
     
@@ -77,13 +78,15 @@ public class Orderitem {
         this.count = count;
     }
 
-    public String getCartid() {
-        return cartid;
-    }
+    
 
-    public void setCartid(String cartid) {
-        this.cartid = cartid == null ? null : cartid.trim();
-    }
+	public Timestamp getTime() {
+		return time;
+	}
+
+	public void setTime(Timestamp time) {
+		this.time = time;
+	}
 
 	public List<Cloth> getList() {
 		return list;

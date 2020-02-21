@@ -419,46 +419,6 @@
 												</div>
 											</div>
 										</div>
-										<div class="color">
-											<div class="fs-head">
-												<h4 class="pp-left-heading">颜色</h4s>
-											</div>	 
-											<ul class="check">
-												<li>  
-													<span class="box"></span>
-													<p><a href="#">Beige<span>(13)</span> </a></p>
-													
-												</li>
-												<li>  
-													<span class="box white"></span>
-													<p><a href="#">White<span>(13)</span></a></p>   
-												</li>
-												<li>  
-													<span class="box black"></span>
-													<p><a href="#"> Black<span>(13)</span></a> </p>
-												</li>
-												<li>  
-													<span class="box orange"></span>
-													<p><a href="#">Orange<span>(13)</span></a> </p>
-												</li>
-												<li>  
-													<span class="box blue"></span> 
-													<p><a href="#"> Blue<span>(13)</span></a></p> 
-												</li>
-												<li>  
-													<span class="box green"></span> 
-													<p><a href="#">Green<span>(13)</span></a></p> 
-												</li>
-												<li>  
-													<span class="box yellow"></span> 
-													<p><a href="#">Yellow<span>(13)</span></a></p>  
-												</li>
-												<li>  
-													<span class="box pink"></span>
-													<p><a href="#"> Pink<span>(13)</span></a></p>  
-												</li>
-											</ul> 
-										</div>
 									</form>
 								</div>
 							</div> 						
@@ -497,53 +457,53 @@
 								<div id="byTid" class="tab-content" th:fragment="fbd" > 
 									<div role="tabpanel" class="tab-pane  active" id="arrival">    
 										<div class="row">
-											<div  class="right-all-product">  
-												<div  class="col-lg-4 col-md-4 col-sm-6 col-xs-12" th:each="cloth , clothStat : ${fCList}">
-													<div class="single-product"> 
-														<div class="product-image">
-															 <a style="cursor:pointer;"><img th:onclick="|singleProduct('${cloth.cid}')|" th:src="@{${cloth.image}}" alt="" />  
-															 </a>
-															 <div class="efface"></div>
-															<div class="cart-box"> 
-																<div class="product-text">
-																	<a style="cursor:pointer;"><span class="heart" th:onclick="|addWishlist('${cloth.cid}')|"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
-																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
-																</div>
-																<div class="link">
-																	<a href="#"><i class="fa fa-search-plus"></i></a>
-																</div> 
-															</div> 													
-														</div> 
-														<div class="price-box"> 
-															<div class="rank">
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart"></i></a>
-																<a href="#"><i class="fa fa-heart-o"></i></a>
-															</div> 
-															<a href="single-product.html"><p th:text=${cloth.name}></p></a>
-															<div class="price">
-																<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
+										<div class="right-all-product">
+											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
+												th:each="cloth , clothStat : ${fCList}">
+												<div class="single-product">
+													<div class="product-image">
+														<a style="cursor: pointer;"
+															th:onclick="|singleProduct('${cloth.cid}')|"><img
+															th:src="@{${cloth.image}}" alt="" /> </a>
+														<div class="efface"></div>
+														<div class="cart-box">
+															<div class="product-text">
+																<a style="cursor: pointer;"th:onclick="|addWishlist('${cloth.cid}')|">
+																<span class="heart"><i class="fa fa-heart"></i></span></a> 
+																<a style="cursor: pointer;" th:onclick="|addCart('${cloth.cid}','${cloth.realprice}')|"><p>加入购物车</p></a> <a href="#">
+																<span class="retweet"><i class="fa fa-retweet"></i></span></a>
+															</div>
+															<div class="link">
+																<a href="#"><i class="fa fa-search-plus"></i></a>
 															</div>
 														</div>
-														<a href="#" th:if="${cloth.restcount} lt '100'"><span class="leval" th:text="${'剩余'+cloth.restcount}"></span></a>
-													</div>  
+													</div>
+													<div class="price-box">
+														<div class="rank">
+															<a href="#"><i class="fa fa-heart"></i></a> <a href="#"><i
+																class="fa fa-heart"></i></a> <a href="#"><i
+																class="fa fa-heart"></i></a> <a href="#"><i
+																class="fa fa-heart"></i></a> <a href="#"><i
+																class="fa fa-heart-o"></i></a>
+														</div>
+														<a href="single-product.html"><p th:text=${cloth.name}></p></a>
+														<div class="price">
+															<a href=""><h5 th:text="'￥'+${cloth.realprice}"></h5></a>
+														</div>
+													</div>
+													<a href="#" th:if="${cloth.restcount} lt '100'"><span
+														class="leval" th:text="${'剩余'+cloth.restcount}"></span></a>
 												</div>
 											</div>
 											<div class="previous-next">
 												<ul class="pagination">
-													<li class="previous"><a href="#">上一页</a></li>
-													<li><a href="#">1</a></li>
-													<li class="active"><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#">4</a></li>
-													<li class="next"><a href="#">下一页</a></li>
+													<li class="previous"><a >我是有底线的</a></li>
+													<li class="next"><a >大量新品正在路上</a></li>
 												</ul>
 											</div>
 										</div>
-									</div> 
+									</div>
+									</div>
 									<div role="tabpanel" class="tab-pane" id="bestseller">    
 										<div class="row">
 											<div class="right-all-product" id="right-ap">  							
@@ -573,8 +533,8 @@
 																	<div class="action">
 																		<div class="cart-box"> 
 																			<div class="product-text">
-																				<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																				<a href="#"><p>加入购物车</p></a>
+																				<a style="cursor:pointer;" th:onclick="|addWishlist('${cloth.cid}')|"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																				<a style="cursor:pointer;" th:onclick="|addCart('${cloth.cid}','${cloth.realprice}')|"><p>加入购物车</p></a>
 																				<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
 																				<a href="#"><i class="fa fa-search-plus"></i></a>
 																			</div> 
@@ -593,15 +553,11 @@
 													</li>
 												</ul>
 												<div class="previous-next">
-													<ul class="pagination">
-														<li class="previous"><a href="#">上一页</a></li>
-														<li><a href="#">1</a></li>
-														<li class="active"><a href="#">2</a></li>
-														<li><a href="#">3</a></li>
-														<li><a href="#">4</a></li>
-														<li class="next"><a href="#">下一页</a></li>
-													</ul>
-												</div>
+												<ul class="pagination">
+													<li class="previous"><a >我是有底线的</a></li>
+													<li class="next"><a >大量新品正在路上</a></li>
+												</ul>
+											</div>
 											</div>  
 										</div>
 									</div>
@@ -924,6 +880,13 @@ function singleProduct(cid){
 //加入收藏夹
 function addWishlist(cid){
 	$.post('addWishlist.do',{cid:cid},function(result){
+		alert(result.msg);
+	});
+}
+
+//加入购物车
+function addCart(cid,price){
+	$.post('addCart.do',{cid:cid,price:price},function(result){
 		alert(result.msg);
 	});
 }

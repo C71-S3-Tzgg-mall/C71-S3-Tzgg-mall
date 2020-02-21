@@ -1,5 +1,7 @@
 package com.yc.C71S3Tzggmall.biz;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -33,22 +35,22 @@ public class OrderItemBiz {
 	 * 生成订单
 	 * @return
 	 */
-	public  void  settle(List<Integer> cidsList,int uid){
+	public  void  settle(List<Integer> cidsList,int uid,String oid){
 		Orderitem orderitem=new Orderitem();
 		List<Cart> list = cBiz.findCartByCid(cidsList);
 		double totalPrice=0;
-		//生成订单号
-		String oid=""+System.currentTimeMillis();
 		for(Cart c:list){
 			System.out.println(c.getCartid());
-			totalPrice=c.getCount()*c.getType();
+			totalPrice=c.getCount()*c.getPrice();
 			orderitem.setTotalprice(totalPrice);
 			orderitem.setCid(c.getCid());
 			orderitem.setUid(uid);
 			orderitem.setCount(c.getCount());
 			orderitem.setOid(oid);
 			orderitem.setStatus("未支付");
-			orderitem.setCartid(""+c.getCid());
+			Date d=new Date();      
+			Timestamp t = new Timestamp(d.getTime());
+			orderitem.setTime(t);
 			om.insert(orderitem);
 		}
 		
@@ -82,5 +84,17 @@ public class OrderItemBiz {
 		OrderitemExample example=new OrderitemExample();
 		example.createCriteria().andCidEqualTo(item.getCid());
 		return om.updateByExampleSelective(item, example);
+	}
+	
+	/**
+	 * 根据订单号查询订单
+	 * @param oid
+	 * @return
+	 */
+	public List<Orderitem> findOrderByOid(String oid){
+		OrderitemExample example=new OrderitemExample();
+		example.createCriteria().andOidEqualTo(oid);
+		List<Orderitem> list=om.selectByExample(example);
+		return list;
 	}
 }

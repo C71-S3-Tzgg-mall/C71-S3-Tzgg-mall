@@ -237,7 +237,7 @@
 											<li><a href="shop">Lifestyle</a></li>
 										</ul></li>
 								</ul></li>
-							<li class="mega-menu-three"><a href="babyShop">婴儿（0-24个月）</a>
+							<li class="mega-menu-three"><a href="childShop">婴儿（0-24个月）</a>
 								<ul class="sub-menu">
 									<li><a href="shop">dresses</a>
 										<ul class="sub-menu">
@@ -298,248 +298,8 @@
 											<li><a href="shop">day</a></li>
 											<li><a href="shop">Cocktail</a></li>
 										</ul></li>
-								</ul>
-									<!-- Header Area-->	
-        <header class="header-area">
-        	<div class="container">
-        		<div class="row">	
-					<div class="col-lg-12">
-						<div class="headet-top">						
-							<div class="htop-one">
-								<ul class="curency">
-									<li>
-										<a href="#">售后服务热线<i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="#">4546-67900<span>(中国)</span></a></li> 
-											<li><a href="#">3889-34468<span>(其他)</span></a></li> 
-										</ul>
-									</li> 
-								</ul>
-							</div>
-							<div class="htop-one">
-								<ul class="lenguage">
-									<li>
-										<a href="#">在线客服</a>									
-									</li> 
-								</ul>
-							</div>
-							<div class="htop-one">
-								<ul class="lenguage">
-									<li>
-										<a href="#">登录</a>									
-									</li> 
-								</ul>
-							</div>
-							<div class="htop-one last">
-								<ul class="account">
-									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="wishlist.html">我的收藏</a></li> 
-											<li><a href="cart">购物车</a></li> 
-											<li><a href="#">退出</a></li> 
-										</ul>										
-									</li> 
-								</ul>
-							</div>
-						</div> 
-					</div>	
-				</div>
-        	</div>
-			<div class="container">
-				<div class="header-midile">  
-					<div class="row"> 
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-							<div class="lago">
-								<a href="index"><img src="img/logo.png" alt="lago" /></a>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="search">
-								<form action="#">
-									<input type="text" placeholder="search">
-									<input type="submit" value="search">
-								</form>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
-							<ul class="curt">
-								<li><a class="total-cart-b" href="cart">
-										<span th:text="${cartSize}">2</span>
-										<p>购物车</p>
-										<h6 th:text="'￥'+${total}">￥ 125.19</h6>									
-									</a>
-									<div class="curt-list" >
-										<div th:each="cart:${cartList}">
-											<ul th:each="cartItem,cartStat:${cartList.list}" th:if="${cartStat.index} lt '2'">
-												<li class="curt-list-li"> 
-													<a href="#"><img th:src="${cartItem.image}"></a>
-													<a href="#"><span th:text="${cartItem.count}+' X'" class="curt-list-item-color">1 X</span></a>
-													<!-- <span>S, Yellow</span> -->
-													<h6 th:text="'￥'+${cartItem.realprice}"></h6>
-												</li>
-											</ul>
-										</div>
-									<p class="totel" >totel</p><h6 th:text="'￥'+${total}">£ 61.19</h6>
-									<button><a href="cart">进入购物车</a></button>
-									</div>									
-								</li>
-							</ul> 						
-						</div> 
-					</div>
-				</div>
-			</div> 
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12"> 
-						<div class="main-menu">
-							<ul class="nav floatleft">
-								<li class="active"><a href="index">首页</a>
-								</li>
-								<li class="mega-menu-one"><a href="newShop">新品</a>
-									<ul class="sub-menu">
-										<li><a href="shop">dresses</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Sports</a></li> 
-											</ul>
-										</li>
-										<li><a href="shop">clothing</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li> 
-											</ul>
-										</li>
-										<li><a href="shop">handbags</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">Evening</a></li> 
-											</ul>
-										</li>
-										<li><a href="shop">shoes</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li> 
-											</ul>
-										</li>
-										<li> 
-											 <a href="shop"><img src="img/block_menu.png" alt="" /></a>  											 
-										</li>
-									</ul>								
-								</li>
-								<li class="mega-menu-two"><a href="childShop">幼儿（1-5岁）</a> 	
-									<ul class="sub-menu">
-										<li><a href="shop">dresses</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Bootees</a></li>
-												<li><a href="shop">Blazers</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">clothing</a>
-											<ul class="sub-menu">
-												<li><a href="shop">coats</a></li>
-												<li><a href="shop">T-shirts</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">handbags</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Bands</a></li>
-												<li><a href="shop">Furniture</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">shoes</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Bands</a></li>
-												<li><a href="shop">Lifestyle</a></li>  
-											</ul>
-										</li> 
-									</ul>								
-								</li>
-								<li class="mega-menu-three"><a href="babyShop">婴儿（0-24个月）</a>
-									<ul class="sub-menu">
-										<li><a href="shop">dresses</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Sports</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">clothing</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">handbags</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">Evening</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">shoes</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li> 
-											</ul>
-										</li> 
-									</ul>								
-								</li>
-								<li class="mega-menu-for"><a href="specialShop">特卖</a> 
-									<ul class="sub-menu">
-										<li><a href="shop">dresses</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Sports</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">clothing</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">handbags</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">Evening</a></li> 
-											</ul>
-										</li>
-										<li><a href="#">shoes</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li> 
-											</ul>
-										</li> 
-									</ul>								
-								</li>
-							</ul> 
-						</div>	
-					</div>
-				</div>				
-			</div>
-        </header>
+								</ul></li>
+
 						</ul>
 					</div>
 				</div>
@@ -570,16 +330,20 @@
 						<ul class="nav-tabs" role="tablist">
 							<li style="width: 25%" role="presentation" class="active"><a
 								href="#summary" aria-controls="summary" role="tab"
-								data-toggle="tab"><span><em>01.</em>商品</span></a></li>
+								data-toggle="tab"> <span><em>01.</em>商品</span>
+							</a></li>
 							<li style="width: 25%" role="presentation"><a
 								href="#address" aria-controls="address" role="tab"
-								data-toggle="tab"><span><em>02.</em>地址</span></a></li>
+								data-toggle="tab"> <span><em>02.</em>地址</span>
+							</a></li>
 							<li style="width: 25%" role="presentation"><a
 								href="#payment" aria-controls="payment" role="tab"
-								data-toggle="tab"><span><em>03.</em>付款</span></a></li>
+								data-toggle="tab"> <span onclick="pay()"><em>03.</em >付款</span>
+							</a></li>
 							<li style="width: 25%" role="presentation"><a
 								href="#shipping" aria-controls="shipping" role="tab"
-								data-toggle="tab"><span><em>04.</em>运送</span></a></li>
+								data-toggle="tab"> <span onclick="ship()"><em>04.</em>运送</span>
+							</a></li>
 						</ul>
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active  table-responsive"
@@ -615,7 +379,7 @@
 											<td class="td-img-tr"><span class="td-img"> <img
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
-											<td class="td-p-title"><a href="#"><p
+											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
 														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> <small>SKU
 													:span</small> <small>Size : S, Color : Yellow</small></td>
 											<td class="td-stok"><span th:text="${orderItem.detail}">In
@@ -672,8 +436,8 @@
 											<select id="area">
 												<option class="input" value="石门县">石门县</option>
 												<option class="input" value="珠晖区">珠晖区</option>
-											</select> <label class="input-label">具体地址</label> <input
-												class="input" type="text" id="addr" th:value="${town}">
+											</select> <label class="input-label">具体地址</label> <input class="input"
+												type="text" id="addr" th:value="${town}">
 
 										</form>
 										<button class="button" type="submit" onclick="address()">保存</button>
@@ -712,7 +476,7 @@
 											<td class="td-img-tr"><span class="td-img"> <img
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
-											<td class="td-p-title"><a href="#"><p
+											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
 														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> <small>SKU
 													:span</small> <small>Size : S, Color : Yellow</small></td>
 											<td class="td-stok" style="cursor: pointer;"
@@ -739,7 +503,7 @@
 								</table>
 							</div>
 							<div role="tabpanel" class="tab-pane  table-responsive"
-								id="shipping">
+								id="shipping" th:fragment="shipping">
 								<table class="main-tabel table table-bordered">
 									<tbody class="sceand-tabel tabel-bootom"
 										th:each="order,orderStat:${order}"
@@ -748,7 +512,7 @@
 											<td class="td-img-tr"><span class="td-img"> <img
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
-											<td class="td-p-title"><a href="#"><p
+											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
 														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> <small>SKU
 													:span</small> <small>Size : S, Color : Yellow</small></td>
 											<td class="td-t-amount">
@@ -953,33 +717,51 @@
 </body>
 
 <script type="text/javascript">
-//删除订单
-function del(oiid){
-	$.post("delOrder",{oiid:oiid},function(data){
-		 $("#summary").html(data);
-	});
-}
+	//删除订单
+	function del(oiid) {
+		$.post("delOrder", {oiid : oiid}, function(data) {
+			$("#summary").html(data);
+		});
+	}
 
-//修改地址
-function address(){
-	var tel=$('#tel').val();
-	var province=$('#province').val();
-	var city=$('#city').val();
-	var area=$('#area').val();
-	var addr=$('#addr').val();
-	var description=$('#description').val();
-	var address=province+city+area+addr;
-	$.post('updateAddr',{address:address,tel:tel},function(data){
-		$("#address").html(data);
-	})
-}
+	//修改地址
+	function address() {
+		var tel = $('#tel').val();
+		var province = $('#province').val();
+		var city = $('#city').val();
+		var area = $('#area').val();
+		var addr = $('#addr').val();
+		alert(addr);
+		var description = $('#description').val();
+		var address = province + city + area + addr;
+		$.post('updateAddr', {address : address,tel : tel}, function(data) {
+			$("#address").html(data);
+		})
+	}
 
-function upd(cid){
-	$.post('updateStatu',{cid:cid},function(data){
-		$("#payment").html(data);
-	})
-}
+	function upd(cid) {
+		$.post('updateStatu', {cid : cid}, function(data) {
+			$("#payment").html(data);
+		})
+	}
 
+	function ship() {
+		$.post('updateShip', function(data) {
+			$("#shipping").html(data);
+		})
+		
+	}
+	function pay() {
+		$.post('updatePay', function(data) {
+			$("#payment").html(data);
+		})
+		
+	}
+	
+	//跳转到详情页
+	function singleProduct(cid){
+		window.location.href="single-product?cid="+cid+"";
+	}
 </script>
 </html>
 

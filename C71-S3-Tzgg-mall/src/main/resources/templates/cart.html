@@ -578,8 +578,8 @@
 			cids+=arr[i].value+",";
 		}
 		console.log(cids);
-		$.post("settle",{cids:cids},function(data){
-			$('#totalPrice').html(totalPrice);
+		$.post("settle",{cids:cids},function(result){
+			window.location.href=result.msg;
 		}); 
   }
 </script>

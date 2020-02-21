@@ -458,8 +458,8 @@
 															 <a href="#"><img th:src="@{${cloth.image}}" alt="" /> </a>
 															<div class="cart-box"> 
 																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
+																	<a style="cursor:pointer;" th:onclick="|addWishlist('${cloth.cid}')|"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a style="cursor:pointer;" th:onclick="|addCart('${cloth.cid}','${cloth.realprice}')|"><p>加入购物车</p></a>
 																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
 																</div>
 																<div class="link">
@@ -504,8 +504,8 @@
 															 <a href="#"><img th:src="@{${cloth.image}}" alt="" /> </a>
 															<div class="cart-box"> 
 																<div class="product-text">
-																	<a href="#"><span class="heart"><i class="fa fa-heart"></i></span></a>
-																	<a href="#"><p>加入购物车</p></a>
+																	<a style="cursor:pointer;" th:onclick="|addWishlist('${cloth.cid}')|"><span class="heart"><i class="fa fa-heart"></i></span></a>
+																	<a style="cursor:pointer;" th:onclick="|addCart('${cloth.cid}','${cloth.realprice}')|"><p>加入购物车</p></a>
 																	<a href="#"><span class="retweet"><i class="fa fa-retweet"></i></span></a> 
 																</div>
 																<div class="link">
@@ -1022,5 +1022,21 @@
 		============================================ -->           
         <script src="js/main.js"></script>
     </body>
+
+<script type="text/javascript">
+//加入收藏夹
+function addWishlist(cid){
+	$.post('addWishlist.do',{cid:cid},function(result){
+		alert(result.msg);
+	});
+}
+
+//加入购物车
+function addCart(cid,price){
+	$.post('addCart.do',{cid:cid,price:price},function(result){
+		alert(result.msg);
+	});
+}
+</script>
 </html>
 
