@@ -1,14 +1,19 @@
 package com.yc.C71S3Tzggmall.biz;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.yc.C71S3Tzggmall.bean.OrderitemExample;
 import com.yc.C71S3Tzggmall.bean.User;
 import com.yc.C71S3Tzggmall.bean.UserExample;
 import com.yc.C71S3Tzggmall.dao.UserMapper;
+import com.yc.C71S3Tzggmall.vo.Bill;
 
 
 
@@ -36,6 +41,9 @@ public class UserBiz {
 	}
 	
 	public User register(User user){
+		Date d=new Date(); 
+		Timestamp time= new Timestamp(d.getTime());
+		user.setTime(time);
 		um.insert(user);
 		return user;
 	}
@@ -56,5 +64,42 @@ public class UserBiz {
 	
 	public User selectUserByUid(User user){
 		return um.selectByPrimaryKey(user.getUid());
+	}
+	
+	/**
+	 * 查询会员人数
+	 * @return
+	 */
+	public int selectTNum(){
+		UserExample example=new UserExample();
+		example.createCriteria().andTypeEqualTo("会员");
+		return (int) um.countByExample(example);
+	}
+	
+	public List<Bill> findMonthCount(){
+		List<Bill> list=new ArrayList<>();
+		Bill bill=null;
+		Date d=new Date(); 
+		Timestamp t01= null;
+		Timestamp t =null;
+		UserExample example=null;
+		int count=0;
+		int time=0;
+		String time01;
+		for(int n=6;n>=0;n--){
+			example=new UserExample();
+			t= new Timestamp(d.getTime()- n * 24 * 60 * 60 * 1000);
+			t01=new Timestamp(d.getTime()- (n+1) * 24 * 60 * 60 * 1000);
+			example.createCriteria().andTimeBetween(t01, t);
+			count=(int) um.countByExample(example);
+			bill=new Bill();
+			bill.setCount(count);
+			time01=t+"";
+			time = (Integer.parseInt(time01.substring(8, 10)));
+			bill.setTime(time);
+			list.add(bill);
+		}
+		
+		return list;
 	}
 }

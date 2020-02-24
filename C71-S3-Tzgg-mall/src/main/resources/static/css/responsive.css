@@ -319,7 +319,7 @@ div.bg-bd div.single-promotion {
 .cut-page-tab ul.nav-tabs li.active a::before {
   position: inherit;
 }
-.cut-page-tab ul.nav-tabs li { 
+.cut-page-tab ul.nav-tabs  { 
   border-right: 2px solid #ddd; 
 }
 .cut-page-tab ul.nav-tabs li span { 

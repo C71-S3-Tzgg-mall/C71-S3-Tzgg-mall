@@ -1,18 +1,24 @@
 package com.yc.C71S3Tzggmall.bean;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 public class Admin {
     private Integer aid;
 
     private String name;
-
+    
+	@NotEmpty(message="密码不能为空")
     private String pwd;
 
     private String cardid;
-
+    
+    @Email(message="请输入正确的邮箱格式！")
+	@NotEmpty(message="邮箱不能为空")
     private String email;
 
     private String tel;
-
+    
     private String address;
 
     private String sex;

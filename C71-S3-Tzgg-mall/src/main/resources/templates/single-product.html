@@ -30,7 +30,7 @@
 		<!-- Bootstrap CSS
 		============================================ -->      
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        
+        <link rel="stylesheet" href="css/starts.css">
 		<!-- owl.carousel CSS
 		============================================ -->      
         <link rel="stylesheet" href="css/owl.carousel.css">
@@ -114,7 +114,7 @@
 							<div class="htop-one">
 								<ul class="lenguage">
 									<li>
-										<a href="#">登录</a>									
+										<a href="login">登录</a>									
 									</li> 
 								</ul>
 							</div>
@@ -358,24 +358,10 @@
 												<img id="zoom1" th:src="@{${product.image}}"  alt="img" />
 											 </a>
 										</div> 
-										<a href="#"><span class="leval">new</span></a>  
-										<div class="social-button">
-											<button type="button" class="twitter"><i class="fa fa-twitter "></i>twittet</button>
-												
-											<button type="button" class="facebook"> <i class="fa fa-facebook "></i>facebook </button>
-												
-											<button type="button" class=" google-plus"> <i class="fa fa-google-plus"></i>google+ </button>
-												
-											<button type="button" class="pinterest"> <i class="fa fa-pinterest"></i>pinterest </button>
-												
-										</div>
-										<div class="print"> 
-											<ul class="clear">
-												<li><a class="envelop" href="#"><i class="fa fa-envelope"></i></a></li>
-												<li><a class="print" href="#"><i class="fa fa-print"></i></a></li>
-												<li><a class="headt" href="#"><i class="fa fa-heart"></i></a></li>
-											</ul>
-										</div>	
+										<a href="#" th:if="${product.restcount} lt '100'">
+											<span class="leval" th:text="${'剩余'+product.restcount}"></span>
+										</a>
+											
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-7">
 										<div class="price-box"> 
@@ -388,67 +374,41 @@
 											<div class="action">
 												<div class="cart-box"> 
 													<div class="quantity">
-														<p class="product-condition">
-															数量
-														</p>
-														<div class="dec qtybutton">-</div> 
-														<input type="number" value="1"> 
-														<div class="inc qtybutton">+</div>
-													</div> 
-													<div class="product-text"> 
-														<a href="#"><p>加入购物车</p></a>  
-													</div> 
+				                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+				                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+				                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+				                                    </div>
+													 
 												</div> 		
 											</div>
-											<div class="p-size clear">
-												<p class="product-condition clear">
-													尺码:
-												</p>
-												<div class="size-selact">
-													<select name="#" id="#">
-														<option value="">S</option>
-														<option value="">M</option>
-														<option value="">L</option>						
-													</select> 
-												</div>
-											</div> 
-											<div class="color-list">
-												<p class="product-condition clear">
-													颜色
-												</p> 	
-												<ul>
-													<li class="a-active"><a class="orange" href="#"></a></li>
-													<li><a class="pink" href="#"></a></li>
-												</ul>
-											</div> 
+											<div class="product-text"> 
+												<a th:onclick="|addCart('${product.cid}','${product.realprice}')|"><p>加入购物车</p></a>  
+											</div>
 											<div class="p-item">
-												<p class="product-condition">
-													298 Items
+												<p class="product-condition" th:text="${product.restcount}">
+													
 												</p> 
 												<span>现货</span>
 											</div>
 											<div class="single-rating">
 												<p class="product-condition">
-													rating
+													评分
 												</p> 
-												<div class="rank">
-													<a href="#"><i class="fa fa-star"></i></a>
-													<a href="#"><i class="fa fa-star"></i></a>
-													<a href="#"><i class="fa fa-star"></i></a>
-													<a href="#"><i class="fa fa-star"></i></a>
-													<a href="#"><i class="fa fa-star"></i></a>
+												<div class="rank" th:if="${st!=null} ">
+													<a href="#" th:each="index:${#numbers.sequence(1,st)}"><i class="fa fa-star"></i></a>
 												</div>
-												<div class="review">
-													<ul class="clear">
-														<li>  
-															<a class="comment"  href="#">read reviews <span>(1)</span></a>
-														 </li>
-														<li>  
-															<a class="pencil "  href="#">write areview</a>
-														</li>
-													</ul> 
-												</div>
-											</div>												
+												
+											</div>	
+											<div class="social-button">
+											<button type="button" class="twitter"><i class="fa fa-twitter "></i>twittet</button>
+												
+											<button type="button" class="facebook"> <i class="fa fa-facebook "></i>facebook </button>
+												
+											<button type="button" class=" google-plus"> <i class="fa fa-google-plus"></i>google+ </button>
+												
+											<button type="button" class="pinterest"> <i class="fa fa-pinterest"></i>pinterest </button>
+												
+										</div>											
 										</div> 	
 									</div>
 								</div>  
@@ -456,63 +416,80 @@
 						</div>
 						<div class="reviw-tab bg-bd product-tab"> 
 							<ul class="tab-menu" role="tablist">
-								<li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">More info</a></li>
-								<li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">Data sheet</a></li>
-								<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li> 
+								<li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab"><span onclick="detail()" >更多</span></a></li>
+								<li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab" ><span onclick="findComment()" >查看评论</span></a></li>
+								<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">发表评论</a></li> 
 							</ul>
 							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane active" id="info">
-									<div class="reviw-tab-text">
-										<p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+								<div role="tabpanel" class="tab-pane active" id="info" th:fragment="info">
+									<div class="reviw-tab-text" >
+										<div th:each="c:${det}">
+											<h5>商品已售：<p th:text="${c.solecount}"></p></h5>
+											<h5>商品详情：<p th:text="${c.detail}"></p></h5>
+										</div>
 									</div>
 								</div>
-								<div role="tabpanel" class="tab-pane" id="data">
-									<table class="tabel-data-sheet">
-										<tbody>
-											<tr class="odd">
-												<td>Compositions</td>
-												<td>Cotton</td>
-											</tr>
-											<tr class="even">
-												<td>Styles</td>
-												<td>Casual</td>
-											</tr>
-											<tr class="odd">
-												<td>Properties</td>
-												<td>Short Sleeve</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div role="tabpanel" class="tab-pane" id="reviews">
-									<div class="tab-vew-reviw">
-										<ul>
-											<li>
-												<span class="reviw-text">
+								<div role="tabpanel" class="tab-pane" id="data" th:fragment="data">
+									<ul th:each="c,cStat:${comment}">
+										<li >
+											<span class="reviw-text" th:text="${c.name}">
 													 Grade 
-												</span> 
-												<div class="rank">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>	 
-												<div class="reviw-date">
-													<h6>gdragaggd</h6>
-													<span class="date">
+											</span> 
+											<span class="date" th:text="${#strings.substring(c.time,0,10)}">
 														25/12/2014
-													</span>
+												</span>
+											<div class="rank" style="width:200px">
+												<div  th:each="index:${#numbers.sequence(1,c.stars)}">
+													<i class="fa fa-star"></i>
 												</div>
-											</li>
-											<li class="right-reviw">
-												<h6>gdra</h6>
-												<p>gdra</p>
-											</li>
+											</div>	 
+											<div class="reviw-date">
+												<h6 th:text="${c.comment}">
+													
+												</h6>
+												
+											</div>
+											<hr>
+										</li>
+											
 										</ul>
-										<div class="r-y-w">
-											<a href="#"><p>Write your review!</p></a>						
-										</div>
+								</div>
+								<div role="tabpanel" class="tab-pane" id="reviews" >
+									<div class="tab-vew-reviw">
+										<div class="submit_a_review_area mt-50">
+                                     <form id="ff" method="post" name="comments"  action="comments.action">
+										<div id="comm"></div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group d-flex align-items-center">
+                                                    <span class="mr-15">您的评分:</span>
+                                                    <div class="stars">
+                                                        <input type="radio"  name="stars" class="star-1" id="star-1" value="1">
+                                                        <label class="star-1"  for="star-1">1</label>
+                                                        <input type="radio" name="stars" class="star-2" id="star-2" value="2">
+                                                        <label class="star-2"  for="star-2">2</label>
+                                                        <input type="radio" name="stars" class="star-3" id="star-3" value="3">
+                                                        <label class="star-3"  for="star-3">3</label>
+                                                        <input type="radio" name="stars" class="star-4" id="star-4" value="4">
+                                                        <label class="star-4"  for="star-4">4</label>
+                                                        <input type="radio" name="stars" class="star-5" id="star-5" value="5">
+                                                        <label class="star-5" for="star-5">5</label>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="comments">评论</label>
+                                                    <textarea name="comment" class="form-control" id="starts" rows="5" data-max-length="150"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="btn alazea-btn" onclick="addComments()">评论</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
 									</div>
 								</div> 
 							</div>  
@@ -938,6 +915,51 @@ function findClothByType(typeId){
 	//alert(typeId);
 	$.post('fCByCon.do',{typeid:typeId},function(data){
 		 
+	});
+}
+//评论功能
+function addComments(){
+	var v = parseUrl();
+	var cid=v['cid'];
+	//ff表示表单的dom对象
+	var formData=new FormData(ff);
+	formData.set("cid",cid);
+	$.ajax({
+		url:'addComment',
+		type:'post',
+		data:formData,
+		contentType:false,
+		processData:false,
+		success:function(result){
+		if(result.code==0){
+			alert("评论成功");
+		}else{
+			alert(result.msg);
+			}		
+		 }	
+	})
+} 
+function findComment(){
+	var v = parseUrl();
+	var cid=v['cid'];
+	$.post("findComment",{cid:cid},function(data){
+		 $("#data").html(data);
+	});
+}
+//商品详情
+function detail(){
+	var v = parseUrl();
+	var cid=v['cid'];
+	$.post("detail",{cid:cid},function(data){
+		 $("#info").html(data);
+	});
+}
+
+//加入购物车
+function addCart(cid,price){
+	var count=$("#qty").val();
+	$.post('addCart.do',{cid:cid,price:price,count:count},function(result){
+		alert(result.msg);
 	});
 }
 </script>

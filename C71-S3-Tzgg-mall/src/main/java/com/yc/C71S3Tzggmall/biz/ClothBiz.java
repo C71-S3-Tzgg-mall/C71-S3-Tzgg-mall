@@ -10,7 +10,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-
+import com.yc.C71S3Tzggmall.bean.Cart;
+import com.yc.C71S3Tzggmall.bean.CartExample;
 import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.bean.ClothExample;
 import com.yc.C71S3Tzggmall.dao.ClothMapper;
@@ -149,5 +150,31 @@ public class ClothBiz {
 		List<Cloth>list=cm.selectByExample(example);
 		return list;
 	}
+	
+	/**
+	 * (后台)添加
+	 * @param cloth
+	 * @return
+	 */
+	public int addTable(Cloth cloth){
+		return cm.insert(cloth);
+	}
+
+	/**
+	 * 后台删除
+	 * @param cid
+	 */
+	public void delete(Cloth cloth) {
+	   cm.deleteByPrimaryKey(cloth.getCid());
+	}
+	
+	public List<Cloth> selectBestCloth(){
+		ClothExample example=new ClothExample();
+		example.createCriteria().andSolecountGreaterThanOrEqualTo(100);
+		List<Cloth>list=cm.selectByExample(example);
+		return list;
+	}
+	
+	
 	
 }

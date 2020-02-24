@@ -10,13 +10,14 @@ import com.yc.C71S3Tzggmall.bean.Admin;
 
 @Controller
 @RequestMapping("back")
-public class BackOrderAction {
+public class BackBillAction {
 	
-	@RequestMapping("order")
+	@RequestMapping("bill")
 	public String bill(Model m,HttpServletRequest request){
 		Admin admin=(Admin)request.getSession().getAttribute("admin");
 		m.addAttribute("admin",admin);
-		return "/back/order";
+		return "/back/bill";
 	}
+	
+	
 }
-

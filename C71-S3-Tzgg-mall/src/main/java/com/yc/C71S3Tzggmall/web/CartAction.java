@@ -38,17 +38,33 @@ public class CartAction {
 	@RequestMapping("cart")
 	public String cart(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
-		if(user==null){
-			return "login";
+		if(user!=null){
+			Cloth cloth=cBiz.showCart(user.getUid());
+			Cart cart=new Cart();
+			cart.setUid(user.getUid());
+			List<Cart> cartList=cBiz.findCartByUid(cart);
+			int total=0;
+			for (Cart c : cartList) {
+				total += c.getCount()*c.getPrice();
+			}
+			m.addAttribute("total",total);
+			m.addAttribute("cartSize", cartList.size());
+			m.addAttribute("cartList",cloth);
 		}
-		Cloth cloth=cBiz.showCart(request);
-		m.addAttribute("cartList",cloth);
+		
 		//System.out.println(cloth.getList().size());
 		return "cart";
 	}
 	
 	
-	
+	@PostMapping("delAll.do")
+	public String deleteAll(Model m,HttpServletRequest request){
+		User user=(User) request.getSession().getAttribute("user");
+		int i=cBiz.deleteAll(user.getUid());
+		Cloth cloth=cBiz.showCart(user.getUid());
+		m.addAttribute("cartList",cloth);
+		return "cart::cart";
+	}
 	
 	/**
 	 * 根据cid删除购物车
@@ -59,32 +75,54 @@ public class CartAction {
 	 */
 	@PostMapping("delCart.do")
 	public String deleteProduct(Model m,Cart cart,HttpServletRequest request){
+		User user=(User) request.getSession().getAttribute("user");
+		cart.setUid(user.getUid());
 		int i=cBiz.delete(cart);
-		Cloth cloth=cBiz.showCart(request);
+		Cloth cloth=cBiz.showCart(user.getUid());
 		m.addAttribute("cartList",cloth);
 		return "cart::cart";
 	}
 	
+	/**
+	 * 加入购物车
+	 * @param cart
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("addCart.do")
 	public Result addCart(Cart cart,HttpServletRequest request){
 		try{
 			User user=(User)request.getSession().getAttribute("user");
-			Cloth cloth=clBiz.selectCloth(cart.getCid());
+			cart.setUid(user.getUid());
 			List<Cart> list=cBiz.findByCid(cart);
 			if(!list.isEmpty()){
-				System.out.println(list.get(0));
-				cart.setCount(list.get(0).getCount()+1);
-				cBiz.update(cart);
-			}else{
-				cart.setCount(1);
-				cart.setUid(user.getUid());	
-				cBiz.addCart(cart);
+				if(cart.getCount()==null){
+					//System.out.println(list.get(0).getCount()+1);
+					cart.setCount(list.get(0).getCount()+1);
+					//System.out.println(11111);
+					cBiz.update(cart);
+				}else{
+					cart.setCount(list.get(0).getCount()+cart.getCount());
+					cBiz.update(cart);
+				}
+				
+			}
+			
+			if(list.isEmpty() && cart.getCount()==null){
+				if(cart.getCount()==null){
+					cart.setCount(1);
+					cart.setUid(user.getUid());	
+					cBiz.addCart(cart);
+				}else{
+					cart.setUid(user.getUid());	
+					cBiz.addCart(cart);
+				}		
 			}
 			return new Result(1,"成功加入购物车，请到购物车查看");
-		}catch(Exception e){
+		}catch(NullPointerException e){
 			e.printStackTrace();				
-			return new Result(0, "业务繁忙，请稍后再试");
+			return new Result(0, "请先登录");
 		}
 	}
 	

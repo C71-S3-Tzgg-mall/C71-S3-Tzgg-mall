@@ -113,7 +113,7 @@
 						</div>
 						<div class="htop-one">
 							<ul class="lenguage">
-								<li><a href="#">登录</a></li>
+								<li><a href="login">登录</a></li>
 							</ul>
 						</div>
 						<div class="htop-one last">
@@ -740,9 +740,13 @@
 	}
 
 	function upd(cid) {
-		$.post('updateStatu', {cid : cid}, function(data) {
-			$("#payment").html(data);
-		})
+		var r=confirm("确认支付!");
+		  if (r==true){
+			  $.post('updateStatu', {cid : cid}, function(data) {
+					$("#payment").html(data);
+				});
+		   }
+		
 	}
 
 	function ship() {
@@ -762,6 +766,8 @@
 	function singleProduct(cid){
 		window.location.href="single-product?cid="+cid+"";
 	}
+	
+	
 </script>
 </html>
 

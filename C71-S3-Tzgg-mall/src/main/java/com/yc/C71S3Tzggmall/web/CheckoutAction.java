@@ -27,7 +27,6 @@ import com.yc.C71S3Tzggmall.biz.OrderItemBiz;
 import com.yc.C71S3Tzggmall.biz.UserBiz;
 import com.yc.C71S3Tzggmall.vo.Result;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Controller
 public class CheckoutAction {
@@ -43,15 +42,20 @@ public class CheckoutAction {
 	
 	@Resource
 	private CartBiz cartBiz;
+	
+	private String oid;
+	
+	
+	
 	/**
 	 * 查询订单
 	 * @param m
 	 * @param request
 	 */
-	public void checkout(Model m,int uid){
+	public void checkout(Model m){
 		Cloth cloth=new Cloth();
 		List<Cloth> clothList=null;
-		List<Orderitem> list=oBiz.showOrder(uid);
+		List<Orderitem> list=oBiz.showOrder(oid);
 		int total=0;
 		for(int i=0;i<list.size();i++){
 			clothList=new ArrayList<>();
@@ -75,33 +79,36 @@ public class CheckoutAction {
 	public Result order(HttpServletRequest request,Model m){
 		User user=(User) request.getSession().getAttribute("user");
 		String cids = request.getParameter("cids");
+		oid=request.getParameter("oid");
 		// 分割字符串
 		String[] infos = cids.split(",");
 		List<Integer> cidsList = new ArrayList<Integer>();
-		Cart c=new Cart();
 		for (String cid : infos) {
 			if (StringUtil.isNotEmpty(cids)) {
 				cidsList.add(Integer.parseInt(cid));
-				c.setCid(Integer.parseInt(cid));
-				cartBiz.delete(c);
 			}
 		}
-		String oid=""+System.currentTimeMillis();
+		
 		int uid=user.getUid();
 		oBiz.settle(cidsList, uid,oid);
-		checkout(m,user.getUid());
+		Cart c=new Cart();
+		for (int i=0;i<cidsList.size();i++) {
+			c.setUid(user.getUid());
+			c.setCid(cidsList.get(i));
+			cartBiz.delete(c);
+		}
+		checkout(m);
 		return new Result(1,"checkout");
 	}
 	
 	@RequestMapping("checkout")
 	public String showOrder(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
-		if(user==null){
-			return "login";
+		if(user!=null){
+			checkout(m);
+			m.addAttribute("user", user);
+			getAddr(m,user.getAddress());
 		}
-		checkout(m,user.getUid());
-		m.addAttribute("user", user);
-		getAddr(m,user.getAddress());
 		return "checkout";
 	}
 	
@@ -111,7 +118,7 @@ public class CheckoutAction {
 		User user=(User)request.getSession().getAttribute("user");
 		oBiz.del(item);
 		m.addAttribute("user", user);
-		checkout(m,user.getUid());
+		checkout(m);
 		return "checkout::summary";
 	}
 	
@@ -171,13 +178,16 @@ public class CheckoutAction {
 	@PostMapping("updateAddr")
 	public String updateAddr(HttpServletRequest request,Model m,User user){
 		User u=(User)request.getSession().getAttribute("user");
-		user.setUid(u.getUid());
-		uBiz.updata(user);
-		User user02=uBiz.selectUserByUid(u);
-		String addr=user02.getAddress();
-		System.out.println(addr);
-		getAddr(m,addr);
-		m.addAttribute("user", user02);
+		if(u!=null){
+			user.setUid(u.getUid());
+			uBiz.updata(user);
+			User user02=uBiz.selectUserByUid(u);
+			String addr=user02.getAddress();
+			System.out.println(addr);
+			getAddr(m,addr);
+			m.addAttribute("user", user02);
+		}
+		
 		return "checkout::address";
 	}
 	
@@ -193,20 +203,20 @@ public class CheckoutAction {
 		User user=(User)request.getSession().getAttribute("user");
 		item.setStatus("已支付");
 		oBiz.updateStatus(item);
-		checkout(m,user.getUid());
+		checkout(m);
 		return "checkout::payment";
 	}
 	
 	@PostMapping("updateShip")
 	public String updateShip(Model m,HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-		checkout(m,user.getUid());
+		checkout(m);
 		return "checkout::shipping";
 	}
 	@PostMapping("updatePay")
 	public String updatePay(Model m,HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
-		checkout(m,user.getUid());
+		checkout(m);
 		return "checkout::payment";
 	}
 }

@@ -7,32 +7,34 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.C71S3Tzggmall.bean.Admin;
 import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.biz.AdminBiz;
 import com.yc.C71S3Tzggmall.biz.BizException;
 import com.yc.C71S3Tzggmall.biz.ClothBiz;
+import com.yc.C71S3Tzggmall.biz.CommentBiz;
+import com.yc.C71S3Tzggmall.biz.OrderItemBiz;
 import com.yc.C71S3Tzggmall.biz.UserBiz;
 import com.yc.C71S3Tzggmall.vo.Result;
-
-
-
 
 
 @Controller
@@ -49,6 +51,15 @@ public class BackUserAction {
 	@Resource
 	private ClothBiz cBiz;
 	
+	@Autowired
+    private ServletContext servletContext;
+	
+	@Resource
+	private OrderItemBiz oBiz;
+	
+	@Resource
+	private CommentBiz comBiz;
+	
 	//读取配置
 	@Value("${spring.servlet.multipart.location}")
 	private String uploadDir;
@@ -59,11 +70,35 @@ public class BackUserAction {
 	}
 	
 	@RequestMapping("index")
-	public String index(Model m){
+	public String index(Model m,HttpServletRequest request){
+		Admin admin=(Admin)request.getSession().getAttribute("admin");
+		m.addAttribute("admin",admin);
 		int count=uBiz.selectPNum();
 		m.addAttribute("count",count);
 		List<Cloth> list=cBiz.findClothByTime();
 		m.addAttribute("newProduct", (list.size()+1));
+		int total=oBiz.findCount();//总订单数
+		int finishCount=oBiz.findCountByStatus();//已完成数量
+		int pCount=oBiz.findCountByP();//配送中数量
+		int iCount=total-finishCount-pCount;
+		m.addAttribute("fCount", finishCount);
+		m.addAttribute("iCount", iCount);
+		m.addAttribute("pCount", pCount);
+		//浏览量
+		Integer num=(Integer) servletContext.getAttribute("num");
+		m.addAttribute("num", num);
+		//会员人数
+		int tNum=uBiz.selectTNum();
+		m.addAttribute("tNum", tNum);
+		//最新评论
+		int newNum=comBiz.newNum();
+		m.addAttribute("newNum", newNum);
+		//差评
+		int badNum=comBiz.badNum();
+		m.addAttribute("badNum", badNum);
+		//好评
+		int goodNum=comBiz.gNum();
+		m.addAttribute("gNum", goodNum);
 		return "/back/index";
 	}
 	
@@ -98,7 +133,7 @@ public class BackUserAction {
 			}
 			admin=aBiz.login(admin);
 			sess.setAttribute("admin",admin);
-			System.out.println(admin.getImage());
+			//System.out.println(admin.getImage());
 			return new Result(1,"index",admin);
 		} catch (BizException e) {
 			e.printStackTrace();
@@ -165,5 +200,7 @@ public class BackUserAction {
 		}
 		
 	}
+	
+	
 	
 }

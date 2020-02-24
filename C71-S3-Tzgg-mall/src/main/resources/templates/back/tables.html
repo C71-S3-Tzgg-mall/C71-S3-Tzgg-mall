@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org">
+<html class="no-js" lang="" xmlns:th="www.thymeleaf.org">
 <head>
     <title>Bee-后台管理</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
@@ -154,7 +155,7 @@
                     </li>
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-                           <img alt='Mila Kunis' height='23' th:src="@{${admin.image}}" width='23' />
+                           	<img alt='Mila Kunis' height='23' th:src="@{${admin.image}}" width='23' />
                             <span class='user-name hidden-phone' th:text="${admin.name}">Mila Kunis</span>
                             <b class='caret'></b>
                         </a>
@@ -196,7 +197,7 @@
     </form>
 </div>
 <ul class='nav nav-stacked'>
-<li class='active'>
+<li >
     <a href='index'>
         <i class='icon-star'></i>
         <span>首页</span>
@@ -214,13 +215,13 @@
         <span>账单管理</span>
     </a>
 </li>
-<li class=''>
+<li class='active'>
     <a href='table'>
         <i class='icon-tint'></i>
         <span>商品管理</span>
     </a>
 </li>
-<li class='active'>
+<li class=''>
     <a href='order'>
         <i class='icon-book'></i>
         <span>订单管理</span>
@@ -237,64 +238,100 @@
     <div class='span12'>
         <div class='page-header'>
             <h1 class='pull-left'>
-                <i class='icon-table'></i>
-                <span>订单管理</span>
+                <i class='icon-tint'></i>
+                <span>商品管理</span>
             </h1>
-            
+           
         </div>
     </div>
 </div>
 
 
-<div class='box-header orange-background'>
-    <div class='title'>订单信息</div>
+<div class='box-header orange-background' >
+    <div class='title'>商品信息</div>
     <div class='actions'>
         <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
         </a>
     </div>
 </div>
-<div class='box-content box-no-padding'>
+<div class='box-content box-no-padding' >
 <div class='responsive-table'>
-<div class='scrollable-area'>
-<table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
-<thead>
+<div class='scrollable-area' >
+<form action="table" method="post">
+	<select name="size">
+		<option value="3">3</option>
+		<option value="6">6</option>
+		<option value="9">9</option>
+	</select>
+	<input style="height:20px; " type="submit" value="刷新">
+</form>
+<table id='table' class=' table table-bordered ' style='margin-bottom:0;' th:fragment="tables">
+<thead >
 <tr>
-    <th>订单号</th>
-    <th>图片</th>
-	<th>已售</th>
-    <th>库存</th>
-	<th>售价</th>
-	<th>进价</th>
-    <th></th>
+    <th>
+        商品名称
+    </th>
+    <th>图片
+    </th>
+	 <th>
+       已售
+    </th>
+    <th>
+       库存
+    </th>
+	<th>
+       售价
+    </th>
+	<th>
+       进价
+    </th>
+    <th>
+	</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-    <td>Sigurd Klocko</td>
-    <td>norene@hotmail.com</td>
-    <td>
-        <span class='label label-important'>Important</span>
+<tr  th:each="cloth,clothStat:${pageInfo.list}">
+    <td th:text=${cloth.name}></td>
+    <td> <img th:src="@{${cloth.image}}" /> </td>
+    <td >
+        <span class='btn btn-success btn-mini' th:text=${cloth.solecount}></span> 
     </td>
 	<td>
+	 <span class='btn btn-success btn-mini' th:text=${cloth.restcount}></span>
 	</td>
 	<td>
+	 <span class='btn btn-success btn-mini' th:text=${cloth.realprice}></span>
 	</td>
 	<td>
+	 <span class='label label-important' th:text=${cloth.shopprice}></span>
 	</td>
     <td>
         <div class='text-right'>
-            <a class='btn btn-success btn-mini' href='#'>
+           <!--  <a class='btn btn-success btn-mini' href='#'>
                 <i class='icon-ok'></i>
-            </a>
-            <a class='btn btn-danger btn-mini' href='#'>
+            </a> -->
+            <a class='btn btn-danger btn-mini' th:onclick="|del('${cloth.cid}')|">
                 <i class='icon-remove'></i>
             </a>
         </div>
     </td>
-	
 </tr>
 </tbody>
 </table>
+<div style="margin-left:380px">
+	<ul class="pagination" style="text-indent : 20px;margin:0px; padding:0px; float:left; list-style:none;">
+		<li style="float:left;" class="next" th:switch = "${pageInfo.pageNum-1 } gt '1'">
+			<a style="color:DarkOrange;" th:case="true" th:href="@{table(start=${pageInfo.pageNum+1})}">上一页</a>
+			<a style="color:DarkOrange;" th:case="false" th:href="@{table(start=1)}">上一页</a>
+		</li>
+		<li style="float:left;"><a style="color:DarkOrange;" th:href="@{table(start=1)}">首页</a></li>
+		<li style="float:left;"><a style="color:DarkOrange;" th:href="@{table(start=${pageInfo.pages})}">尾页</a></li>
+		<li style="float:left;" class="next" th:switch = "${pageInfo.pageNum+1 } gt ${ pageInfo.pages }">
+			<a style="color:DarkOrange;" th:case="true" th:href="@{table(start=${pageInfo.pages})}">下一页</a>
+			<a style="color:DarkOrange;" th:case="false" th:href="@{table(start=${pageInfo.pageNum+1})}">下一页</a>
+		</li>
+	</ul>
+</div>
 </div>
 </div>
 </div>
@@ -318,65 +355,73 @@
                             </div>
                         </div>
                         <div class='box-content'>
-                            <form class='form form-horizontal validate-form' style='margin-bottom: 0;' />
+                            <form id="ff"  method="post" action="add.do" class='form form-horizontal validate-form' style='margin-bottom: 0;'enctype="multipart/form-data" th:fragment="form"/>
                                 <div class='control-group'>
                                     <div class='control-label'>
                                         <label for='validation_secret'>商品名称</label>
                                     </div>
                                     <div class='controls'>
-                                        <input data-rule-buga='true' data-rule-required='true' id='validation_secret' name='validation_secret' placeholder='商品名称' type='text' />
+                                        <input  id='name' name='name' type='text' />
                                     </div>
                                 </div>
                                 <div class='control-group'>
                                     <label class='control-label' for='validation_numbers'>数量</label>
                                     <div class='controls'>
-                                        <input data-rule-number='true' data-rule-required='true' id='validation_numbers' name='validation_numbers' placeholder='数量' type='text' />
+                                        <input data-rule-number='true' data-rule-required='true' id='restcount' name='restcount'  type='text' />
                                     </div>
                                 </div>
-                                <div class='control-group'>
+                                <div class='control-group' >
                                     <label class='control-label' for='validation_ip'>类型</label>
+                                    <div class='controls' id='type' >
+                                       <select >             
+											  <option th:each="type,typeStat:${tlist}" value ="volvo" th:text=${type.type}></option> 
+									  </select>
+                                    </div>
+                                </div>
+                                <div class='control-group'>
+                                    <div class='control-label' >
+                                        <label for='validation_url' >图片</label>
+        
+                                    </div>
+                                    <div class='control-group'>
+                                   
+                                       <input id="img" accept="image/*" data-bfi-disabled=''  name='upimage' style="width:220px;margin-left:20px" type='file' />
+					              
+                                    </div>
+                                </div>
+                                <div class='control-group'>
+                                    <div class='control-label' >
+                                        <label for='validation_phone' >进货时间</label>
+                                        
+                                    </div>
+                                    <div class='controls' >
+                                      <!-- <span th:text="${#arrivetime.format(cloth.arrivetime,'yyyy-MM-dd HH:mm:ss')}">4564546</span>  -->
+                                           <input id='arrivetime' type="date" name='time' >                                       
+                                    </div>
+                                </div>
+                                <div class='control-group'>
+                                    <label class='control-label' for='validation_iban'>进价</label>
                                     <div class='controls'>
-                                        <input data-rule-ipv4='true' data-rule-required='true' id='validation_ip' name='vadation_ip' placeholder='IP' type='text' />
+                                        <input  id='shopprice' name='shopprice'  type='text' />
+                                    </div>
+                                </div>
+                                <div class='control-group'>
+                                    <label class='control-label' for='validation_iban'>售价</label>
+                                    <div class='controls'>
+                                        <input  id='realprice' name='realprice'  type='text' />
                                     </div>
                                 </div>
                                 <div class='control-group'>
                                     <div class='control-label'>
-                                        <label for='validation_url'>URL</label>
-                                        <small class='muted'>http://</small>
+                                        <label for='validation_vin'>商品描述</label>
+                                        
                                     </div>
                                     <div class='controls'>
-                                        <input data-rule-required='true' data-rule-url='true' id='validation_url' name='vadation_url' placeholder='URL' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <div class='control-label'>
-                                        <label for='validation_phone'>US phone number</label>
-                                        <small class='muted'>212-999-0983</small>
-                                    </div>
-                                    <div class='controls'>
-                                        <input data-rule-phoneus='true' data-rule-required='true' id='validation_phone' name='vadation_phone_number' placeholder='US phone number' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <label class='control-label' for='validation_iban'>IBAN</label>
-                                    <div class='controls'>
-                                        <input data-rule-iban='true' data-rule-required='true' id='validation_iban' name='vadation_iban' placeholder='IBAN' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <div class='control-label'>
-                                        <label for='validation_vin'>VIN</label>
-                                        <small class='muted'>1M8GDM9AXKP042788</small>
-                                    </div>
-                                    <div class='controls'>
-                                        <input data-rule-required='true' data-rule-vinus='true' id='validation_vin' name='vadation_vin' placeholder='VIN' type='text' />
+                                        <input id='detail' name='detail'  type='text' />
                                     </div>
                                 </div>
                                 <div class='form-actions' style='margin-bottom:0'>
-                                    <button class='btn btn-primary' type='submit'>
-                                        <i class='icon-save'></i>
-                                        添加
-                                    </button>
+                                    <input type="button" value="添加"   th:onclick="|postData()|"> 
                                 </div>
                             </form>
                         </div>
@@ -487,6 +532,54 @@
 <script src='assets/javascripts/demo/inplace_editing.js' type='text/javascript'></script>
 <script src='assets/javascripts/demo/charts.js' type='text/javascript'></script>
 <script src='assets/javascripts/demo/demo.js' type='text/javascript'></script>
+
+
+<!-- <script type="text/javascript" src="/js/jquery-3.2.1.js"></script> -->
+<script type="text/javascript">
+  function postData(){
+		//ff表示表单的dom对象
+		var formData=new FormData(ff);
+		var date=new Date();
+		var h=date.getHours(); //获取小时
+		var m=date.getMinutes(); //获取分钟
+		var s=date.getSeconds(); //获取秒
+		var d=formData.get("time")+" "+h+":"+m+":"+s;
+		formData.set("arrivetime",d);
+		$.ajax({
+			url:'add.do',/*接口域名地址*/
+			type:'post',
+			data:formData,
+			contentType:false,
+			processData:false,
+			success:function(result){
+			
+			if(result.code==1){
+			alert('添加成功！');
+			location.href="/back/table";
+			}else{
+			alert('添加失败！');
+			}		
+		  }	
+		})
+	}
+
+
+ //删除商品
+  function del(cid){
+	 var r=confirm("确认删除该商品!");
+	   if (r==true){
+	   	$.post("del.do",{cid:cid},function(data){
+	   		 $("#table").html(data);
+		}); 
+ }
+ 
+	
+}  
+
+
+
+ 
+</script>
 
 </body>
 </html>

@@ -23,8 +23,7 @@ import com.yc.C71S3Tzggmall.biz.TypeBiz;
 
 @Controller
 public class ChildShopAction {
-	//首页分页每页行数
-	private final static int PAGE_SIZE=5;
+	
 	
 	@Resource
 	private ClothBiz cBiz;
@@ -46,18 +45,19 @@ public class ChildShopAction {
 	 */
 	public String type(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
-		if(user==null){
-			return "login";
+		if(user!=null){
+			Cart cart=new Cart();
+			cart.setUid(user.getUid());
+			List<Cart> cartList=cartBiz.findCartByUid(cart);
+			int total=0;
+			for (Cart c : cartList) {
+				total += c.getCount()*c.getPrice();
+			}
+			m.addAttribute("total",total);
+			m.addAttribute("cartSize", cartList.size());
+			Cloth pro=cartBiz.showCart(user.getUid());
+			m.addAttribute("cartList", pro);
 		}
-		Cart cart=new Cart();
-		cart.setUid(user.getUid());
-		List<Cart> cartList=cartBiz.findCartByUid(cart);
-		int total=0;
-		for (Cart c : cartList) {
-			total += c.getCount()*c.getPrice();
-		}
-		m.addAttribute("total",total);
-		m.addAttribute("cartSize", cartList.size());
 		List<Type> typeList=tBiz.selectType();
 		List<Tag> tagList=tagBiz.selectTag();
 		@SuppressWarnings("unused")
@@ -74,8 +74,6 @@ public class ChildShopAction {
 		m.addAttribute("tagList",tagList);
 		List<Cloth> list=cBiz.selectChildCloth();
 		m.addAttribute("fCList", list);
-		Cloth cloth=cartBiz.showCart(request);
-		m.addAttribute("cartList", cloth);
 		return "childShop";
 	}
 	

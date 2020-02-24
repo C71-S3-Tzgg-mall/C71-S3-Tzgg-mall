@@ -5,6 +5,7 @@
     <id column="comid" jdbcType="INTEGER" property="comid" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />
     <result column="stars" jdbcType="INTEGER" property="stars" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    comid, cid, comment, uid, time, stars
+    comid, cid, comment, name, uid, time, stars
   </sql>
   <select id="selectByExample" parameterType="com.yc.C71S3Tzggmall.bean.CommentExample" resultMap="BaseResultMap">
     select
@@ -102,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.yc.C71S3Tzggmall.bean.Comment">
     insert into comment (comid, cid, comment, 
-      uid, time, stars)
+      name, uid, time, 
+      stars)
     values (#{comid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, 
-      #{uid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{stars,jdbcType=INTEGER})
+      #{name,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{stars,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.C71S3Tzggmall.bean.Comment">
     insert into comment
@@ -117,6 +120,9 @@
       </if>
       <if test="comment != null">
         comment,
+      </if>
+      <if test="name != null">
+        name,
       </if>
       <if test="uid != null">
         uid,
@@ -137,6 +143,9 @@
       </if>
       <if test="comment != null">
         #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
@@ -167,6 +176,9 @@
       <if test="record.comment != null">
         comment = #{record.comment,jdbcType=VARCHAR},
       </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
       <if test="record.uid != null">
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
@@ -186,6 +198,7 @@
     set comid = #{record.comid,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
       comment = #{record.comment,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
       uid = #{record.uid,jdbcType=INTEGER},
       time = #{record.time,jdbcType=TIMESTAMP},
       stars = #{record.stars,jdbcType=INTEGER}
@@ -201,6 +214,9 @@
       </if>
       <if test="comment != null">
         comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
@@ -218,6 +234,7 @@
     update comment
     set cid = #{cid,jdbcType=INTEGER},
       comment = #{comment,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
       time = #{time,jdbcType=TIMESTAMP},
       stars = #{stars,jdbcType=INTEGER}

@@ -13,6 +13,7 @@ import com.yc.C71S3Tzggmall.bean.Order;
 import com.yc.C71S3Tzggmall.bean.User;
 import com.yc.C71S3Tzggmall.biz.CartBiz;
 import com.yc.C71S3Tzggmall.biz.OrderBiz;
+import com.yc.C71S3Tzggmall.biz.OrderItemBiz;
 import com.yc.C71S3Tzggmall.biz.UserBiz;
 
 @SpringBootTest
@@ -26,6 +27,9 @@ class C71S3TzggMallApplicationTests {
 	
 	@Resource
 	private UserBiz bBiz;
+	
+	@Resource
+	private OrderItemBiz iBiz;
 	
 	@Test
 	void contextLoads() {
@@ -44,11 +48,13 @@ class C71S3TzggMallApplicationTests {
 		order.setAddress("afsf");
 		order.setUid("fdfd");
 		oBiz.insert(order);*/
-		
+		/*
 		Cart cart=new Cart();
 		cart.setCid(10);
 		cart.setCount(2);
-		cBiz.update(cart);
+		cBiz.update(cart);*/
+		
+		iBiz.findMonthCount();
 	}
 
 }

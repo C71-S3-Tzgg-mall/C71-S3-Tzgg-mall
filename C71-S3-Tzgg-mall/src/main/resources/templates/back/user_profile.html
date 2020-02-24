@@ -154,8 +154,8 @@
                     </li>
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-                            <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23' />
-                            <span class='user-name hidden-phone'>Mila Kunis</span>
+                            <img alt='Mila Kunis' height='23' th:src="@{${admin.image}}" width='23' />
+                            <span class='user-name hidden-phone' th:text="${admin.name}">Mila Kunis</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
@@ -196,9 +196,9 @@
     </form>
 </div>
 <ul class='nav nav-stacked'>
-<li class=''>
+<li >
     <a href='index'>
-        <i class='icon-dashboard'></i>
+        <i class='icon-star'></i>
         <span>首页</span>
     </a>
 </li>
@@ -209,15 +209,21 @@
     </a>
 </li>
 <li class=''>
-    <a href='charts.html'>
+    <a href='bill'>
         <i class='icon-edit'></i>
         <span>账单管理</span>
     </a>
 </li>
 <li class=''>
-    <a href='tables.html'>
-        <i class='icon-table'></i>
+    <a href='table'>
+        <i class='icon-tint'></i>
         <span>商品管理</span>
+    </a>
+</li>
+<li class=''>
+    <a href='order'>
+        <i class='icon-book'></i>
+        <span>订单管理</span>
     </a>
 </li>
 </ul>

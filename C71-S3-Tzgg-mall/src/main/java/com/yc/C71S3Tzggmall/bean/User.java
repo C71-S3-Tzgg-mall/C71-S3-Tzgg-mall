@@ -1,10 +1,16 @@
 package com.yc.C71S3Tzggmall.bean;
 
+import java.sql.Timestamp;
+
+import javax.validation.constraints.NotEmpty;
+
 public class User {
     private Integer uid;
-
+    
+    @NotEmpty(message="昵称不能为空")
     private String name;
-
+    
+    @NotEmpty(message="密码不能为空")
     private String pwd;
 
     private String type;
@@ -14,6 +20,8 @@ public class User {
     private String tel;
 
     private String address;
+
+    private Timestamp time;
 
     public Integer getUid() {
         return uid;
@@ -69,5 +77,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public Timestamp getTime() {
+        return time;
+    }
+
+    public void setTime(Timestamp time) {
+        this.time = time;
     }
 }

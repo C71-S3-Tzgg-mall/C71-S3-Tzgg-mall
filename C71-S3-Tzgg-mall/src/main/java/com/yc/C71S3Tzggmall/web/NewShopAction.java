@@ -23,6 +23,8 @@ import com.yc.C71S3Tzggmall.biz.ClothBiz;
 import com.yc.C71S3Tzggmall.biz.TagBiz;
 import com.yc.C71S3Tzggmall.biz.TypeBiz;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 
 @Controller
 public class NewShopAction {
@@ -48,22 +50,21 @@ public class NewShopAction {
 	 * @param m
 	 * @return
 	 */
-	public String type(Model m,HttpServletRequest request,
-			@RequestParam(value = "start",defaultValue = "0")int start,
-            @RequestParam(value = "size",defaultValue = "5")int size){
+	public String type(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
-		if(user==null){
-			return "login";
+		if(user!=null){
+			Cart cart=new Cart();
+			cart.setUid(user.getUid());
+			List<Cart> cartList=cartBiz.findCartByUid(cart);
+			int total=0;
+			for (Cart c : cartList) {
+				total += c.getCount()*c.getPrice();
+			}
+			m.addAttribute("total",total);
+			m.addAttribute("cartSize", cartList.size());
+			Cloth pro=cartBiz.showCart(user.getUid());
+			m.addAttribute("cartList", pro);
 		}
-		Cart cart=new Cart();
-		cart.setUid(user.getUid());
-		List<Cart> cartList=cartBiz.findCartByUid(cart);
-		int total=0;
-		for (Cart c : cartList) {
-			total += c.getCount()*c.getPrice();
-		}
-		m.addAttribute("total",total);
-		m.addAttribute("cartSize", cartList.size());
 		List<Type> typeList=tBiz.selectType();
 		List<Tag> tagList=tagBiz.selectTag();
 		@SuppressWarnings("unused")
@@ -78,14 +79,8 @@ public class NewShopAction {
 		m.addAttribute("count",clothCount);
 		m.addAttribute("typeList",typeList);
 		m.addAttribute("tagList",tagList);
-		if(start<=0){
-			start=1;
-		}
-		PageHelper.startPage(start,PAGE_SIZE);
 		List<Cloth> list=cBiz.findClothByTime();
 		m.addAttribute("fCList",list);
-		Cloth cloth=cartBiz.showCart(request);
-		m.addAttribute("cartList", cloth);
 		return "newShop";
 	}
 	

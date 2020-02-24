@@ -115,7 +115,7 @@
 							<div class="htop-one">
 								<ul class="lenguage">
 									<li>
-										<a href="#">登录</a>									
+										<a href="login">登录</a>									
 									</li> 
 								</ul>
 							</div>
@@ -184,56 +184,29 @@
 							<ul class="nav floatleft">
 								<li class="active"><a href="index">首页</a>
 								</li>
-								<li class="mega-menu-one"><a href="newShop">新品</a>
+								<li class="mega-menu-one"><a href="newShop">新品</a> 	
 									<ul class="sub-menu">
-										<li><a href="shop">dresses</a>
+										<li th:each="type , typeStat : ${typeList}"><a href="shop" th:text="${type.type}">dresses</a>
 											<ul class="sub-menu">
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Sports</a></li> 
-											</ul>
-										</li>
-										<li><a href="shop">clothing</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">day</a></li> 
-											</ul>
-										</li>
-										<li><a href="shop">handbags</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li>
-												<li><a href="shop">Evening</a></li> 
-											</ul>
-										</li>
-										<li><a href="shop">shoes</a>
-											<ul class="sub-menu">
-												<li><a href="shop">Sports</a></li>
-												<li><a href="shop">Evening</a></li>
-												<li><a href="shop">day</a></li>
-												<li><a href="shop">Cocktail</a></li> 
+												<li th:each="tag , tagStat : ${tagList}" th:if=" ${type.tid} eq ${tag.typeid}"><a style="cursor:pointer;"  th:text="${tag.tag}" th:onclick="|findCloth('${tag.tid}')|" >衣服</a></li>
+												<li><a href="shop">服装</a></li> 
 											</ul>
 										</li>
 										<li> 
 											 <a href="shop"><img src="img/block_menu.png" alt="" /></a>  											 
-										</li>
 									</ul>								
 								</li>
 								<li class="mega-menu-two"><a href="childShop">幼儿（1-5岁）</a> 	
 									<ul class="sub-menu">
 										<li><a href="shop">dresses</a>
 											<ul class="sub-menu">
-												<li><a href="shop">Bootees</a></li>
-												<li><a href="shop">Blazers</a></li> 
+												<li><a href="shop">衣服</a></li>
+												<li><a href="shop">服装</a></li> 
 											</ul>
 										</li>
 										<li><a href="#">clothing</a>
 											<ul class="sub-menu">
-												<li><a href="shop">coats</a></li>
+												<li><a href="shop">coatsjjjjjjjjjjjjjkkkkkkkkk</a></li>
 												<li><a href="shop">T-shirts</a></li> 
 											</ul>
 										</li>
@@ -844,7 +817,7 @@
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 function findCloth(tid){
-	//alert(tid);
+	alert(tid);
 	$.post('bfCByCon.do',{tid:tid},function(data){
 		 $("#byTid").html(data);
 	});
