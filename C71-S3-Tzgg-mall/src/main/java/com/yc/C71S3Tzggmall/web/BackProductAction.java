@@ -2,7 +2,10 @@ package com.yc.C71S3Tzggmall.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +28,7 @@ import com.yc.C71S3Tzggmall.bean.Type;
 import com.yc.C71S3Tzggmall.biz.ClothBiz;
 import com.yc.C71S3Tzggmall.biz.TagBiz;
 import com.yc.C71S3Tzggmall.biz.TypeBiz;
+import com.yc.C71S3Tzggmall.vo.Bill;
 import com.yc.C71S3Tzggmall.vo.Result;
 
 @Controller
@@ -50,18 +54,12 @@ public class BackProductAction {
 	 * @return
 	 */
 	@RequestMapping("table")
-	public String table(Model m,HttpServletRequest request,
-			@RequestParam(value = "start",defaultValue = "0")int start,
-            @RequestParam(value = "size",defaultValue = "5")int size){
+	public String table(Model m,HttpServletRequest request){
 		
-		PageHelper.startPage(start,size);
 		List<Cloth> list=cBiz.selectCloth();
-		PageInfo<Cloth> pageInfo = new PageInfo<Cloth>(list);
-		System.out.println(pageInfo);
-		m.addAttribute("page",pageInfo);
+		m.addAttribute("list",list);
 		Admin admin=(Admin)request.getSession().getAttribute("admin");
 		m.addAttribute("admin",admin);
-		m.addAttribute("pageInfo", pageInfo);
 		return "/back/tables";
 
 	}

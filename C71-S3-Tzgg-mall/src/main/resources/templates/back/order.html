@@ -154,13 +154,13 @@
                     </li>
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-                           <img alt='Mila Kunis' height='23' th:src="@{${admin.image}}" width='23' />
+                            <img alt='Mila Kunis' height='23' th:src="@{${admin.image}}" width='23' />
                             <span class='user-name hidden-phone' th:text="${admin.name}">Mila Kunis</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
-                                <a href='user_profile.html'>
+                                <a href='user_profile'>
                                     <i class='icon-user'></i>
                                    		个人信息
                                 </a>
@@ -220,7 +220,7 @@
         <span>商品管理</span>
     </a>
 </li>
-<li class='active'>
+<li class=''>
     <a href='order'>
         <i class='icon-book'></i>
         <span>订单管理</span>
@@ -237,7 +237,7 @@
     <div class='span12'>
         <div class='page-header'>
             <h1 class='pull-left'>
-                <i class='icon-table'></i>
+                <i class='icon-book'></i>
                 <span>订单管理</span>
             </h1>
             
@@ -253,41 +253,33 @@
         </a>
     </div>
 </div>
-<div class='box-content box-no-padding'>
+<div class='box-content box-no-padding' >
 <div class='responsive-table'>
-<div class='scrollable-area'>
-<table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
-<thead>
+<div class='scrollable-area' >
+<table id='table' class='data-table table table-bordered table-striped' style='margin-bottom:0;' th:fragment="move">
+<thead >
 <tr>
     <th>订单号</th>
-    <th>图片</th>
-	<th>已售</th>
-    <th>库存</th>
-	<th>售价</th>
-	<th>进价</th>
+    <th>商品名称</th>
+    <th>价格</th>
+	<th>状态</th>	
     <th></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-    <td>Sigurd Klocko</td>
-    <td>norene@hotmail.com</td>
-    <td>
-        <span class='label label-important'>Important</span>
+<tr  th:each="orderItem: ${olist.list}">
+    <td th:text="${orderItem.detail}"></td>
+    <td th:text="${orderItem.name}"> </td>
+    <td >
+        <span class='label label-important' th:text="${orderItem.realprice}"></span> 
     </td>
 	<td>
-	</td>
-	<td>
-	</td>
-	<td>
+	 <span class='btn btn-success btn-mini' th:text="${orderItem.status}"></span>
 	</td>
     <td>
         <div class='text-right'>
-            <a class='btn btn-success btn-mini' href='#'>
-                <i class='icon-ok'></i>
-            </a>
-            <a class='btn btn-danger btn-mini' href='#'>
-                <i class='icon-remove'></i>
+            <a class='btn btn-danger btn-mini' th:onclick="red([[${orderItem.detail}]]);">
+                <i class='icon-ok' ></i>
             </a>
         </div>
     </td>
@@ -299,93 +291,6 @@
 </div>
 </div>
 </div>
-</div>
-<hr class='hr-double' />
-<div class='container-fluid'>
-        <div class='row-fluid' id='content-wrapper'>
-            <div class='span12'>
-                <div class='row-fluid'>
-                    <div class='span12 box'>
-                        <div class='box-header green-background'>
-                            <div class='title'>
-                                添加商品
-                            </div>
-                            <div class='actions'>
-                                <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
-                                </a>
-                                <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class='box-content'>
-                            <form class='form form-horizontal validate-form' style='margin-bottom: 0;' />
-                                <div class='control-group'>
-                                    <div class='control-label'>
-                                        <label for='validation_secret'>商品名称</label>
-                                    </div>
-                                    <div class='controls'>
-                                        <input data-rule-buga='true' data-rule-required='true' id='validation_secret' name='validation_secret' placeholder='商品名称' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <label class='control-label' for='validation_numbers'>数量</label>
-                                    <div class='controls'>
-                                        <input data-rule-number='true' data-rule-required='true' id='validation_numbers' name='validation_numbers' placeholder='数量' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <label class='control-label' for='validation_ip'>类型</label>
-                                    <div class='controls'>
-                                        <input data-rule-ipv4='true' data-rule-required='true' id='validation_ip' name='vadation_ip' placeholder='IP' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <div class='control-label'>
-                                        <label for='validation_url'>URL</label>
-                                        <small class='muted'>http://</small>
-                                    </div>
-                                    <div class='controls'>
-                                        <input data-rule-required='true' data-rule-url='true' id='validation_url' name='vadation_url' placeholder='URL' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <div class='control-label'>
-                                        <label for='validation_phone'>US phone number</label>
-                                        <small class='muted'>212-999-0983</small>
-                                    </div>
-                                    <div class='controls'>
-                                        <input data-rule-phoneus='true' data-rule-required='true' id='validation_phone' name='vadation_phone_number' placeholder='US phone number' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <label class='control-label' for='validation_iban'>IBAN</label>
-                                    <div class='controls'>
-                                        <input data-rule-iban='true' data-rule-required='true' id='validation_iban' name='vadation_iban' placeholder='IBAN' type='text' />
-                                    </div>
-                                </div>
-                                <div class='control-group'>
-                                    <div class='control-label'>
-                                        <label for='validation_vin'>VIN</label>
-                                        <small class='muted'>1M8GDM9AXKP042788</small>
-                                    </div>
-                                    <div class='controls'>
-                                        <input data-rule-required='true' data-rule-vinus='true' id='validation_vin' name='vadation_vin' placeholder='VIN' type='text' />
-                                    </div>
-                                </div>
-                                <div class='form-actions' style='margin-bottom:0'>
-                                    <button class='btn btn-primary' type='submit'>
-                                        <i class='icon-save'></i>
-                                        添加
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 </div>
 <!-- / jquery -->
 <script src='assets/javascripts/jquery/jquery.min.js' type='text/javascript'></script>
@@ -489,4 +394,14 @@
 <script src='assets/javascripts/demo/demo.js' type='text/javascript'></script>
 
 </body>
+<script type="text/javascript">
+function red(oid){
+	var r=confirm("确认已发货!");
+	    if (r==true){
+		 $.post('reStatu',{oid:oid},function(data){
+			$("#table").html(data);
+		}) 
+    }
+}	
+</script>
 </html>

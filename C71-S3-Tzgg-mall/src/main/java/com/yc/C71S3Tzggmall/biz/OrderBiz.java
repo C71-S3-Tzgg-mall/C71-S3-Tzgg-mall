@@ -17,4 +17,5 @@ public class OrderBiz {
 	public int  insert(Order order){
 		return  om.insertSelective(order);
 	}
+	
 }

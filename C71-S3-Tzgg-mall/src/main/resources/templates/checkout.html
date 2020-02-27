@@ -120,7 +120,8 @@
 							<ul class="account">
 								<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
 									<ul>
-										<li><a href="wishlist.html">我的收藏</a></li>
+										<li><a href="wishlist">我的收藏</a></li>
+										<li><a href="order">我的订单</a></li>
 										<li><a href="cart">购物车</a></li>
 										<li><a href="#">退出</a></li>
 									</ul></li>
@@ -367,11 +368,7 @@
 											<td colspan="2" class="totel"><span
 												th:text="'￥'+${totalP}">£ 23.37</span></td>
 										</tr>
-										<tr>
-											<td colspan="2"></td>
-											<td colspan="3" class="text totel big-totol">实际价格(优惠)</td>
-											<td colspan="2" class="totel big-totol">£ 23.37</td>
-										</tr>
+										
 									</tfoot>
 									<tbody class="sceand-tabel" th:each="order,orderStat:${order}"
 										th:if="${orderStat.index} lt '1'">
@@ -380,15 +377,13 @@
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
 											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
-														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> <small>SKU
-													:span</small> <small>Size : S, Color : Yellow</small></td>
+														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> </td>
 											<td class="td-stok"><span th:text="${orderItem.detail}">In
 													stock</span></td>
 											<td class="td-unite">
 												<ul>
 													<li th:text="'￥'+${orderItem.realprice}">£ 23.37</li>
-													<li>-5%</li>
-													<li>£ 24.60</li>
+													
 												</ul>
 											</td>
 											<td class="td-quentety"><input type="text"
@@ -464,11 +459,6 @@
 											<td colspan="2" class="totel"><span
 												th:text="'￥'+${totalP}">£ 23.37</span></td>
 										</tr>
-										<tr>
-											<td colspan="2"></td>
-											<td colspan="3" class="text totel big-totol">实际价格(优惠)</td>
-											<td colspan="2" class="totel big-totol">£ 23.37</td>
-										</tr>
 									</tfoot>
 									<tbody class="sceand-tabel" th:each="order,orderStat:${order}"
 										th:if="${orderStat.index} lt '1'">
@@ -477,16 +467,14 @@
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
 											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
-														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> <small>SKU
-													:span</small> <small>Size : S, Color : Yellow</small></td>
+														th:text="${orderItem.name}">Printed Chiffon Dress</p></td>
 											<td class="td-stok" style="cursor: pointer;"
-												th:onclick="|upd('${orderItem.cid}')|"><span
+												th:onclick="|upd('${orderItem.tid}')|"><span
 												th:text="${orderItem.detail}">In stock</span></td>
 											<td class="td-unite">
 												<ul>
 													<li th:text="'￥'+${orderItem.realprice}">£ 23.37</li>
-													<li>-5%</li>
-													<li>£ 24.60</li>
+													
 												</ul>
 											</td>
 											<td class="td-quentety"><input type="text"
@@ -513,8 +501,7 @@
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
 											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
-														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> <small>SKU
-													:span</small> <small>Size : S, Color : Yellow</small></td>
+														th:text="${orderItem.name}">Printed Chiffon Dress</p></a> </td>
 											<td class="td-t-amount">
 												<div class="total-amount">
 													<span th:text="${orderItem.detail}">free</span>
@@ -739,10 +726,10 @@
 		})
 	}
 
-	function upd(cid) {
+	function upd(oiid) {
 		var r=confirm("确认支付!");
 		  if (r==true){
-			  $.post('updateStatu', {cid : cid}, function(data) {
+			  $.post('updateStatu', {oiid : oiid}, function(data) {
 					$("#payment").html(data);
 				});
 		   }
@@ -765,6 +752,32 @@
 	//跳转到详情页
 	function singleProduct(cid){
 		window.location.href="single-product?cid="+cid+"";
+	}
+	
+	
+	$(function(){	
+		var v = parseUrl();
+		var oid=v['oid'];
+		if(oid!=null){
+			$.post("checkout",{oid:oid},function(data){
+				
+			});
+		}
+		
+	});
+
+	function parseUrl(){
+		var url=location.href;
+		var i=url.indexOf('?');
+		if(i==-1)return;
+		var querystr=url.substr(i+1);
+		var arr1=querystr.split('&');
+		var arr2=new Object();
+		for (i in arr1){
+		var ta=arr1[i].split('=');
+		 arr2[ta[0]]=ta[1];
+		}
+		 return arr2;
 	}
 	
 	

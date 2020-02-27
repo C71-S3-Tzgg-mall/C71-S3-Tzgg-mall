@@ -52,6 +52,10 @@
     <link href='assets/stylesheets/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
     <!-- / demo -->
     <link href='assets/stylesheets/demo.css' media='all' rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/add.js"></script>
+    
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body class='contrast-red '>
 <header>
@@ -155,8 +159,8 @@
                     </li>
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-                           	<img alt='Mila Kunis' height='23' th:src="@{${admin.image}}" width='23' />
-                            <span class='user-name hidden-phone' th:text="${admin.name}">Mila Kunis</span>
+                            <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' width='23' />
+                            <span class='user-name hidden-phone'>Mila Kunis</span>
                             <b class='caret'></b>
                         </a>
                         <ul class='dropdown-menu'>
@@ -197,7 +201,7 @@
     </form>
 </div>
 <ul class='nav nav-stacked'>
-<li >
+<li class='active'>
     <a href='index'>
         <i class='icon-star'></i>
         <span>首页</span>
@@ -210,12 +214,12 @@
     </a>
 </li>
 <li class=''>
-    <a href='bill'>
+    <a href='charts.html'>
         <i class='icon-edit'></i>
         <span>账单管理</span>
     </a>
 </li>
-<li class='active'>
+<li class=''>
     <a href='table'>
         <i class='icon-tint'></i>
         <span>商品管理</span>
@@ -238,10 +242,9 @@
     <div class='span12'>
         <div class='page-header'>
             <h1 class='pull-left'>
-                <i class='icon-tint'></i>
+                <i class='icon-table'></i>
                 <span>商品管理</span>
             </h1>
-           
         </div>
     </div>
 </div>
@@ -257,15 +260,7 @@
 <div class='box-content box-no-padding' >
 <div class='responsive-table'>
 <div class='scrollable-area' >
-<form action="table" method="post">
-	<select name="size">
-		<option value="3">3</option>
-		<option value="6">6</option>
-		<option value="9">9</option>
-	</select>
-	<input style="height:20px; " type="submit" value="刷新">
-</form>
-<table id='table' class=' table table-bordered ' style='margin-bottom:0;' th:fragment="tables">
+<table id='table' class='data-table table table-bordered table-striped' style='margin-bottom:0;' th:fragment="tables">
 <thead >
 <tr>
     <th>
@@ -290,20 +285,20 @@
 </tr>
 </thead>
 <tbody>
-<tr  th:each="cloth,clothStat:${pageInfo.list}">
+<tr  th:each="cloth,clothStat:${list}">
     <td th:text=${cloth.name}></td>
     <td> <img th:src="@{${cloth.image}}" /> </td>
     <td >
-        <span class='btn btn-success btn-mini' th:text=${cloth.solecount}></span> 
+        <span class='label label-important'  th:text=${cloth.solecount}></span> 
     </td>
 	<td>
-	 <span class='btn btn-success btn-mini' th:text=${cloth.restcount}></span>
+	 <span class='btn btn-success btn-mini'  th:text=${cloth.restcount}></span>
 	</td>
 	<td>
-	 <span class='btn btn-success btn-mini' th:text=${cloth.realprice}></span>
+	 <span class='label label-important' th:text=${cloth.realprice}></span>
 	</td>
 	<td>
-	 <span class='label label-important' th:text=${cloth.shopprice}></span>
+	 <span  class='btn btn-success btn-mini' th:text=${cloth.shopprice}></span>
 	</td>
     <td>
         <div class='text-right'>
@@ -315,23 +310,10 @@
             </a>
         </div>
     </td>
+	
 </tr>
 </tbody>
 </table>
-<div style="margin-left:380px">
-	<ul class="pagination" style="text-indent : 20px;margin:0px; padding:0px; float:left; list-style:none;">
-		<li style="float:left;" class="next" th:switch = "${pageInfo.pageNum-1 } gt '1'">
-			<a style="color:DarkOrange;" th:case="true" th:href="@{table(start=${pageInfo.pageNum+1})}">上一页</a>
-			<a style="color:DarkOrange;" th:case="false" th:href="@{table(start=1)}">上一页</a>
-		</li>
-		<li style="float:left;"><a style="color:DarkOrange;" th:href="@{table(start=1)}">首页</a></li>
-		<li style="float:left;"><a style="color:DarkOrange;" th:href="@{table(start=${pageInfo.pages})}">尾页</a></li>
-		<li style="float:left;" class="next" th:switch = "${pageInfo.pageNum+1 } gt ${ pageInfo.pages }">
-			<a style="color:DarkOrange;" th:case="true" th:href="@{table(start=${pageInfo.pages})}">下一页</a>
-			<a style="color:DarkOrange;" th:case="false" th:href="@{table(start=${pageInfo.pageNum+1})}">下一页</a>
-		</li>
-	</ul>
-</div>
 </div>
 </div>
 </div>
@@ -373,9 +355,13 @@
                                 <div class='control-group' >
                                     <label class='control-label' for='validation_ip'>类型</label>
                                     <div class='controls' id='type' >
-                                       <select >             
-											  <option th:each="type,typeStat:${tlist}" value ="volvo" th:text=${type.type}></option> 
-									  </select>
+                                      
+									  <!-- <td><select  class="text" name="districtId" id="Type" onchange="onchangeDistrict(this)"  ><option th:each="type,typeStat:${tlist}" value ="type" th:text=${type.type}></option> </select> 
+								        <select class="text" name="streetId" id="Tag" style="width:90px;"><option th:each="tag,typeStat:${talist}" value ="tag" th:text=${tag.tag} ></option> </select>
+								     </td> -->
+								     <td><select class="text" name="districtId" id="Type" onchange="onchangeDistrict(this)"></select> 
+							             <select class="text" name="streetId" id="Tag"></select>
+									</td>
                                     </div>
                                 </div>
                                 <div class='control-group'>
@@ -545,6 +531,7 @@
 		var s=date.getSeconds(); //获取秒
 		var d=formData.get("time")+" "+h+":"+m+":"+s;
 		formData.set("arrivetime",d);
+		alert(d);
 		$.ajax({
 			url:'add.do',/*接口域名地址*/
 			type:'post',
@@ -566,17 +553,52 @@
 
  //删除商品
   function del(cid){
-	 var r=confirm("确认删除该商品!");
-	   if (r==true){
-	   	$.post("del.do",{cid:cid},function(data){
-	   		 $("#table").html(data);
-		}); 
- }
- 
-	
-}  
+	  var r=confirm("确认删除!");
+	    if (r==true){
+ $.post("del.do",{cid:cid},function(data){
+	 $("#table").html(data);
+		});
+	    }
+	}  
 
+ /*  var districts;
 
+  $(function(){
+  	$.post('/HouseRent/Type_typeList',null, function(result){
+  		for ( var i = 0; i < result.data.length; i++){
+  			$("#Type").append("<option value='" + result.data[i].id + "'>" + result.data[i].name + "</option>");  
+  		}
+  	});
+  	
+  	$.post('/HouseRent/District_districtList',null, function(result){
+  		for ( var i = 0; i < result.data.length; i++){
+  			$("#houseDistrict").append("<option value='" + result.data[i].id + "'>" + result.data[i].name + "</option>");  
+  		}
+  		
+  		addStreet(-1);
+  	});
+  	
+  	
+  	
+  	
+  });
+
+  function onchangeDistrict(obj)
+  {	
+  	addStreet(obj.selectedIndex+1);
+  }
+
+  function addStreet(index)
+  {
+  	
+  	$("#houseStreet").empty();
+  	$.post('/HouseRent/Street_StreetList',{districtId:index}, function(result){
+  		for ( var i = 0; i < result.data.length; i++){
+  			$("#houseStreet").append("<option value='" + result.data[i].id + "'>" + result.data[i].name + "</option>");  
+  		}
+  		
+  	});
+  } */
 
  
 </script>

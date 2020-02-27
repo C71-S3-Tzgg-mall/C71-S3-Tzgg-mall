@@ -2,6 +2,7 @@ package com.yc.C71S3Tzggmall.biz;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -79,7 +80,12 @@ public class UserBiz {
 	public List<Bill> findMonthCount(){
 		List<Bill> list=new ArrayList<>();
 		Bill bill=null;
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,24);
+		calendar.set(Calendar.MINUTE,00);
+		calendar.set(Calendar.SECOND,00);
 		Date d=new Date(); 
+		d=calendar.getTime();
 		Timestamp t01= null;
 		Timestamp t =null;
 		UserExample example=null;
@@ -94,7 +100,7 @@ public class UserBiz {
 			count=(int) um.countByExample(example);
 			bill=new Bill();
 			bill.setCount(count);
-			time01=t+"";
+			time01=t01+"";
 			time = (Integer.parseInt(time01.substring(8, 10)));
 			bill.setTime(time);
 			list.add(bill);

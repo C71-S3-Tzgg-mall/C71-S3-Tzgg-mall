@@ -1,6 +1,7 @@
 package com.yc.C71S3Tzggmall.web;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,11 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.util.StringUtil;
 import com.yc.C71S3Tzggmall.bean.Cart;
 import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.bean.User;
 import com.yc.C71S3Tzggmall.biz.CartBiz;
 import com.yc.C71S3Tzggmall.biz.ClothBiz;
+import com.yc.C71S3Tzggmall.biz.WishlistBiz;
 import com.yc.C71S3Tzggmall.vo.Result;
 
 @Controller
@@ -28,6 +31,9 @@ public class CartAction {
 	
 	@Resource
 	private ClothBiz clBiz;
+	
+	@Resource
+	private WishlistBiz wBiz;
 	
 	/**
 	 * 
@@ -108,8 +114,7 @@ public class CartAction {
 				}
 				
 			}
-			
-			if(list.isEmpty() && cart.getCount()==null){
+			if(list.isEmpty()){
 				if(cart.getCount()==null){
 					cart.setCount(1);
 					cart.setUid(user.getUid());	

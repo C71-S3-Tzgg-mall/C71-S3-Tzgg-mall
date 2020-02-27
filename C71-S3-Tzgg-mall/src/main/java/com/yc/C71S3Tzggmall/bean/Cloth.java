@@ -28,6 +28,10 @@ public class Cloth {
     
     private Integer count;
     
+    private Integer stars;
+    
+    private String status;
+    
     private List<Cloth> list;
     
     public Integer getCid() {
@@ -133,6 +137,23 @@ public class Cloth {
 	public void setList(List<Cloth> list) {
 		this.list = list;
 	}
+
+	public Integer getStars() {
+		return stars;
+	}
+
+	public void setStars(Integer stars) {
+		this.stars = stars;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
     
+	
     
 }

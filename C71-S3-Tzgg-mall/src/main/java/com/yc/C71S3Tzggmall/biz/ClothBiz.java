@@ -175,6 +175,15 @@ public class ClothBiz {
 		return list;
 	}
 	
+	/**
+	 * 修改销售量
+	 * @return
+	 */
+	public int updateSoleCount(Cloth cloth){
+		ClothExample example=new ClothExample();
+		example.createCriteria().andCidEqualTo(cloth.getCid());
+		return cm.updateByExampleSelective(cloth, example);
+	}
 	
 	
 }

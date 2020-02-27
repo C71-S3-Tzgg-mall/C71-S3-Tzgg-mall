@@ -15,11 +15,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yc.C71S3Tzggmall.bean.Cart;
 import com.yc.C71S3Tzggmall.bean.Cloth;
+import com.yc.C71S3Tzggmall.bean.Comment;
 import com.yc.C71S3Tzggmall.bean.Tag;
 import com.yc.C71S3Tzggmall.bean.Type;
 import com.yc.C71S3Tzggmall.bean.User;
 import com.yc.C71S3Tzggmall.biz.CartBiz;
 import com.yc.C71S3Tzggmall.biz.ClothBiz;
+import com.yc.C71S3Tzggmall.biz.CommentBiz;
 import com.yc.C71S3Tzggmall.biz.TagBiz;
 import com.yc.C71S3Tzggmall.biz.TypeBiz;
 
@@ -43,6 +45,8 @@ public class NewShopAction {
 	@Resource
 	private CartBiz cartBiz;
 	
+	@Resource
+	private CommentBiz cmBiz;
 	
 	@RequestMapping("newShop")
 	/**
@@ -80,6 +84,21 @@ public class NewShopAction {
 		m.addAttribute("typeList",typeList);
 		m.addAttribute("tagList",tagList);
 		List<Cloth> list=cBiz.findClothByTime();
+		List<Comment> cmlist=null;
+		int stars=0;
+		for(int i=0;i<list.size();i++){
+			cmlist=cmBiz.findComment(list.get(i).getCid());
+			for(int j=0;j<cmlist.size();j++){
+				stars+=cmlist.get(j).getStars();
+			}
+			if(cmlist.size()==0){
+				list.get(i).setStars(stars);
+			}else{
+				stars=stars/cmlist.size();
+				list.get(i).setStars(stars);
+				stars=0;
+			}
+		}
 		m.addAttribute("fCList",list);
 		return "newShop";
 	}
@@ -93,6 +112,21 @@ public class NewShopAction {
 	 */
 	public String findClothByTime(Model m){
 		List<Cloth> list=cBiz.findClothByTime();
+		List<Comment> cmlist=null;
+		int stars=0;
+		for(int i=0;i<list.size();i++){
+			cmlist=cmBiz.findComment(list.get(i).getCid());
+			for(int j=0;j<cmlist.size();j++){
+				stars+=cmlist.get(j).getStars();
+			}
+			if(cmlist.size()==0){
+				list.get(i).setStars(stars);
+			}else{
+				stars=stars/cmlist.size();
+				list.get(i).setStars(stars);
+				stars=0;
+			}
+		}
 		m.addAttribute("fCList",list);
 		return "newShop::fbd";
 	}
@@ -106,44 +140,25 @@ public class NewShopAction {
 	 */
 	public String findClothByCon(Model m,Cloth cloth){
 		List<Cloth> list=cBiz.findClothByCon(cloth);
+		List<Comment> cmlist=null;
+		int stars=0;
+		for(int i=0;i<list.size();i++){
+			cmlist=cmBiz.findComment(list.get(i).getCid());
+			for(int j=0;j<cmlist.size();j++){
+				stars+=cmlist.get(j).getStars();
+			}
+			if(cmlist.size()==0){
+				list.get(i).setStars(stars);
+			}else{
+				stars=stars/cmlist.size();
+				list.get(i).setStars(stars);
+				stars=0;
+			}
+		}
 		m.addAttribute("fCList",list);
 		return "babyShop::fbd";
 	}	
 	
-	/*@RequestMapping("shop")
-	*//**
-	 * 分页查询
-	 * @param m
-	 * @param start
-	 * @param size
-	 * @return
-	 *//*
-	public String findClothByCon(Model m,@RequestParam(value = "start",defaultValue = "0")int start,
-            @RequestParam(value = "size",defaultValue = "5")int size){
-		if(start<=0){
-			start=1;
-		}
-		PageHelper.startPage(start,PAGE_SIZE);
-		List<Cloth> list=cBiz.selectCloth();
-		PageInfo<Cloth> pageInfo = new PageInfo<Cloth>(list);
-		System.out.println(pageInfo);
-		m.addAttribute("page",pageInfo);
-		return "shop01::fbd";
-	}
-	
-	@RequestMapping("shop01")
-	public String shop(Model m,@RequestParam(value = "start",defaultValue = "0")int start,
-            @RequestParam(value = "size",defaultValue = "5")int size){
-		if(start<=0){
-			start=1;
-		}
-		PageHelper.startPage(start,PAGE_SIZE);
-		List<Cloth> list=cBiz.selectCloth();
-		PageInfo<Cloth> pageInfo = new PageInfo<Cloth>(list);
-		System.out.println(pageInfo);
-		m.addAttribute("page",pageInfo);
-		return "shop01";
-	}*/
 	
 	
 }

@@ -80,22 +80,24 @@ public class CheckoutAction {
 		User user=(User) request.getSession().getAttribute("user");
 		String cids = request.getParameter("cids");
 		oid=request.getParameter("oid");
-		// 分割字符串
-		String[] infos = cids.split(",");
-		List<Integer> cidsList = new ArrayList<Integer>();
-		for (String cid : infos) {
-			if (StringUtil.isNotEmpty(cids)) {
-				cidsList.add(Integer.parseInt(cid));
+		if(cids!=null){
+			// 分割字符串
+			String[] infos = cids.split(",");
+			List<Integer> cidsList = new ArrayList<Integer>();
+			for (String cid : infos) {
+				if (StringUtil.isNotEmpty(cids)) {
+					cidsList.add(Integer.parseInt(cid));
+				}
 			}
-		}
-		
-		int uid=user.getUid();
-		oBiz.settle(cidsList, uid,oid);
-		Cart c=new Cart();
-		for (int i=0;i<cidsList.size();i++) {
-			c.setUid(user.getUid());
-			c.setCid(cidsList.get(i));
-			cartBiz.delete(c);
+			
+			int uid=user.getUid();
+			oBiz.settle(cidsList, uid,oid);
+			Cart c=new Cart();
+			for (int i=0;i<cidsList.size();i++) {
+				c.setUid(user.getUid());
+				c.setCid(cidsList.get(i));
+				cartBiz.delete(c);
+			}
 		}
 		checkout(m);
 		return new Result(1,"checkout");
@@ -104,11 +106,26 @@ public class CheckoutAction {
 	@RequestMapping("checkout")
 	public String showOrder(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
+		oid=request.getParameter("oid");
 		if(user!=null){
+			Cloth cloth=cartBiz.showCart(user.getUid());
+			Cart cart=new Cart();
+			cart.setUid(user.getUid());
+			List<Cart> cartList=cartBiz.findCartByUid(cart);
+			int total=0;
+			for (Cart c : cartList) {
+				total += c.getCount()*c.getPrice();
+			}
+			m.addAttribute("total",total);
+			m.addAttribute("cartSize", cartList.size());
+			m.addAttribute("cartList",cloth);
 			checkout(m);
 			m.addAttribute("user", user);
-			getAddr(m,user.getAddress());
+			if(user.getAddress()!=null){
+				getAddr(m,user.getAddress());
+			}
 		}
+		
 		return "checkout";
 	}
 	
@@ -183,7 +200,7 @@ public class CheckoutAction {
 			uBiz.updata(user);
 			User user02=uBiz.selectUserByUid(u);
 			String addr=user02.getAddress();
-			System.out.println(addr);
+			//System.out.println(addr);
 			getAddr(m,addr);
 			m.addAttribute("user", user02);
 		}
@@ -202,7 +219,7 @@ public class CheckoutAction {
 	public String updateStatus(Orderitem item,Model m,HttpServletRequest request){
 		User user=(User)request.getSession().getAttribute("user");
 		item.setStatus("已支付");
-		oBiz.updateStatus(item);
+		oBiz.UpdStatus(item);
 		checkout(m);
 		return "checkout::payment";
 	}

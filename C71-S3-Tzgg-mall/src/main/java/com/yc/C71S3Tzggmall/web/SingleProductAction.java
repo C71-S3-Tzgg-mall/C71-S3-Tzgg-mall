@@ -65,6 +65,12 @@ public class SingleProductAction {
 		return "single-product::single";
 	}
 	
+	/**
+	 * 详情页
+	 * @param m
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("single-product")
 	public String single(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
@@ -81,11 +87,32 @@ public class SingleProductAction {
 		}
 		List<Type> typeList=tBiz.selectType();
 		m.addAttribute("type",typeList);
-		
+		List<Cloth> tlist=cBiz.selectBestCloth();
+		List<Comment> cmlist=null;
+		int stars=0;
+		for(int i=0;i<tlist.size();i++){
+			cmlist=cmBiz.findComment(tlist.get(i).getCid());
+			for(int j=0;j<cmlist.size();j++){
+				stars+=cmlist.get(j).getStars();
+			}
+			if(cmlist.size()==0){
+				tlist.get(i).setStars(stars);
+			}else{
+				stars=stars/cmlist.size();
+				tlist.get(i).setStars(stars);
+				stars=0;
+			}
+		}
+		m.addAttribute("tlist", tlist);
 		return "single-product";
 	}
 	
-	
+	/**
+	 * 发表评论
+	 * @param c
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("addComment")
 	public Result addComment(Comment c,HttpServletRequest request){
@@ -111,6 +138,12 @@ public class SingleProductAction {
 		
 	}
 	
+	/**
+	 * 查看评论
+	 * @param c
+	 * @param m
+	 * @return
+	 */
 	@RequestMapping("findComment")
 	public String findComment(Comment c,Model m){
 		List<Comment> clist=cmBiz.findComment(c.getCid());
@@ -132,4 +165,6 @@ public class SingleProductAction {
 		m.addAttribute("det",c);
 		return "single-product::info";
 	}
+	
+	
 }

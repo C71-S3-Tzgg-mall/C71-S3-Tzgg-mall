@@ -80,10 +80,12 @@ public class BackUserAction {
 		int total=oBiz.findCount();//总订单数
 		int finishCount=oBiz.findCountByStatus();//已完成数量
 		int pCount=oBiz.findCountByP();//配送中数量
+		int qCount=oBiz.findCountByQ();//取消的订单数
 		int iCount=total-finishCount-pCount;
 		m.addAttribute("fCount", finishCount);
 		m.addAttribute("iCount", iCount);
 		m.addAttribute("pCount", pCount);
+		m.addAttribute("qCount", qCount);
 		//浏览量
 		Integer num=(Integer) servletContext.getAttribute("num");
 		m.addAttribute("num", num);

@@ -1,7 +1,6 @@
 package com.yc.C71S3Tzggmall.biz;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,9 +10,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.github.pagehelper.util.StringUtil;
 import com.yc.C71S3Tzggmall.bean.Cart;
-import com.yc.C71S3Tzggmall.bean.Order;
+import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.bean.Orderitem;
 import com.yc.C71S3Tzggmall.bean.OrderitemExample;
 import com.yc.C71S3Tzggmall.dao.OrderitemMapper;
@@ -36,6 +34,15 @@ public class OrderItemBiz {
 	private UserBiz uBiz;
 	
 	
+	@Resource
+	private OrderItemBiz obiz;
+	
+	@Resource
+	private ClothBiz cbiz;
+	
+	@Resource
+	private ClothBiz clBiz;
+	
 	/**
 	 * 生成订单
 	 * @return
@@ -52,7 +59,7 @@ public class OrderItemBiz {
 			orderitem.setCid(c.getCid());
 			orderitem.setUid(uid);
 			orderitem.setCount(c.getCount());
-			//System.out.println(c.getCount());
+			System.out.println(c.getCount());
 			orderitem.setOid(oid);
 			orderitem.setStatus("未支付");
 			Date d=new Date();      
@@ -89,16 +96,6 @@ public class OrderItemBiz {
 		return om.deleteByPrimaryKey(item.getOiid());
 	}
 	
-	/**
-	 * 修改订单状态
-	 * @param item
-	 * @return
-	 */
-	public int updateStatus(Orderitem item){
-		OrderitemExample example=new OrderitemExample();
-		example.createCriteria().andCidEqualTo(item.getCid());
-		return om.updateByExampleSelective(item, example);
-	}
 	
 	/**
 	 * 根据订单号查询订单
@@ -131,15 +128,25 @@ public class OrderItemBiz {
 	}
 	
 	/**
-	 * 查询配送中的订单数
+	 * 查询已发货的订单数
 	 * @return
 	 */
 	public int findCountByP(){
 		OrderitemExample example=new OrderitemExample();
-		example.createCriteria().andStatusEqualTo("配送中");
+		example.createCriteria().andStatusEqualTo("已发货");
 		return (int) om.countByExample(example);
 	}
 	
+	
+	/**
+	 * 查询取消的订单数
+	 * @return
+	 */
+	public int findCountByQ(){
+		OrderitemExample example=new OrderitemExample();
+		example.createCriteria().andStatusEqualTo("取消订单");
+		return (int) om.countByExample(example);
+	}
 	/**
 	 * 查询订单数
 	 * @return
@@ -147,7 +154,12 @@ public class OrderItemBiz {
 	public List<Bill> findMonthCount(){
 		List<Bill> list=new ArrayList<>();
 		Bill bill=null;
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,24);
+		calendar.set(Calendar.MINUTE,00);
+		calendar.set(Calendar.SECOND,00);
 		Date d=new Date(); 
+		d=calendar.getTime();
 		Timestamp t01= null;
 		Timestamp t =null;
 		OrderitemExample example=null;
@@ -162,7 +174,7 @@ public class OrderItemBiz {
 			count=(int) om.countByExample(example);
 			bill=new Bill();
 			bill.setCount(count);
-			time01=t+"";
+			time01=t01+"";
 			time = (Integer.parseInt(time01.substring(8, 10)));
 			bill.setTime(time);
 			list.add(bill);
@@ -179,8 +191,12 @@ public class OrderItemBiz {
 		List<Bill> list=new ArrayList<>();
 		List<Orderitem> oList=null;
 		Bill bill=null;
-		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,24);
+		calendar.set(Calendar.MINUTE,00);
+		calendar.set(Calendar.SECOND,00);
 		Date d=new Date(); 
+		d=calendar.getTime();
 		Timestamp t01= null;
 		Timestamp t =null;
 		OrderitemExample example=null;
@@ -192,13 +208,16 @@ public class OrderItemBiz {
 			example=new OrderitemExample();
 			t= new Timestamp(d.getTime()- n * 24 * 60 * 60 * 1000);
 			t01=new Timestamp(d.getTime()- (n+1) * 24 * 60 * 60 * 1000);
+			//System.out.println(t);
 			example.createCriteria().andTimeBetween(t01, t).andStatusEqualTo("已完成");
 			oList=om.selectByExample(example);
 			for(int i=0;i<oList.size();i++){
 				total+=oList.get(i).getTotalprice();
 			}
+			//System.out.println(t01+"====="+t+"======"+total);
 			bill.setCount(total);
-			time01=t+"";
+			total=0;
+			time01=t01+"";
 			time = (Integer.parseInt(time01.substring(8, 10)));
 			bill.setTime(time);
 			list.add(bill);
@@ -234,7 +253,7 @@ public class OrderItemBiz {
 			example=new OrderitemExample();
 		
 			t= new Timestamp(d.getTime());
-			System.out.println(t);
+			//System.out.println(t);
 			calendar.add(Calendar.YEAR, +1);
 			d=calendar.getTime();
 			
@@ -245,6 +264,7 @@ public class OrderItemBiz {
 				total+=oList.get(i).getTotalprice();
 			}
 			bill.setCount(total);
+			total=0;
 			time01=t+"";
 			time = (Integer.parseInt(time01.substring(0, 4)));
 			bill.setTime(time);
@@ -252,6 +272,92 @@ public class OrderItemBiz {
 		}
 		
 		return list;
+	}
+	
+	/**
+	 * 通过uid查询
+	 */
+	public List<Orderitem> selectOrderByuid(Orderitem orderitem){
+		OrderitemExample example=new OrderitemExample();
+		example.createCriteria().andUidEqualTo(orderitem.getUid());
+		
+		return om.selectByExample(example);
+
+		
+	}
+	/**
+	 * 查询订单
+	 * @return
+	 */
+	public List<Orderitem> selectOrderitem(){
+		List<Orderitem> list=om.selectByExample(null);
+		return list;
+	}
+
+	/**
+	 * 删除
+	 * @param cloth
+	 */             
+	public int delete(Orderitem orderitem){
+		OrderitemExample example =new OrderitemExample();
+        //example.createCriteria().andCidEqualTo(orderitem.getCid()).andUidEqualTo(orderitem.getUid());
+		example.createCriteria().andCidEqualTo(orderitem.getCid());
+		return om.deleteByExample(example);
+	}
+	
+	/**
+	 * 显示后台订单信息
+	 * @return
+	 */
+	public Cloth showbackOrder(){
+		List<Orderitem> olist=om.selectByExample(null);
+		List<Cloth> list=null;
+		
+		Cloth cloth=new Cloth();
+		
+		for (int i = 0; i < olist.size(); i++) {
+			list=new ArrayList<Cloth>();
+			for (int j = 0; j < olist.size(); j++) {
+				cloth=clBiz.selectCloth(olist.get(j).getCid());
+				cloth.setDetail(olist.get(j).getOid());
+				cloth.setRealprice(olist.get(j).getTotalprice());
+				cloth.setStatus(olist.get(j).getStatus());
+				list.add(cloth);
+			}
+		}
+		cloth.setList(list);
+		return cloth;
+	}
+	
+	/**
+	 * 修改后台状态
+	 * @param item
+	 * @return
+	 */
+	public int reStatus(Orderitem item){
+		OrderitemExample example=new OrderitemExample();
+		example.createCriteria().andOidEqualTo(item.getOid());
+		return om.updateByExampleSelective(item, example);
+	}
+	
+	/**
+	 * 修改状态
+	 * @param item
+	 * @return
+	 */
+	public int UpdStatus(Orderitem item){
+		OrderitemExample example=new OrderitemExample();
+		example.createCriteria().andOiidEqualTo(item.getOiid());
+		return om.updateByExampleSelective(item, example);
+	}
+	
+	/**
+	 *根据oiid查询
+	 * @param oiid
+	 * @return
+	 */
+	public Orderitem selectByOid(int oiid){
+		return om.selectByPrimaryKey(oiid);
 	}
 	
 }
