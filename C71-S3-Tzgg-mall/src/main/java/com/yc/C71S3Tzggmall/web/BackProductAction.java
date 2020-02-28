@@ -146,5 +146,34 @@ public class BackProductAction {
 	}
 	
 	
-
+	@ResponseBody
+	@RequestMapping("type")
+	/**
+	 * 显示type
+	 * @return
+	 */
+	public Result findType(){
+		List<Type> list=tBiz.selectType();
+		return new Result(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping("tag")
+	/**
+	 * 显示tag
+	 * @param tag
+	 * @return
+	 */
+	public Result findTag(Tag tag){
+		List<Tag> list=taBiz.selectTagByTypeId(tag.getTypeid());
+		return new Result(list);
+	}
+	
+	@RequestMapping("updatePro")
+	public String update(Cloth cloth,Model m){
+		Cloth c=cBiz.selectCloth(cloth.getCid());
+		m.addAttribute("c", c);
+		return "table::form";
+	}
+	
 }

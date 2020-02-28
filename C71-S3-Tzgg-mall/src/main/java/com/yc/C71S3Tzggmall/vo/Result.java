@@ -54,5 +54,10 @@ public class Result {
 		
 	}
 	
+	public Result(Object data) {
+		super();
+		Data = data;
+	}
+	
 
 }

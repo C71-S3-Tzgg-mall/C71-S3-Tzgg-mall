@@ -52,9 +52,6 @@
     <link href='assets/stylesheets/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
     <!-- / demo -->
     <link href='assets/stylesheets/demo.css' media='all' rel='stylesheet' type='text/css' />
-    <script type="text/javascript" src="js/function.js"></script>
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/add.js"></script>
     
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body class='contrast-red '>
@@ -327,7 +324,7 @@
                     <div class='span12 box'>
                         <div class='box-header green-background'>
                             <div class='title'>
-                                添加商品
+                              		  添加商品
                             </div>
                             <div class='actions'>
                                 <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
@@ -337,7 +334,10 @@
                             </div>
                         </div>
                         <div class='box-content'>
-                            <form id="ff"  method="post" action="add.do" class='form form-horizontal validate-form' style='margin-bottom: 0;'enctype="multipart/form-data" th:fragment="form"/>
+                            <form id="ff"  method="post" action="add.do" 
+                            	class='form form-horizontal validate-form' 
+                            	style='margin-bottom: 0;'
+                            	enctype="multipart/form-data" >
                                 <div class='control-group'>
                                     <div class='control-label'>
                                         <label for='validation_secret'>商品名称</label>
@@ -355,13 +355,8 @@
                                 <div class='control-group' >
                                     <label class='control-label' for='validation_ip'>类型</label>
                                     <div class='controls' id='type' >
-                                      
-									  <!-- <td><select  class="text" name="districtId" id="Type" onchange="onchangeDistrict(this)"  ><option th:each="type,typeStat:${tlist}" value ="type" th:text=${type.type}></option> </select> 
-								        <select class="text" name="streetId" id="Tag" style="width:90px;"><option th:each="tag,typeStat:${talist}" value ="tag" th:text=${tag.tag} ></option> </select>
-								     </td> -->
-								     <td><select class="text" name="districtId" id="Type" onchange="onchangeDistrict(this)"></select> 
-							             <select class="text" name="streetId" id="Tag"></select>
-									</td>
+									     <select style="width:108px"class="text" name="typeid" id="clothType" onchange="onchangeType(this)"></select> 
+								         <select style="width:107px" class="text" name="tid" id="clothTag"></select>
                                     </div>
                                 </div>
                                 <div class='control-group'>
@@ -378,10 +373,8 @@
                                 <div class='control-group'>
                                     <div class='control-label' >
                                         <label for='validation_phone' >进货时间</label>
-                                        
                                     </div>
                                     <div class='controls' >
-                                      <!-- <span th:text="${#arrivetime.format(cloth.arrivetime,'yyyy-MM-dd HH:mm:ss')}">4564546</span>  -->
                                            <input id='arrivetime' type="date" name='time' >                                       
                                     </div>
                                 </div>
@@ -558,48 +551,35 @@
  $.post("del.do",{cid:cid},function(data){
 	 $("#table").html(data);
 		});
-	    }
+	   }
 	}  
-
- /*  var districts;
-
+//显示type
   $(function(){
-  	$.post('/HouseRent/Type_typeList',null, function(result){
+  	$.post('type',null, function(result){
   		for ( var i = 0; i < result.data.length; i++){
-  			$("#Type").append("<option value='" + result.data[i].id + "'>" + result.data[i].name + "</option>");  
+  			$("#clothType").append("<option value='" + result.data[i].tid + "'>" + result.data[i].type + "</option>");  
   		}
+  		addTag(-1);
   	});
-  	
-  	$.post('/HouseRent/District_districtList',null, function(result){
-  		for ( var i = 0; i < result.data.length; i++){
-  			$("#houseDistrict").append("<option value='" + result.data[i].id + "'>" + result.data[i].name + "</option>");  
-  		}
-  		
-  		addStreet(-1);
-  	});
-  	
-  	
-  	
-  	
   });
-
-  function onchangeDistrict(obj)
-  {	
-  	addStreet(obj.selectedIndex+1);
+  function onchangeType(obj){	
+  	addTag(obj.selectedIndex+1);
+  }
+ //显示tag
+  function addTag(index){
+	  $("#clothTag").empty();
+	  $.post('tag',{typeid:index}, function(result){
+	  		for ( var i = 0; i < result.data.length; i++){
+	  			$("#clothTag").append("<option value='" + result.data[i].tid + "'>" + result.data[i].tag + "</option>");  
+	  		}
+	  	});
   }
 
-  function addStreet(index)
-  {
-  	
-  	$("#houseStreet").empty();
-  	$.post('/HouseRent/Street_StreetList',{districtId:index}, function(result){
-  		for ( var i = 0; i < result.data.length; i++){
-  			$("#houseStreet").append("<option value='" + result.data[i].id + "'>" + result.data[i].name + "</option>");  
-  		}
-  		
-  	});
-  } */
-
+ /* function updatePro(cid){
+	 $.post('updataPro',{cid:cid},function(data){
+		 $("#form").html(data);
+	 });
+ } */
  
 </script>
 
