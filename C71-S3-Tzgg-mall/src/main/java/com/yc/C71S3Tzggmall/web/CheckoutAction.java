@@ -80,6 +80,7 @@ public class CheckoutAction {
 		User user=(User) request.getSession().getAttribute("user");
 		String cids = request.getParameter("cids");
 		oid=request.getParameter("oid");
+		//System.out.println(oid);
 		if(cids!=null){
 			// 分割字符串
 			String[] infos = cids.split(",");
@@ -106,7 +107,10 @@ public class CheckoutAction {
 	@RequestMapping("checkout")
 	public String showOrder(Model m,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
-		oid=request.getParameter("oid");
+		String Orderid=request.getParameter("oid");
+		if(Orderid!=null){
+			oid=Orderid;
+		}
 		if(user!=null){
 			Cloth cloth=cartBiz.showCart(user.getUid());
 			Cart cart=new Cart();

@@ -77,6 +77,10 @@ public class UserBiz {
 		return (int) um.countByExample(example);
 	}
 	
+	/**
+	 * 查询一个最近七天的用户个数
+	 * @return
+	 */
 	public List<Bill> findMonthCount(){
 		List<Bill> list=new ArrayList<>();
 		Bill bill=null;
@@ -107,5 +111,9 @@ public class UserBiz {
 		}
 		
 		return list;
+	}
+	
+	public List<User> findUser(){
+		return um.selectByExample(null);
 	}
 }

@@ -93,220 +93,99 @@
 
 	<!-- Header Area-->
 	<header class="header-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="headet-top">
-						<div class="htop-one">
-							<ul class="curency">
-								<li><a href="#">售后服务热线<i class="fa fa-caret-down"></i></a>
-									<ul>
-										<li><a href="#">4546-67900<span>(中国)</span></a></li>
-										<li><a href="#">3889-34468<span>(其他)</span></a></li>
-									</ul></li>
-							</ul>
+        	<div class="container">
+        		<div class="row">	
+					<div class="col-lg-12">
+						<div class="headet-top">
+							<div class="htop-one last">
+								<ul class="account">
+									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
+										<ul>
+											<li><a href="wishlist">我的收藏</a></li> 
+											<li><a href="order">我的订单</a></li>
+											<li><a href="cart">购物车</a></li> 
+											<li><a href="#">退出</a></li> 
+										</ul>										
+									</li> 
+								</ul>
+							</div>
+							<div class="htop-one">
+								<ul class="lenguage">
+									<li>
+										<a href="login">登录</a>									
+									</li> 
+								</ul>
+							</div>
+							<div class="htop-one">
+								<ul class="lenguage">
+									<li>
+										<a href="exit">退出</a>									
+									</li> 
+								</ul>
+							</div>
+						</div> 
+					</div>	
+				</div>
+        	</div>
+			<div class="container">
+				<div class="header-midile">  
+					<div class="row"> 
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+							<div class="lago">
+								<a href="index"><img src="img/logo.png" alt="lago" /></a>
+							</div>
 						</div>
-						<div class="htop-one">
-							<ul class="lenguage">
-								<li><a href="#">在线客服</a></li>
-							</ul>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="search">
+								<form action="#">
+									<input type="text" placeholder="search">
+									<input type="submit" value="search">
+								</form>
+							</div>
 						</div>
-						<div class="htop-one">
-							<ul class="lenguage">
-								<li><a href="login">登录</a></li>
-							</ul>
-						</div>
-						<div class="htop-one last">
-							<ul class="account">
-								<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
-									<ul>
-										<li><a href="wishlist">我的收藏</a></li>
-										<li><a href="order">我的订单</a></li>
-										<li><a href="cart">购物车</a></li>
-										<li><a href="#">退出</a></li>
-									</ul></li>
-							</ul>
-						</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"> 
+							<ul class="curt">
+								<li><a class="total-cart-b" href="cart">
+										<span th:text="${cartSize}">2</span>
+										<p>购物车</p>
+										<h6 th:text="'￥'+${total}">￥ 125.19</h6>									
+									</a>
+									<div class="curt-list" >
+										<div th:each="cart:${cartList}">
+											<ul th:each="cartItem,cartStat:${cartList.list}" th:if="${cartStat.index} lt '2'">
+												<li class="curt-list-li"> 
+													<a href="#"><img th:src="${cartItem.image}"></a>
+													<a href="#"><span th:text="${cartItem.count}+' X'" class="curt-list-item-color">1 X</span></a>
+													<!-- <span>S, Yellow</span> -->
+													<h6 th:text="'￥'+${cartItem.realprice}"></h6>
+												</li>
+											</ul>
+										</div>
+									<p class="totel" >totel</p><h6 th:text="'￥'+${total}">£ 61.19</h6>
+									<button><a href="cart">进入购物车</a></button>
+									</div>									
+								</li>
+							</ul> 						
+						</div> 
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="header-midile">
+			</div> 
+			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-						<div class="lago">
-							<a href="index"><img src="img/logo.png" alt="lago" /></a>
-						</div>
+					<div class="col-lg-12"> 
+						<div class="main-menu">
+							<ul class="nav floatleft">
+								<li ><a href="index">首页</a></li>
+								<li ><a href="newShop">新品</a></li>
+								<li ><a href="childShop">幼儿（1-5岁）</a> </li>
+								<li class="active"><a href="babyShop">婴儿（0-24个月）</a></li>
+								<li ><a href="specialShop">特卖</a> </li>
+							</ul> 
+						</div>	
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="search">
-							<form action="#">
-								<input type="text" placeholder="search"> <input
-									type="submit" value="search">
-							</form>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-						<ul class="curt">
-							<li><a class="total-cart-b" href="cart"> <span
-									th:text="${cartSize}">2</span>
-									<p>购物车</p>
-									<h6 th:text="'￥'+${total}">￥ 125.19</h6>
-							</a>
-								<div class="curt-list">
-									<div th:each="cart:${cartList}">
-										<ul th:each="cartItem,cartStat:${cartList.list}"
-											th:if="${cartStat.index} lt '2'">
-											<li class="curt-list-li"><a href="#"><img
-													th:src="${cartItem.image}"></a> <a href="#"><span
-													th:text="${cartItem.count}+' X'"
-													class="curt-list-item-color">1 X</span></a> <!-- <span>S, Yellow</span> -->
-												<h6 th:text="'￥'+${cartItem.realprice}"></h6></li>
-										</ul>
-									</div>
-									<p class="totel">totel</p>
-									<h6 th:text="'￥'+${total}">£ 61.19</h6>
-									<button>
-										<a href="cart">进入购物车</a>
-									</button>
-								</div></li>
-						</ul>
-					</div>
-				</div>
+				</div>				
 			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="main-menu">
-						<ul class="nav floatleft">
-							<li class="active"><a href="index">首页</a></li>
-							<li class="mega-menu-one"><a href="newShop">新品</a>
-								<ul class="sub-menu">
-									<li><a href="shop">dresses</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">Sports</a></li>
-										</ul></li>
-									<li><a href="shop">clothing</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">day</a></li>
-										</ul></li>
-									<li><a href="shop">handbags</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">Evening</a></li>
-										</ul></li>
-									<li><a href="shop">shoes</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Cocktail</a></li>
-										</ul></li>
-									<li><a href="shop"><img src="img/block_menu.png"
-											alt="" /></a></li>
-								</ul></li>
-							<li class="mega-menu-two"><a href="childShop">幼儿（1-5岁）</a>
-								<ul class="sub-menu">
-									<li><a href="shop">dresses</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Bootees</a></li>
-											<li><a href="shop">Blazers</a></li>
-										</ul></li>
-									<li><a href="#">clothing</a>
-										<ul class="sub-menu">
-											<li><a href="shop">coats</a></li>
-											<li><a href="shop">T-shirts</a></li>
-										</ul></li>
-									<li><a href="#">handbags</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Bands</a></li>
-											<li><a href="shop">Furniture</a></li>
-										</ul></li>
-									<li><a href="#">shoes</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Bands</a></li>
-											<li><a href="shop">Lifestyle</a></li>
-										</ul></li>
-								</ul></li>
-							<li class="mega-menu-three"><a href="childShop">婴儿（0-24个月）</a>
-								<ul class="sub-menu">
-									<li><a href="shop">dresses</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">Sports</a></li>
-										</ul></li>
-									<li><a href="#">clothing</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">day</a></li>
-										</ul></li>
-									<li><a href="#">handbags</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">Evening</a></li>
-										</ul></li>
-									<li><a href="#">shoes</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Cocktail</a></li>
-										</ul></li>
-								</ul></li>
-							<li class="mega-menu-for"><a href="specialShop">特卖</a>
-								<ul class="sub-menu">
-									<li><a href="shop">dresses</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">Sports</a></li>
-										</ul></li>
-									<li><a href="#">clothing</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">day</a></li>
-										</ul></li>
-									<li><a href="#">handbags</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Cocktail</a></li>
-											<li><a href="shop">Evening</a></li>
-										</ul></li>
-									<li><a href="#">shoes</a>
-										<ul class="sub-menu">
-											<li><a href="shop">Sports</a></li>
-											<li><a href="shop">Evening</a></li>
-											<li><a href="shop">day</a></li>
-											<li><a href="shop">Cocktail</a></li>
-										</ul></li>
-								</ul></li>
-
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+        </header>
 	<!-- Brade Come Start -->
 	<div class="braed-come">
 		<div class="container">
@@ -466,11 +345,14 @@
 											<td class="td-img-tr"><span class="td-img"> <img
 													th:src="${orderItem.image}" alt="img">
 											</span></td>
-											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"><p
-														th:text="${orderItem.name}">Printed Chiffon Dress</p></td>
-											<td class="td-stok" style="cursor: pointer;"
-												th:onclick="|upd('${orderItem.tid}')|"><span
-												th:text="${orderItem.detail}">In stock</span></td>
+											<td class="td-p-title"><a style="cursor:pointer;" th:onclick="|singleProduct('${orderItem.cid}')|"
+														th:text="${orderItem.name}">Printed Chiffon Dress</a></td>
+											<td class="td-stok" th:if="${orderItem.detail} eq '未支付'" style="cursor: pointer;"   th:onclick="|upd('${orderItem.tid}')|">
+												 <span  th:text="${orderItem.detail}">In stock</span>
+											</td>
+											<td class="td-stok" th:if="${orderItem.detail} != '未支付'">
+												 <span  th:text="${orderItem.detail}">In stock</span>
+											</td>
 											<td class="td-unite">
 												<ul>
 													<li th:text="'￥'+${orderItem.realprice}">£ 23.37</li>

@@ -10,32 +10,100 @@
 <body>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
-function login(){
-	var username=$("#loginModalUserName").val();
-	var password=$("#loginModalUserPwd").val();
-	$.post("login",
-		{name : username,
-		pwd : password},
-		function(result){
-			if(result.code == 0){
-			     alert(result.msg);
-			}else if(result.code == 2){
-				console.info(result.data);
-				for(var i=0;i<result.data.length;i++){
-					console.info(result.data[i].field);
-					if(result.data[i].field== 'name'){
-						//.text==> html 元素.innerText
-						$("#errorName").text(result.data[i].defaultMessage);
-					}else if(result.data[i].field== 'pwd'){
-						$("#errorPwd").text(result.data[i].defaultMessage);
+window.onload = function(){
+	//var formData=new FormData(loginForm);
+    var oForm = document.getElementById('loginForm');
+    var oUser = document.getElementById('loginModalUserName');
+    var oPswd = document.getElementById('loginModalUserPwd');
+    var oRemember = document.getElementById('remember');
+    //页面初始化时，如果帐号密码cookie存在则填充
+    if(getCookie('loginModalUserName') && getCookie('loginModalUserPwd')){
+      oUser.value = getCookie('loginModalUserName');
+      oPswd.value = getCookie('loginModalUserPwd');
+      oRemember.checked = true;
+    }
+    //复选框勾选状态发生改变时，如果未勾选则清除cookie
+    oRemember.onchange = function(){
+      if(!this.checked){
+        delCookie('loginModalUserName');
+        delCookie('loginModalUserPwd');
+      }
+    };
+     
+  };
+  
+  function login(){
+	  
+	//var formData=new FormData(loginForm);
+	    var oForm = document.getElementById('loginForm');
+	    var oUser = document.getElementById('loginModalUserName');
+	    var oPswd = document.getElementById('loginModalUserPwd');
+	    var oRemember = document.getElementById('remember');
+	    //页面初始化时，如果帐号密码cookie存在则填充
+	    if(getCookie('loginModalUserName') && getCookie('loginModalUserPwd')){
+	      oUser.value = getCookie('loginModalUserName');
+	      oPswd.value = getCookie('loginModalUserPwd');
+	      oRemember.checked = true;
+	    }
+	    //复选框勾选状态发生改变时，如果未勾选则清除cookie
+	    oRemember.onchange = function(){
+	      if(!this.checked){
+	        delCookie('loginModalUserName');
+	        delCookie('loginModalUserPwd');
+	      }
+	    };
+	     
+		var username=$("#loginModalUserName").val();
+		var password=$("#loginModalUserPwd").val();
+		
+		if(remember.checked){ 
+	        setCookie('loginModalUserName',oUser.value,7); //保存帐号到cookie，有效期7天
+	        setCookie('loginModalUserPwd',oPswd.value,7); //保存密码到cookie，有效期7天
+	      }
+		$.post("login",
+			{name : username,
+			pwd : password},
+			function(result){
+				if(result.code == 0){
+				     alert(result.msg);
+				}else if(result.code == 2){
+					console.info(result.data);
+					for(var i=0;i<result.data.length;i++){
+						console.info(result.data[i].field);
+						if(result.data[i].field== 'name'){
+							//.text==> html 元素.innerText
+							$("#errorName").text(result.data[i].defaultMessage);
+						}else if(result.data[i].field== 'pwd'){
+							$("#errorPwd").text(result.data[i].defaultMessage);
+						}
 					}
-				}
-			} else if(result.code == 1){
-				window.location.href="index";
-			} 
-		}
-	)
-}
+				} else if(result.code == 1){
+					window.location.href="index";
+				} 
+			}
+		)
+};
+  //设置cookie
+  function setCookie(name,value,day){
+    var date = new Date();
+    date.setDate(date.getDate() + day);
+    document.cookie = name + '=' + value + ';expires='+ date;
+  };
+  //获取cookie
+  function getCookie(name){
+    var reg = RegExp(name+'=([^;]+)');
+    var arr = document.cookie.match(reg);
+    if(arr){
+      return arr[1];
+    }else{
+      return '';
+    }
+  };
+  //删除cookie
+  function delCookie(name){
+    setCookie(name,null,-1);
+  };
+  
 function register(){
 	var username=$("#UserName").val();
 	var password=$("#Userpwd").val();
@@ -70,7 +138,7 @@ function register(){
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
 				<div class="lowin-box-inner">
-					<form>
+					<form id="loginForm">
 						<p>登录</p>
 						<div class="lowin-group">
 							<label for="loginModalUserName" id="unameLabel">用户名：<font id="errorName" color="red"></font> <a href="#" class="login-back-link">登录?</a></label>
@@ -80,7 +148,9 @@ function register(){
 							<label for="loginModalUserPwd" id="upwdLabel">密码：<font id="errorPwd" color="red"></font> <a href="#" class="forgot-link">忘记密码?</a></label>
 							<input type="password" id="loginModalUserPwd" autocomplete="current-password" class="lowin-input">
 						</div>
+						<label><input id="remember" type="checkbox">记住密码</label><br>
 						<button type="button" class="lowin-btn login-btn" onclick="login()">登录</button>
+						<!-- <input style="cursor:pointer;background-color:#088A85;color:#FFFFFF" type='submit' value="登录" autocomplete="current-password" class="lowin-input"> -->
 						<div class="text-foot">
 							没有账户？ <a href="" class="register-link">注册</a>
 						</div>
@@ -123,5 +193,8 @@ function register(){
 			forgot_url: '#forgot'
 		});
 	</script>
+	
+  
+
 </body>
 </html>

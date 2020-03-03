@@ -93,22 +93,16 @@
         	<div class="container">
         		<div class="row">	
 					<div class="col-lg-12">
-						<div class="headet-top">						
-							<div class="htop-one">
-								<ul class="curency">
-									<li>
-										<a href="#">售后服务热线<i class="fa fa-caret-down"></i></a>
+						<div class="headet-top">
+							<div class="htop-one last">
+								<ul class="account">
+									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
 										<ul>
-											<li><a href="#">4546-67900<span>(中国)</span></a></li> 
-											<li><a href="#">3889-34468<span>(其他)</span></a></li> 
-										</ul>
-									</li> 
-								</ul>
-							</div>
-							<div class="htop-one">
-								<ul class="lenguage">
-									<li>
-										<a href="#">在线客服</a>									
+											<li><a href="wishlist">我的收藏</a></li> 
+											<li><a href="order">我的订单</a></li>
+											<li><a href="cart">购物车</a></li> 
+											<li><a href="#">退出</a></li> 
+										</ul>										
 									</li> 
 								</ul>
 							</div>
@@ -119,15 +113,10 @@
 									</li> 
 								</ul>
 							</div>
-							<div class="htop-one last">
-								<ul class="account">
-									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="wishlist">我的收藏</a></li> 
-											<li><a href="order">我的订单</a></li>
-											<li><a href="cart">购物车</a></li> 
-											<li><a href="#">退出</a></li> 
-										</ul>										
+							<div class="htop-one">
+								<ul class="lenguage">
+									<li>
+										<a href="exit">退出</a>									
 									</li> 
 								</ul>
 							</div>
@@ -702,7 +691,7 @@
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 function findCloth(tid){
-	alert(tid);
+	//alert(tid);
 	$.post('bfCByCon.do',{tid:tid},function(data){
 		 $("#byTid").html(data);
 	});

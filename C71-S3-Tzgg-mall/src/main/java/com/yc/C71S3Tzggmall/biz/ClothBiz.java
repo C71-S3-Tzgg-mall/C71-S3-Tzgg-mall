@@ -14,6 +14,7 @@ import com.yc.C71S3Tzggmall.bean.Cart;
 import com.yc.C71S3Tzggmall.bean.CartExample;
 import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.bean.ClothExample;
+import com.yc.C71S3Tzggmall.bean.Type;
 import com.yc.C71S3Tzggmall.dao.ClothMapper;
 
 @Service
@@ -185,5 +186,15 @@ public class ClothBiz {
 		return cm.updateByExampleSelective(cloth, example);
 	}
 	
+	/**
+	 * 各类型销量
+	 * @param tid
+	 * @return
+	 */
+	public List<Cloth> findSoleCount(int tid){
+		ClothExample example=new ClothExample();
+		example.createCriteria().andTypeidEqualTo(tid);
+		return cm.selectByExample(example);
+	}
 	
 }

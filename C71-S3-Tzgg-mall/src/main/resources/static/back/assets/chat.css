@@ -1,0 +1,111 @@
+/*模态框*/
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 根据浏览器定位 */
+    z-index: 1; /* 放在顶部 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    overflow: auto; /* 允许滚动 */
+    background-color: rgba(0,0,0,0.4); /* 背景色 */
+}
+#chats {
+	width: 250px;
+	height: 350px;
+	border: 1px solid #7b6b6b;
+	margin: 0 auto;
+	position: relative;
+}
+#content {
+	width: 250px;
+	height: 300px;
+	border-bottom: 1px solid #ccc;
+	overflow-y: auto;
+}
+
+#content ul {
+	margin: 0;
+	padding: 0;
+}
+
+#Img {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 310px;
+	border-radius: 15px;
+}
+
+#txt {
+	margin: 0;
+	position: absolute;
+	left: 50px;
+	top: 315px;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+	width: 133px;
+	height: 18px;
+}
+
+#btn {
+	margin-right: 10px;
+	position: absolute;
+	margin: 0;
+	left: 197px;
+	top: 314px;
+}
+
+#edit {
+	background: #ece7e766;
+	width: 250px;
+	height: 50px;
+}
+.showTxt {
+	width: auto;
+	height: auto;
+	max-width: 230px;
+	background: #008000a8;
+	border: 0;
+	font-size: 15px;
+	color: white;
+	padding: 5px;
+	border-radius: 2px;
+	word-break: break-all;
+	list-style: none;
+	margin-top: 5px;
+	display: list-item;
+}
+
+.left {
+	text-align: left;
+	margin-left: 50px;
+	float: left;
+}
+
+.right {
+	text-align: right;
+	margin-right: 50px;
+	float: right;
+}
+
+.showImg {
+	width: 26px;
+	height: 26px;
+	border-radius: 13px;
+	 
+}
+
+.leftImg {
+	left: 10px;
+	position: absolute;
+}
+
+.rightImg {
+	right: 10px;
+	position: absolute;
+}
+#scroll {
+	position: relative;
+}

@@ -59,5 +59,7 @@ public class Result {
 		Data = data;
 	}
 	
-
+	public Result() {
+		super();
+	}
 }

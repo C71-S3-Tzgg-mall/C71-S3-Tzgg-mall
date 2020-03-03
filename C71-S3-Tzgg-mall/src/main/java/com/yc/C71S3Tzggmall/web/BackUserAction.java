@@ -73,6 +73,8 @@ public class BackUserAction {
 	public String index(Model m,HttpServletRequest request){
 		Admin admin=(Admin)request.getSession().getAttribute("admin");
 		m.addAttribute("admin",admin);
+		m.addAttribute("userId", 5);
+
 		int count=uBiz.selectPNum();
 		m.addAttribute("count",count);
 		List<Cloth> list=cBiz.findClothByTime();
@@ -203,6 +205,10 @@ public class BackUserAction {
 		
 	}
 	
-	
+	@RequestMapping("exit")
+	public String exit(HttpServletRequest request){
+		request.getSession().removeAttribute("admin");
+		return "/back/login";
+	}
 	
 }

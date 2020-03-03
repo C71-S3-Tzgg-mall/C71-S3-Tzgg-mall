@@ -25,7 +25,7 @@ public class BackOrderAction {
 		Admin admin=(Admin)request.getSession().getAttribute("admin");
 		m.addAttribute("admin",admin);
 		Cloth cloth=oBiz.showbackOrder();
-		System.out.println(cloth.getList().get(0).getDetail());
+		//System.out.println(cloth.getList().get(0).getDetail());
 		m.addAttribute("olist",cloth);
 		return "/back/order";
 	}
@@ -34,6 +34,9 @@ public class BackOrderAction {
 	public String reStatus(Orderitem item,Model m){
 		item.setStatus("已发货");
 		oBiz.reStatus(item);
+		Cloth cloth=oBiz.showbackOrder();
+		//System.out.println(cloth.getList().get(0).getDetail());
+		m.addAttribute("olist",cloth);
 		return "/back/order::move";
 	}
 }

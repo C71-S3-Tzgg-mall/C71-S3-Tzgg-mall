@@ -144,7 +144,7 @@ public class OrderItemBiz {
 	 */
 	public int findCountByQ(){
 		OrderitemExample example=new OrderitemExample();
-		example.createCriteria().andStatusEqualTo("取消订单");
+		example.createCriteria().andStatusEqualTo("取消");
 		return (int) om.countByExample(example);
 	}
 	/**

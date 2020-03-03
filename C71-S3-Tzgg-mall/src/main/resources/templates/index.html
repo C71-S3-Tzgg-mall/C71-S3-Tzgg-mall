@@ -73,8 +73,10 @@
         <!-- responsive CSS
 		============================================ -->          
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/chat.css">
         
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        
     </head>
     <body class="home">
         <!--[if lt IE 8]>
@@ -87,21 +89,15 @@
         		<div class="row">	
 					<div class="col-lg-12">
 						<div class="headet-top">						
-							<div class="htop-one">
-								<ul class="curency">
-									<li>
-										<a href="#">售后服务热线<i class="fa fa-caret-down"></i></a>
+							<div class="htop-one last">
+								<ul class="account">
+									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
 										<ul>
-											<li><a href="#">4546-67900<span>(中国)</span></a></li> 
-											<li><a href="#">3889-34468<span>(其他)</span></a></li> 
-										</ul>
-									</li> 
-								</ul>
-							</div>
-							<div class="htop-one">
-								<ul class="lenguage">
-									<li>
-										<a href="#">在线客服</a>									
+											<li><a href="wishlist">我的收藏</a></li> 
+											<li><a href="order">我的订单</a></li>
+											<li><a href="cart">购物车</a></li> 
+											<li><a href="#">退出</a></li> 
+										</ul>										
 									</li> 
 								</ul>
 							</div>
@@ -112,15 +108,43 @@
 									</li> 
 								</ul>
 							</div>
-							<div class="htop-one last">
-								<ul class="account">
-									<li><a href="#">我的账户<i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="wishlist">我的收藏</a></li> 
-											<li><a href="order">我的订单</a></li>
-											<li><a href="cart">购物车</a></li> 
-											<li><a href="#">退出</a></li> 
-										</ul>										
+							<div class="htop-one">
+								<ul class="lenguage">
+									<li>
+										<a href="exit">退出</a>									
+									</li> 
+								</ul>
+							</div>
+							<div class="htop-one">
+								<ul class="lenguage"  >
+									<li>
+										<a id="triggerBtn" href="#">在线客服
+											<font id="upChat" th:frament="updateChat" color="red" th:text=${chatCount}>1 </font>
+										</a>
+										
+										<div id="myModal" class="modal">
+									        <div class="modal-content">
+									        	<div class="modal-header">
+									        		<h5>在线客服</h5>
+									                <span id="closeBtn" class="close" >×</span>
+									            </div>
+									           <div id="chats">
+													<div id="content" th:fragment="chat">
+														<div id="cha">
+															<div th:if="${chat!=null}" th:each="chatStat:${chat}">
+																<h5 th:text="${chatStat.cfrom}+':'+${chatStat.chatcontent}"></h5>
+															</div>
+														</div>
+													</div>
+													<div id="edit">
+														<img src="img/blog/2.jpg" id="Img"> 
+														<input type="text" name="" id="txt">
+														<input type="hidden" id="userid" th:value="${userId}">
+														<input type="button" name="" value="发送" id="btn" onclick="send()">
+													</div>
+												</div>
+									        </div>
+									     </div>
 									</li> 
 								</ul>
 							</div>
@@ -697,6 +721,7 @@
     </body>
 
 <script type="text/javascript">
+
 //加入收藏夹
 function addWishlist(cid){
 	$.post('addWishlist.do',{cid:cid},function(result){
@@ -715,7 +740,99 @@ function singleProduct(cid){
 	window.location.href="single-product?cid="+cid+"";
 }
 
+(function() {
+	/*建立模态框对象*/
+	var modalBox = {};
+	/*获取模态框*/
+	modalBox.modal = document.getElementById("myModal");
+    /*获得trigger按钮*/
+	modalBox.triggerBtn = document.getElementById("triggerBtn");
+    /*获得关闭按钮*/
+	modalBox.closeBtn = document.getElementById("closeBtn");
+	/*模态框显示*/
+	modalBox.show = function() {
+		console.log(this.modal);
+		this.modal.style.display = "block";
+	}
+	/*模态框关闭*/
+	modalBox.close = function() {
+		this.modal.style.display = "none";
+	}
+	/*当用户点击模态框内容之外的区域，模态框也会关闭*/
+	modalBox.outsideClick = function() {
+		var modal = this.modal;
+		window.onclick = function(event) {
+            if(event.target == modal) {
+            	modal.style.display = "none";
+            }
+		}
+	}
+    /*模态框初始化*/
+	modalBox.init = function() {
+		var that = this;
+		this.triggerBtn.onclick = function() {
+			conn();
+			$.post("findChats",function(data){
+				$("#content").html(data);
+			});
+			$.post("updChat",function(data){
+				$("#upChat").html(data);
+			});
+            that.show();
+		}
+		this.closeBtn.onclick = function() {
+			that.close();
+		}
+		this.outsideClick();
+	}
+	modalBox.init();
+ 
+})();
 
+var websocket;
+function conn(){
+	//创建websocket对象
+	websocket=new WebSocket("ws://localhost/websocket/"+userid.value+",123");
+	//连接发生错误的回调方法
+	websocket.onerror=function(event){
+		console.info("========onerror=========");
+	}
+	//连接成功建立的回调方法
+	websocket.onopen=function(event){
+		//alert("连接成功");
+		console.info("========onopen========="+event);
+	}
+	//接收到消息的回调方法
+	websocket.onmessage=function(event){
+		var msg="<div><h5>"+event.data+"</h5></div>";
+		$("#cha").append(msg);
+	}
+	//连接关闭的回调方法
+	websocket.onclose=function(event){
+		console.info("========onclose========="+event);
+	}
+}
+
+
+//关闭连接
+function closeWebSocket(){
+	websocket.close();
+}
+//发送消息
+function send(){
+	save();
+	websocket.send(JSON.stringify({'message':txt.value,'role':"客服",'socketId':"123"}));
+	$("#txt").val("");
+}
+
+function save(){
+	var  from=userid.value;
+	var  to="客服";
+	var  content=txt.value;
+	$.post("saveChat2",{cfrom:from,cto:to,chatcontent:content},function(result){
+		
+	});
+}
 </script>
 </html>
 

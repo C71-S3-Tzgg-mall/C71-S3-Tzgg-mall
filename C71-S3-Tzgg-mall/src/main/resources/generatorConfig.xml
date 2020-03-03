@@ -35,7 +35,7 @@
 		</javaClientGenerator>
 
 		<!-- % 表示所有的表 -->
-		<table tableName="%" >
+		<table tableName="chat" >
 			<!-- 配置自增列 id -->
 			<generatedKey column="id" sqlStatement="mysql" identity="true"/>
 			<!-- 配置 日期字段 -->

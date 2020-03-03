@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html class="no-js" lang="" xmlns:th="www.thymeleaf.org">
 <head>
-    <title>Bee-后台管理</title>
+    <title>Bee-商品管理</title>
+    <link rel="icon" href="assets/images/logo-icon.png" type="image/x-icon"/>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
     
     <!--[if lt IE 9]>
@@ -88,71 +89,11 @@
                             <li class='divider'></li>
                         </ul>
                     </li>
-                    <li class='dropdown medium only-icon widget'>
-                        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                     <li class='dropdown medium only-icon widget'>
+                        <a  href='chat'>
                             <i class='icon-rss'></i>
-                            <div class='label'>5</div>
+                            <div class='label'>消息</div>
                         </a>
-                        <ul class='dropdown-menu'>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            John Doe signed up
-                                            <small class='muted'>just now</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-inbox text-error'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            New Order #002
-                                            <small class='muted'>3 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-comment text-warning'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            America Leannon commented Flatty with veeery long text.
-                                            <small class='muted'>1 hour ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='divider'></li>
-                            <li>
-                                <a href='#'>
-                                    <div class='widget-body'>
-                                        <div class='pull-left icon'>
-                                            <i class='icon-user text-success'></i>
-                                        </div>
-                                        <div class='pull-left text'>
-                                            Jane Doe signed up
-                                            <small class='muted'>last week</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class='widget-footer'>
-                                <a href='#'>All notifications</a>
-                            </li>
-                        </ul>
                     </li>
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
@@ -169,7 +110,7 @@
                             </li>
                             <li class='divider'></li>
                             <li>
-                                <a href='sign_in.html'>
+                                <a href='exit'>
                                     <i class='icon-signout'></i>
                                			     退出
                                 </a>
@@ -177,7 +118,7 @@
                         </ul>
                     </li>
                 </ul>
-                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone" method="get" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+                <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone" method="get" ><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
                     <button class="btn btn-link icon-search" name="button" type="submit"></button>
                     <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..." type="text" value="" />
                 </form>
@@ -190,7 +131,7 @@
 <nav class='' id='main-nav'>
 <div class='navigation'>
 <div class='search'>
-    <form accept-charset="UTF-8" action="search_results.html" method="get" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <form accept-charset="UTF-8" action="search_results.html" method="get" ><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
         <div class='search-wrapper'>
             <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text" value="" />
             <button class="btn btn-link icon-search" name="button" type="submit"></button>
@@ -211,12 +152,12 @@
     </a>
 </li>
 <li class=''>
-    <a href='charts.html'>
+    <a href='bill'>
         <i class='icon-edit'></i>
         <span>账单管理</span>
     </a>
 </li>
-<li class=''>
+<li class='active'>
     <a href='table'>
         <i class='icon-tint'></i>
         <span>商品管理</span>

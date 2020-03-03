@@ -121,7 +121,7 @@ public class OrderAction {
 	
 	@PostMapping("upd2.do")
 	public String update2(Orderitem item,Model m,HttpServletRequest request){
-		item.setStatus("取消订单");
+		item.setStatus("取消");
 		obiz.UpdStatus(item);
 		Cloth cloth=showOrderitem(m, request);
 		m.addAttribute("clist",cloth);
@@ -131,10 +131,10 @@ public class OrderAction {
 	@ResponseBody
 	@PostMapping("upd1.do")
 	public Result selectByOiid(Orderitem item){
-		System.out.println(item.getOiid());
+		//System.out.println(item.getOiid());
 		Orderitem order=obiz.selectByOid(item.getOiid());
 		String oid=order.getOid();
-		System.out.println(oid);
+		//System.out.println(oid);
 		return new Result(1,oid);
 	}
 }

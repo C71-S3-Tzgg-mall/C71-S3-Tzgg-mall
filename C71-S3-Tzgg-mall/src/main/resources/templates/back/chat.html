@@ -88,10 +88,70 @@
                         </ul>
                     </li>
                     <li class='dropdown medium only-icon widget'>
-                        <a  href='chat'>
+                        <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
                             <i class='icon-rss'></i>
                             <div class='label'>消息</div>
                         </a>
+                        <ul class='dropdown-menu'>
+                            <li>
+                                <a href='#'>
+                                    <div class='widget-body'>
+                                        <div class='pull-left icon'>
+                                            <i class='icon-user text-success'></i>
+                                        </div>
+                                        <div class='pull-left text'>
+                                            John Doe signed up
+                                            <small class='muted'>just now</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class='divider'></li>
+                            <li>
+                                <a href='#'>
+                                    <div class='widget-body'>
+                                        <div class='pull-left icon'>
+                                            <i class='icon-inbox text-error'></i>
+                                        </div>
+                                        <div class='pull-left text'>
+                                            New Order #002
+                                            <small class='muted'>3 minutes ago</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class='divider'></li>
+                            <li>
+                                <a href='#'>
+                                    <div class='widget-body'>
+                                        <div class='pull-left icon'>
+                                            <i class='icon-comment text-warning'></i>
+                                        </div>
+                                        <div class='pull-left text'>
+                                            America Leannon commented Flatty with veeery long text.
+                                            <small class='muted'>1 hour ago</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class='divider'></li>
+                            <li>
+                                <a href='#'>
+                                    <div class='widget-body'>
+                                        <div class='pull-left icon'>
+                                            <i class='icon-user text-success'></i>
+                                        </div>
+                                        <div class='pull-left text'>
+                                            Jane Doe signed up
+                                            <small class='muted'>last week</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class='widget-footer'>
+                                <a href='#'>All notifications</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class='dropdown dark user-menu'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
@@ -129,7 +189,7 @@
 <nav class='' id='main-nav'>
 <div class='navigation'>
 <div class='search'>
-    <form accept-charset="UTF-8" action="search_results.html" method="get" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <form accept-charset="UTF-8" action="search_results.html" method="get" ><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
         <div class='search-wrapper'>
             <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text" value="" />
             <button class="btn btn-link icon-search" name="button" type="submit"></button>
@@ -184,160 +244,88 @@
         </div>
     </div>
 </div>
+<div class='group-header'>
+   
+</div>
 <div class='row-fluid'>
-    <div class='span6 box'>
-        <div class='box-header'>
-            <div class='title'>
-                <i class='icon-inbox'></i>
-               		 订单
-            </div>
-            <div id="main" style="width: 550px;height:230px;"></div>
-        </div>
+<div class='span6'>
+<div class='chat row-fluid'>
+<div class='box box-nomargin span12'>
+<div class='box-header orange-background'>
+    <div class='title'>
+        <i class='icon-comments-alt'></i>
+        	聊天记录
     </div>
-    <div class='span6 box'>
-        <div class='box-header'>
-            <div class='title'>
-                <i class='icon-group'></i>
-               			 用户
+    <div class='actions'>
+        <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
+        </a>
+        <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+        </a>
+    </div>
+</div>
+<div class='box-content box-no-padding'>
+<div class='scrollable' data-scrollable-height='300' data-scrollable-start='bottom'>
+<ul class='unstyled list-hover list-striped' id="chat" th:fragment="chat">
+	<li class='message' th:if="${chat!=null}" th:each="c:${chat}">
+	   
+	    <div class='name-and-time'>
+	        <div class='name pull-left'>
+	            <small>
+	                <a href="#" class="text-contrast" th:text="${c.cfrom}">Gino</a>
+	            </small>
+	        </div>
+	        <div class='time pull-right'>
+	            <small class='date pull-right muted'>
+	                <span class='timeago fade has-tooltip' data-placement='top'  th:title="${#strings.substring(c.time,0,19)}">May 30, 2013 </span>
+	                <i class='icon-time'></i>
+	            </small>
+	        </div>
+	    </div>
+	    <div class='body' th:text="${c.chatcontent}">
+	        
+	    </div>
+	</li>
+
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='span6'>
+    <div class='row-fluid'>
+        <div class='span12 box box-nomargin'>
+            <div class='box-header blue-background'>
+                <div class='title'>
+                    <div class='icon-envelope-alt'></div>
+                    		消息
+                </div>
+                <div class='actions'>
+                    <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
+                    </a>
+                    <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                    </a>
+                </div>
             </div>
-            <div id="user" style="width: 550px;height:230px;"></div>
+            <div class='box-content'>
+                <!-- <input class="span12" id="email" name="email" placeholder="收件人" type="text" value="" /> -->
+                <select class="span12" id="email" name="email" placeholder="收件人" >
+                	<option></option>
+                </select> 
+                <textarea class="span12" id="body_"  placeholder="Your message..." rows="10">
+                </textarea>
+                <div class='text-right'>
+                    <a href="#" class="btn btn-primary" onclick="send()">发送</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class='row-fluid'>
-    <div class='span6 box'>
-        <div class='box-header'>
-            <div class='title'>
-                <i class='icon-inbox'></i>
-               		 销售量
-            </div>
-            <div id="sbmain" style="width: 550px;height:230px;"></div>
-        </div>
-    </div>
-    <div class='span6 box'>
-        <div class='box-header'>
-            <div id="spmain" style="width: 550px;height:230px;"></div>
-        </div>
-    </div>
 </div>
-<hr class='hr-drouble' />
-<div class='row-fluid'>
-    <div class='span6 box'>
-        <div class='box-header'>
-            <div class='title'>
-                <div class='icon-inbox'></div>
-                		订单
-            </div>
-            <div class='actions'>
-                <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
-                </a>
-                <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                </a>
-            </div>
-        </div>
-        <div class='row-fluid'>
-            <div class='span6'>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-error' th:text="${newProduct}">191</h3>
-                    <small>新品</small>
-                    <div class='text-error icon-inbox align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-warning' th:text="${pCount}">311</h3>
-                    <small>进行中</small>
-                    <div class='text-warning icon-check align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-info' th:text="${iCount}">3</h3>
-                    <small>待定</small>
-                    <div class='text-info icon-time align-right'></div>
-                </div>
-            </div>
-            <div class='span6'>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-primary' th:text="${pCount}">3</h3>
-                    <small>出货</small>
-                    <div class='text-primary icon-truck align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-success' th:text="${fCount}">981</h3>
-                    <small>已完成</small>
-                    <div class='text-success icon-flag align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title muted' th:text="${qCount}">0</h3>
-                    <small>取消</small>
-                    <div class='muted icon-remove align-right'></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='span3 box'>
-        <div class='box-header'>
-            <div class='title'>
-                <i class='icon-group'></i>
-               			 用户
-            </div>
-            <div class='actions'>
-                <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
-                </a>
-                <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                </a>
-            </div>
-        </div>
-        <div class='row-fluid'>
-            <div class='span12'>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-error' th:text="${count}">9100</h3>
-                    <small>数量</small>
-                    <div class='text-error icon-user align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-warning' th:text="${num}">41 000</h3>
-                    <small>浏览量</small>
-                    <div class='text-warning icon-book align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-primary' th:text="${tNum}">12:21</h3>
-                    <small>会员</small>
-                    <div class='text-primary icon-time align-right'></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='span3 box'>
-        <div class='box-header'>
-            <div class='title'>
-                <i class='icon-comments'></i>
-                评论
-            </div>
-            <div class='actions'>
-                <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
-                </a>
-                <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
-                </a>
-            </div>
-        </div>
-        <div class='row-fluid'>
-            <div class='span12'>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-error' th:text="${newNum}">91</h3>
-                    <small>最新评论</small>
-                    <div class='text-error icon-plus align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-success'  th:text="${gNum}">1</h3>
-                    <small >五星好评</small>
-                    <div class='text-success icon-ok align-right'></div>
-                </div>
-                <div class='box-content box-statistic'>
-                    <h3 class='title text-info' th:text="${badNum}">123</h3>
-                    <small>差评</small>
-                    <div class='text-info icon-time align-right'></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+</div>
+</div>
 </div>
 </section>
 </div>
@@ -381,7 +369,7 @@
 <!-- / modernizr -->
 <script src='assets/javascripts/plugins/modernizr/modernizr.min.js' type='text/javascript'></script>
 <!-- / retina -->
-<script src='assets/javascripts/plugins/retina/retina.js' type='text/javascript'></script>
+
 <!-- / fileupload -->
 <script src='assets/javascripts/plugins/fileupload/tmpl.min.js' type='text/javascript'></script>
 <script src='assets/javascripts/plugins/fileupload/load-image.min.js' type='text/javascript'></script>
@@ -443,212 +431,98 @@
 <script src='assets/javascripts/demo/demo.js' type='text/javascript'></script>
 <script src="https://cdn.bootcss.com/echarts/3.7.1/echarts.min.js"></script>
 
-
 <script type="text/javascript">
-
-$(function () {
-    getData();
-    getData1();
-    getData2();
-    getData3();
+var websocket;
+$(function conn(){
+	//创建websocket对象
+	websocket=new WebSocket("ws://localhost/websocket/"+"客服"+",123");
+	//连接发生错误的回调方法
+	websocket.onerror=function(event){
+		console.info("========onerror=========");
+	}
+	//连接成功建立的回调方法
+	websocket.onopen=function(event){
+		//alert("连接成功");
+		console.info("========onopen========="+event);
+	}
+	//接收到消息的回调方法
+	websocket.onmessage=function(event){
+		//content.innerHTML+=event.data+"<br>";
+		//alert(event.data);
+		var myDate = new Date(); 
+		var date=myDate.toLocaleString( );
+		var message="";
+		var i=event.data.indexOf("：");
+		var msg = event.data.substr(i+1,event.data.length);
+		var name=event.data.substr(0,i);
+		var options=$("#email option:selected").val();
+		if(name==options || name=="客服"){
+			message="<li class='message'>\n" +
+			"    <div class='name-and-time'>\n" +
+			"        <div class='name pull-left'>\n" +
+			"            <small>\n" +
+			"                <a href=\"#\" class=\"text-contrast\">"+name+"</a>\n" +
+			"            </small>\n" +
+			"        </div>\n" +
+			"        <div class='time pull-right'>\n" +
+			"            <small class='date pull-right muted'>\n" +
+			"                <span class='timeago fade has-tooltip' data-placement='top' title='"+date+"'>May 30, 2013 - 21:04</span>\n" +
+			"                <i class='icon-time'></i>\n" +
+			"            </small>\n" +
+			"        </div>\n" +
+			"    </div>\n" +
+			"    <div class='body'>"+msg+"\n" +
+			"    </div>\n" +
+			"</li>"
+		$("#chat").append(message);
+		}
+	}
+	//连接关闭的回调方法
+	websocket.onclose=function(event){
+		console.info("========onclose========="+event);
+	}
 });
-    function getData(){
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-        //数据加载完之前先显示一段简单的loading动画
-        myChart.showLoading();
-        var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
-        var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
-        $.ajax({
-            type : "post",
-            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-            url : "orderCount.do",    //请求发送到dataActiont处
-            data : {},
-            dataType : "json",        //返回数据形式为json
-            success : function(result) {
-                //请求成功时执行该函数内容，result即为服务器返回的json对象
-                if (result) {
-                    for(var i=0;i<result.length;i++){
-                        names.push(result[i].time);
-                        values.push(result[i].count);
-                    }
-                    myChart.hideLoading();    //隐藏加载动画
-                    myChart.setOption({        //加载数据图表
-                        tooltip: {},
-                        legend: {
-                            data:['数量']
-                        },
-                        xAxis: {
-                            data: names
-                        },
-                        yAxis: {
-                            type: 'value'
-                        },
-                        series: [{
-                            // 根据名字对应到相应的系列
-                            name: '数量',//薪资 series not exists. Legend data should be same with series name or data name.
-                            type: 'bar',
-                            data: values
-                        }]
-                    });
-                }
-            },
-            error : function(errorMsg) {
-                //请求失败时执行该函数
-                alert("图表请求数据失败!");
-                myChart.hideLoading();
-            }
-        });//end ajax
-    }
-    
-    function getData1(){
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('user'));
-        //数据加载完之前先显示一段简单的loading动画
-        myChart.showLoading();
-        var names=[];    //横坐标数组
-        var values=[];    //纵坐标数组
-        $.ajax({
-            type : "post",
-            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-            url : "userCount.do",    //请求发送到dataActiont处
-            data : {},
-            dataType : "json",        //返回数据形式为json
-            success : function(result) {
-                //请求成功时执行该函数内容，result即为服务器返回的json对象
-                if (result) {
-                    for(var i=0;i<result.length;i++){
-                        names.push(result[i].time);
-                        values.push(result[i].count);
-                    }
-                    myChart.hideLoading();    //隐藏加载动画
-                    myChart.setOption({        //加载数据图表
-                        tooltip: {},
-                        legend: {
-                            data:['数量']
-                        },
-                        xAxis: {
-                            data: names
-                        },
-                        yAxis: {
-                            type: 'value'
-                        },
-                        series: [{
-                            // 根据名字对应到相应的系列
-                            name: '数量',//薪资 series not exists. Legend data should be same with series name or data name.
-                            type: 'bar',
-                            data: values
-                        }]
-                    });
-                }
-            },
-            error : function(errorMsg) {
-                //请求失败时执行该函数
-                alert("图表请求数据失败!");
-                myChart.hideLoading();
-            }
-        });//end ajax
-    }
-    
-    function getData2(){
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('sbmain'));
-        //数据加载完之前先显示一段简单的loading动画
-        myChart.showLoading();
-        var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
-        var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
-        $.ajax({
-            type : "post",
-            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-            url : "scp.do",    //请求发送到dataActiont处
-            data : {},
-            dataType : "json",        //返回数据形式为json
-            success : function(result) {
-                //请求成功时执行该函数内容，result即为服务器返回的json对象
-                if (result) {
-                    for(var i=0;i<result.length;i++){
-                        names.push(result[i].msg);
-                        values.push(result[i].code);
-                    }
-                    myChart.hideLoading();    //隐藏加载动画
-                    myChart.setOption({        //加载数据图表
-                        tooltip: {},
-                        legend: {
-                            data:['数量']
-                        },
-                        xAxis: {
-                            data: names
-                        },
-                        yAxis: {
-                            type: 'value'
-                        },
-                        series: [{
-                            // 根据名字对应到相应的系列
-                            name: '数量',//薪资 series not exists. Legend data should be same with series name or data name.
-                            type: 'bar',
-                            data: values
-                        }]
-                    });
-                }
-            },
-            error : function(errorMsg) {
-                //请求失败时执行该函数
-                alert("图表请求数据失败!");
-                myChart.hideLoading();
-            }
-        });//end ajax
-    }
-    
-    function  getData3() {
-        $.ajax({
-            type: 'post',
-            dataType: 'text',
-            url:  'scp.do',
-            data: {},
-            cache: false,
-            async: true,
-            success: function (data) {
-                var data = eval('(' + data + ')');
-                var data1 = new Array();
-                for(var i=0; i < data.length; i++){
-                    data1[i] = {value:data[i].code,name:data[i].msg}
-                }
-                //alert(JSON.stringify(data));
-                var myChart = echarts.init(document.getElementById('spmain'));
 
-                // 指定图表的配置项和数据
-                option = {
-                    tooltip : {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        orient: 'vertical',
-                        left: 'left',
-                        data: data1
-                    },
-                    series : [
-                        {
-                            name: '总销售量',
-                            type: 'pie',
-                            radius : '55%',
-                            center: ['50%', '60%'],
-                            data:data1,
-                            itemStyle: {
-                                emphasis: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                }
-                            }
-                        }
-                    ]
-                };
-                // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
-            }
-        });
-    }
+
+//关闭连接
+function closeWebSocket(){
+	websocket.close();
+}
+//发送消息
+function send(){
+    save();
+	//message作为发送的信息，role作为发送的对象标识，socketId是此次会话的标识
+    websocket.send(JSON.stringify({'message':body_.value,'role':email.value,'socketId':"123"}));
+    $("#body_").val("");
+}
+
+function save(){
+	var  from="客服";
+	var  to=email.value;
+	var  content=body_.value;
+	$.post("saveChat1",{cfrom:from,cto:to,chatcontent:content},function(result){
+		
+	});
+}
+//显示type
+$(function(){
+	$.post('findChatId',null, function(result){
+		for ( var i = 0; i < result.data.length; i++){
+			$("#email").append("<option value='" + result.data[i].name + "'>" + result.data[i].name + "</option>");  
+		}
+		//addContent(-1);
+	});
+});
+//select下拉选点击事件，获取选中option的value
+$('#email').change(function(){
+	var x = $(this).children('option:selected').val();
+	$("#chat").empty();
+	$.post('findChatContent',{cto:x}, function(data){
+		$("#chat").html(data);
+	});
+});
+
+
 </script>
 </body>
 </html>

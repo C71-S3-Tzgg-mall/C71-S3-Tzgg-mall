@@ -12,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.C71S3Tzggmall.bean.Cart;
+import com.yc.C71S3Tzggmall.bean.Chat;
 import com.yc.C71S3Tzggmall.bean.Cloth;
 import com.yc.C71S3Tzggmall.bean.Comment;
 import com.yc.C71S3Tzggmall.bean.User;
 import com.yc.C71S3Tzggmall.biz.CartBiz;
+import com.yc.C71S3Tzggmall.biz.ChatBiz;
 import com.yc.C71S3Tzggmall.biz.ClothBiz;
 import com.yc.C71S3Tzggmall.biz.CommentBiz;
 
@@ -34,10 +36,14 @@ public class IndexAction {
 	@Resource
 	private CommentBiz cmBiz;
 	
+	@Resource
+	private ChatBiz chatBiz;
+	
 	@RequestMapping("index")
 	public String index(Model m,Cloth cloth,HttpServletRequest request){
 		User user=(User) request.getSession().getAttribute("user");
 		if(user!=null){
+			m.addAttribute("userId", user.getName());
 			Cart cart=new Cart();
 			cart.setUid(user.getUid());
 			List<Cart> cartList=cartBiz.findCartByUid(cart);
@@ -49,6 +55,9 @@ public class IndexAction {
 			m.addAttribute("cartSize", cartList.size());
 			Cloth pro=cartBiz.showCart(user.getUid());
 			m.addAttribute("cartList", pro);
+			
+			int chatCount=chatBiz.selectCount(user.getName());
+			m.addAttribute("chatCount",chatCount);
 		}
 		List<Cloth> newList=cBiz.findClothByTime();
 		List<Comment> cmlist=null;
@@ -104,6 +113,13 @@ public class IndexAction {
 			num++;
 		}
 		servletContext.setAttribute("num", num);
+		
 		return "index";
+	}
+	
+	@RequestMapping("exit")
+	public String exit(HttpServletRequest request){
+		request.getSession().removeAttribute("user");
+		return "login";
 	}
 }
